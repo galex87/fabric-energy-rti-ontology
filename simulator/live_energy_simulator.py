@@ -24,7 +24,8 @@ def classify_alert(renewable_ratio: float, grid_demand_mw: float, co2_intensity_
 def _solar_factor(hour_utc: int) -> float:
     if hour_utc < 6 or hour_utc > 19:
         return 0.0
-    x = (hour_utc - 6) / 13
+    daylight_span = 19 - 6
+    x = (hour_utc - 6) / daylight_span
     return max(0.0, math.sin(math.pi * x))
 
 

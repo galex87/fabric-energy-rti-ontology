@@ -11,5 +11,5 @@ Use `energy_realtime` as the data source.
 
 ## Rule: Warning trend
 
-- Trigger when `alert_level == "warning"` for 3 consecutive events in 10 minutes for the same `site_id`
+- Trigger when there are 3 `warning` events in a row within 10 minutes for the same `site_id` (any non-`warning` event resets the streak)
 - Recommended action: create incident/ticket for operator review
