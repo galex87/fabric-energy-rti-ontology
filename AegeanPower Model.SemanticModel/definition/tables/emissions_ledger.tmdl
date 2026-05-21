@@ -1,0 +1,61 @@
+table emissions_ledger
+
+	measure 'Total CO2 Tonnes' = SUM(emissions_ledger[co2_tonnes])
+		formatString: #,##0.0
+
+	measure 'Avg Compliance %' = AVERAGE(emissions_ledger[compliance_pct])
+		formatString: #,##0.0"%"
+
+	column record_id
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: record_id
+
+	column plant_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: plant_id
+
+	column plant_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: plant_name
+
+	column period
+		dataType: string
+		summarizeBy: none
+		sourceColumn: period
+
+	column co2_tonnes
+		dataType: double
+		sourceColumn: co2_tonnes
+
+	column ets_allowance_tonnes
+		dataType: double
+		sourceColumn: ets_allowance_tonnes
+
+	column fuel_consumed_mwh
+		dataType: double
+		sourceColumn: fuel_consumed_mwh
+
+	column emission_factor_tco2_per_mwh
+		dataType: double
+		sourceColumn: emission_factor_tco2_per_mwh
+
+	column compliance_pct
+		dataType: double
+		sourceColumn: compliance_pct
+
+	column compliance_status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: compliance_status
+
+	partition emissions_ledger = entity
+		mode: directLake
+		source
+			entityName: emissions_ledger
+			schemaName: dbo
+			expressionSource: DL_Lakehouse
+

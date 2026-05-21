@@ -1,0 +1,28 @@
+relationship wt_plant
+	fromColumn: wind_turbines.plant_id
+	toColumn: power_plants.plant_id
+
+relationship si_plant
+	fromColumn: solar_inverters.plant_id
+	toColumn: power_plants.plant_id
+
+relationship sub_grid
+	fromColumn: substations.connected_grid_id
+	toColumn: island_grids.grid_id
+
+relationship sub_plant
+	fromColumn: substations.fed_by_plant_id
+	toColumn: power_plants.plant_id
+
+relationship mo_plant
+	fromColumn: maintenance_orders.plant_id
+	toColumn: power_plants.plant_id
+
+relationship el_plant
+	fromColumn: emissions_ledger.plant_id
+	toColumn: power_plants.plant_id
+
+relationship ve_plant
+	fromColumn: vessels.supply_plant_id
+	toColumn: power_plants.plant_id
+

@@ -1,0 +1,66 @@
+table island_grids
+
+	measure 'Total Peak Demand MW' = SUM(island_grids[peak_demand_mw])
+		formatString: #,##0.0
+
+	column grid_id
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: grid_id
+
+	column grid_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: grid_name
+
+	column island
+		dataType: string
+		summarizeBy: none
+		sourceColumn: island
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column population
+		dataType: int64
+		sourceColumn: population
+
+	column peak_demand_mw
+		dataType: double
+		sourceColumn: peak_demand_mw
+
+	column installed_capacity_mw
+		dataType: double
+		sourceColumn: installed_capacity_mw
+
+	column interconnected
+		dataType: boolean
+		sourceColumn: interconnected
+
+	column interconnection_cable
+		dataType: string
+		summarizeBy: none
+		sourceColumn: interconnection_cable
+
+	column nominal_frequency_hz
+		dataType: double
+		sourceColumn: nominal_frequency_hz
+
+	column latitude
+		dataType: double
+		sourceColumn: latitude
+
+	column longitude
+		dataType: double
+		sourceColumn: longitude
+
+	partition island_grids = entity
+		mode: directLake
+		source
+			entityName: island_grids
+			schemaName: dbo
+			expressionSource: DL_Lakehouse
+
