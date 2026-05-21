@@ -1,0 +1,17 @@
+// Latest telemetry (dashboard table tile)
+energy_realtime
+| top 50 by timestamp_utc desc
+
+// Renewable and carbon performance over 5-minute bins (dashboard line chart)
+energy_realtime
+| summarize
+    avg_renewable_ratio = avg(renewable_ratio),
+    avg_co2_intensity = avg(co2_intensity_g_kwh)
+    by bin(timestamp_utc, 5m), site_id
+| order by timestamp_utc asc
+
+// Critical feed (Activator trigger source)
+energy_realtime
+| where alert_level == "critical"
+| project timestamp_utc, site_id, grid_demand_mw, renewable_ratio, co2_intensity_g_kwh
+| order by timestamp_utc desc

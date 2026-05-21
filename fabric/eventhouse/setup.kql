@@ -1,0 +1,24 @@
+.create-merge table energy_realtime (
+    event_id: long,
+    timestamp_utc: datetime,
+    site_id: string,
+    wind_mw: real,
+    solar_mw: real,
+    grid_demand_mw: real,
+    renewable_ratio: real,
+    co2_intensity_g_kwh: real,
+    alert_level: string
+)
+
+.create-or-alter table energy_realtime ingestion json mapping "energy_realtime_json"
+'[
+  {"column":"event_id","path":"$.event_id"},
+  {"column":"timestamp_utc","path":"$.timestamp_utc"},
+  {"column":"site_id","path":"$.site_id"},
+  {"column":"wind_mw","path":"$.wind_mw"},
+  {"column":"solar_mw","path":"$.solar_mw"},
+  {"column":"grid_demand_mw","path":"$.grid_demand_mw"},
+  {"column":"renewable_ratio","path":"$.renewable_ratio"},
+  {"column":"co2_intensity_g_kwh","path":"$.co2_intensity_g_kwh"},
+  {"column":"alert_level","path":"$.alert_level"}
+]'

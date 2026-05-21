@@ -1,0 +1,20 @@
+@prefix ex: <https://example.org/fabric-energy#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:EnergySite a rdfs:Class .
+ex:TelemetryEvent a rdfs:Class .
+ex:GenerationSource a rdfs:Class .
+ex:WindSource a rdfs:Class ; rdfs:subClassOf ex:GenerationSource .
+ex:SolarSource a rdfs:Class ; rdfs:subClassOf ex:GenerationSource .
+ex:DemandMetric a rdfs:Class .
+ex:AlertState a rdfs:Class .
+
+ex:hasSite a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range ex:EnergySite .
+ex:hasWindMw a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range xsd:decimal .
+ex:hasSolarMw a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range xsd:decimal .
+ex:hasDemandMw a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range xsd:decimal .
+ex:hasRenewableRatio a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range xsd:decimal .
+ex:hasCo2Intensity a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range xsd:decimal .
+ex:hasAlertLevel a rdf:Property ; rdfs:domain ex:TelemetryEvent ; rdfs:range ex:AlertState .

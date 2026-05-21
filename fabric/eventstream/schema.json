@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp_utc",
+    "site_id",
+    "wind_mw",
+    "solar_mw",
+    "grid_demand_mw",
+    "renewable_ratio",
+    "co2_intensity_g_kwh",
+    "alert_level"
+  ],
+  "properties": {
+    "event_id": { "type": "integer" },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+    "site_id": { "type": "string" },
+    "wind_mw": { "type": "number" },
+    "solar_mw": { "type": "number" },
+    "grid_demand_mw": { "type": "number" },
+    "renewable_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "co2_intensity_g_kwh": { "type": "number" },
+    "alert_level": { "type": "string", "enum": ["normal", "warning", "critical"] }
+  }
+}
