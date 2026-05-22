@@ -1,0 +1,161 @@
+[
+  {
+    "uniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e",
+    "payload": {
+      "name": "AegeanPowerStream2",
+      "description": "Container Description",
+      "type": "eventstreams"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "2d9f070c-348c-5dfd-8731-0a461ca8fbf4",
+    "payload": {
+      "name": "derivedwindturbinetelemetry event",
+      "metadata": {
+        "eventstreamArtifactId": "584b725a-6c4c-4a4d-9e45-4d2c875a86ee",
+        "eventTypes": [
+          {
+            "name": "AegeanPowerStream2"
+          }
+        ]
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "47f9a064-104e-4539-ac85-849a0d19fdf6",
+    "payload": {
+      "name": "Fabric item action",
+      "fabricItem": {
+        "itemId": "92e06608-2a32-a20b-49e9-9d31182f8a42",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "SynapseNotebook"
+      },
+      "jobType": "RunNotebook",
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      }
+    },
+    "type": "fabricItemAction-v1"
+  },
+  {
+    "uniqueIdentifier": "4c84eaaa-79ec-4f0b-b41b-b9142f7eca7f",
+    "payload": {
+      "name": "derivedwindturbinetelemetry event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"c74062b7-25a7-446a-89f9-301577566344\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"2d9f070c-348c-5dfd-8731-0a461ca8fbf4\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.2.5\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "34f31651-bbbb-4503-8c7d-5b2e55a9bada",
+    "payload": {
+      "name": "turbine_id",
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Object"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "3ae019ea-909c-4fa3-ba72-f267f279bc5b",
+    "payload": {
+      "name": "turbine_id",
+      "parentObject": {
+        "targetUniqueIdentifier": "34f31651-bbbb-4503-8c7d-5b2e55a9bada"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"1ed7d951-a8ee-423b-92f9-fa8a33187d3d\",\"name\":\"IdPartStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"IdentityPartAttribute\",\"templateVersion\":\"1.2.5\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "bf12fd7f-aa03-4a5d-846f-2485d4edfb11",
+    "payload": {
+      "name": "turbine_id",
+      "parentObject": {
+        "targetUniqueIdentifier": "34f31651-bbbb-4503-8c7d-5b2e55a9bada"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"e20ce53e-e436-4020-8654-063854337b5a\",\"name\":\"IdStructureStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"3ae019ea-909c-4fa3-ba72-f267f279bc5b\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"IdPart\",\"name\":\"IdPart\"}]}],\"templateId\":\"IdentityTupleAttribute\",\"templateVersion\":\"1.2.5\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "c601501f-bd6f-4504-a2bb-9eced8f9618b",
+    "payload": {
+      "name": "derivedwindturbinetelemetry event",
+      "parentObject": {
+        "targetUniqueIdentifier": "34f31651-bbbb-4503-8c7d-5b2e55a9bada"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"2aecb66e-03b2-427f-93af-a43073321ec1\",\"name\":\"SplitEventStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"4c84eaaa-79ec-4f0b-b41b-b9142f7eca7f\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"turbine_id\"},{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"3ae019ea-909c-4fa3-ba72-f267f279bc5b\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"FieldIdMapping\",\"name\":\"FieldIdMapping\"},{\"arguments\":[{\"name\":\"isAuthoritative\",\"type\":\"boolean\",\"value\":true}],\"kind\":\"EventOptions\",\"name\":\"SplitEventOptions\"}]}],\"templateId\":\"SplitEvent\",\"templateVersion\":\"1.2.5\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "748483a7-2481-4e9b-a42d-51928ac8b156",
+    "payload": {
+      "name": "fault_type",
+      "parentObject": {
+        "targetUniqueIdentifier": "34f31651-bbbb-4503-8c7d-5b2e55a9bada"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"b8b44c85-2eae-4d85-97cb-7ba86e1f9191\",\"name\":\"EventSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"c601501f-bd6f-4504-a2bb-9eced8f9618b\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"fault_type\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"}]},{\"id\":\"56b44e05-c832-4d8b-9fa4-6bbd36cfad6b\",\"name\":\"EventComputeStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.2.5\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "7e0d2847-3f74-44ef-9d13-622a21c17dbe",
+    "payload": {
+      "name": "WT-Failures-Rule",
+      "parentObject": {
+        "targetUniqueIdentifier": "34f31651-bbbb-4503-8c7d-5b2e55a9bada"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"templateId\":\"AttributeTrigger\",\"templateVersion\":\"1.2.5\",\"steps\":[{\"name\":\"ScalarSelectStep\",\"id\":\"80cda6e9-8254-4bab-8b24-0be8501deefa\",\"rows\":[{\"name\":\"AttributeSelector\",\"kind\":\"Attribute\",\"arguments\":[{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"748483a7-2481-4e9b-a42d-51928ac8b156\"}],\"name\":\"attribute\"}]}]},{\"name\":\"ScalarDetectStep\",\"id\":\"a91e7146-d972-457f-a8c1-f010d8eb482e\",\"rows\":[{\"name\":\"TextChanges\",\"kind\":\"TextChanges\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"ChangesTo\"},{\"name\":\"value\",\"type\":\"string\",\"value\":\"DEMO_FORCED_FAILURE\"}]}]},{\"name\":\"ActStep\",\"id\":\"6a2af6ef-20d4-4389-87f6-75bbf7dca347\",\"rows\":[{\"name\":\"FabricItemBinding\",\"kind\":\"FabricItemInvocation\",\"arguments\":[{\"name\":\"fabricJobConnectionDocumentId\",\"type\":\"string\",\"value\":\"47f9a064-104e-4539-ac85-849a0d19fdf6\"},{\"name\":\"parameters\",\"type\":\"array\",\"values\":[]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]},{\"name\":\"workspaceId\",\"type\":\"string\",\"value\":\"00000000-0000-0000-0000-000000000000\"},{\"name\":\"itemId\",\"type\":\"string\",\"value\":\"92e06608-2a32-a20b-49e9-9d31182f8a42\"},{\"name\":\"itemType\",\"type\":\"string\",\"value\":\"SynapseNotebook\"},{\"name\":\"jobType\",\"type\":\"string\",\"value\":\"RunNotebook\"}]}]}]}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

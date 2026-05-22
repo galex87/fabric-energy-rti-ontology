@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "WT-Failures-Activator",
+    "description": "Reflex Project created from Trigger Pane"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "17e2bb9c-8d9d-ae38-47f7-73bb641fd16a"
+  }
+}

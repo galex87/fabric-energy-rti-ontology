@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataAgent",
+    "displayName": "AegeanPowerDataAgent"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3f6b23da-af09-8978-41a1-0b81ab31f33e"
+  }
+}
