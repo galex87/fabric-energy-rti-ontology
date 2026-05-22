@@ -1,0 +1,759 @@
+{
+  "schema_version": 74,
+  "autoRefresh": {
+    "enabled": true,
+    "defaultInterval": "1s",
+    "minInterval": "1s"
+  },
+  "tiles": [
+    {
+      "id": "0a0d1c55-4b44-4143-91be-abb9d3dbd402",
+      "title": "Total Generation MW",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "06103cb1-7fde-4835-b5f0-438be80d424c"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      "visualType": "card",
+      "visualOptions": {}
+    },
+    {
+      "id": "e33efc42-329e-4691-af0f-1620a5b7effe",
+      "title": "Renewable %",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "25e0d3c3-c648-48df-9d1f-454d48b0c740"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 4,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      "visualType": "card",
+      "visualOptions": {}
+    },
+    {
+      "id": "9a792d2b-61c1-4915-8728-3c397304e422",
+      "title": "Mainland Frequency Hz",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "8ac30a40-f35c-4503-baa7-3c293775292d"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 8,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      "visualType": "card",
+      "visualOptions": {}
+    },
+    {
+      "id": "c241a74b-15b2-499d-836c-8a3d49d1b074",
+      "title": "Critical Faults",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "7acbc924-ee7b-46cd-a7cd-d5970eff42de"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 12,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      "visualType": "card",
+      "visualOptions": {}
+    },
+    {
+      "id": "e3c83042-a5a9-42e0-acf3-5ac29832fe75",
+      "title": "Vessels Inbound",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "fdf5864f-709e-4f5d-84b7-48e0441d5871"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 16,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      "visualType": "card",
+      "visualOptions": {}
+    },
+    {
+      "id": "9f1ecf71-c771-4c8d-b1f3-cefede0c6bd6",
+      "title": "ETS Used %",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "5f33f84c-5d61-4101-a264-642760dd43c5"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 20,
+        "y": 0,
+        "width": 4,
+        "height": 4
+      },
+      "visualType": "card",
+      "visualOptions": {}
+    },
+    {
+      "id": "cc9c20d1-8410-43b7-9cef-e2ba0a164fcf",
+      "title": "Generation Mix - Right Now",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "96321bd0-f887-4f01-9afe-d2a23667043d"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 0,
+        "y": 4,
+        "width": 10,
+        "height": 10
+      },
+      "visualType": "pie",
+      "visualOptions": {}
+    },
+    {
+      "id": "7044ceac-90f9-4adc-a323-70f0f6ca51c2",
+      "title": "Total Generation - Last 15 min",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "93e927c0-9444-4113-92d7-13d39cd5f8ae"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 10,
+        "y": 4,
+        "width": 14,
+        "height": 10
+      },
+      "visualType": "area",
+      "visualOptions": {}
+    },
+    {
+      "id": "adb31569-da71-44fe-836d-a9087f1f0950",
+      "title": "Active Faults - All Asset Types",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "07026d2c-437d-4d7c-9e84-86bc2b81b99b"
+      },
+      "pageId": "62527ee9-b145-4e0e-91b0-36b05a74768c",
+      "layout": {
+        "x": 0,
+        "y": 14,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "table",
+      "visualOptions": {}
+    },
+    {
+      "id": "7cb15d04-955b-4e43-baaa-c60b5bb36166",
+      "title": "Wind Generation by Region",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "640d8781-f9c0-437c-9d24-59546b79bdcb"
+      },
+      "pageId": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f",
+      "layout": {
+        "x": 0,
+        "y": 27,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "area",
+      "visualOptions": {}
+    },
+    {
+      "id": "df11f2bd-e08f-4a0c-a57e-7566baa3747f",
+      "title": "WT-NAX-07 - Bearing Degradation in Real Time",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "083c84e5-86bd-4957-9fd1-a8bd9330b3f9"
+      },
+      "pageId": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f",
+      "layout": {
+        "x": 0,
+        "y": 10,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    },
+    {
+      "id": "58915a2b-45ba-40ba-9912-2b7dadb0f2a1",
+      "title": "Anomaly Leaderboard - Misbehaving Turbines",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "ef5dfc66-5fe8-4c74-a221-ebbf4482a7f9"
+      },
+      "pageId": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f",
+      "layout": {
+        "x": 0,
+        "y": 36,
+        "width": 12,
+        "height": 10
+      },
+      "visualType": "table",
+      "visualOptions": {}
+    },
+    {
+      "id": "f456b596-b329-4048-b7c4-172ac93444eb",
+      "title": "Wind Power Curve - Empirical (cubic)",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "94c53083-54c0-43ac-9ca8-d0373ed619ad"
+      },
+      "pageId": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f",
+      "layout": {
+        "x": 12,
+        "y": 36,
+        "width": 12,
+        "height": 10
+      },
+      "visualType": "column",
+      "visualOptions": {}
+    },
+    {
+      "id": "d9851b2e-c056-4a84-81f3-9717bb70a9d4",
+      "title": "KQL Native ML - Statistical Anomaly Detection on WT-NAX-07",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "3d8edc54-afe5-4f7e-b70f-b47518ad484b"
+      },
+      "pageId": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "anomalychart",
+      "visualOptions": {
+        "multipleYAxes": {
+          "additional": [],
+          "showMultiplePanels": false,
+          "base": {
+            "horizontalLines": [],
+            "yAxisScale": "linear",
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "columns": [],
+            "label": "",
+            "id": "-1"
+          }
+        },
+        "seriesColors": {},
+        "legendLocation": "bottom",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "anomalyColumns": [
+          "anomalies"
+        ],
+        "crossFilter": [],
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "3756bf73-7f1e-48a9-a064-3fda2258f23f",
+      "title": "WT-NAX-04 Live Status (Power & Vibration)",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "162ad691-024e-4e10-994f-ef484294979e"
+      },
+      "pageId": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f",
+      "layout": {
+        "x": 0,
+        "y": 16,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    },
+    {
+      "id": "d99747ff-e431-4c56-9a1e-b682a171110e",
+      "title": "Solar Output by Park - Last 15 min",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "2c5e4872-e819-4f6b-8d60-80d5296622c3"
+      },
+      "pageId": "3f9f6336-c47f-444b-9b47-86ff8aeabd5c",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 12,
+        "height": 9
+      },
+      "visualType": "area",
+      "visualOptions": {}
+    },
+    {
+      "id": "b4e2d75e-a520-4734-814c-d30547d04ff1",
+      "title": "Inverter Efficiency - Right Now",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "276a353c-6a64-4f39-8ee4-79474a73695f"
+      },
+      "pageId": "3f9f6336-c47f-444b-9b47-86ff8aeabd5c",
+      "layout": {
+        "x": 12,
+        "y": 0,
+        "width": 12,
+        "height": 9
+      },
+      "visualType": "table",
+      "visualOptions": {}
+    },
+    {
+      "id": "955836de-63c4-45db-9139-5efd529fc851",
+      "title": "CO2 Emission Rate - Both Plants (15 min)",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "42cd6364-af8d-4e92-a95f-184e56338612"
+      },
+      "pageId": "3f9f6336-c47f-444b-9b47-86ff8aeabd5c",
+      "layout": {
+        "x": 0,
+        "y": 9,
+        "width": 12,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    },
+    {
+      "id": "2a7e4d3c-0c16-43d0-9a94-7530b183e244",
+      "title": "ETS Daily Allowance - % Used",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "0be9a1d4-b9ed-4e3d-a5e2-b6adedd23351"
+      },
+      "pageId": "3f9f6336-c47f-444b-9b47-86ff8aeabd5c",
+      "layout": {
+        "x": 12,
+        "y": 9,
+        "width": 12,
+        "height": 9
+      },
+      "visualType": "column",
+      "visualOptions": {}
+    },
+    {
+      "id": "98a04924-73f4-48da-92bc-ec5f7fc9074e",
+      "title": "Island Grid Frequency (50 Hz target)",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "0fa5ecd4-f22c-4c05-8dc6-fe6506977def"
+      },
+      "pageId": "21a7deb8-9124-4cea-b6ac-7e346462d6ce",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    },
+    {
+      "id": "ae66e97d-db0e-40f6-bcb8-74f507207998",
+      "title": "Mainland Load vs Generation",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "812caaaf-1361-447d-995b-da4588f6a7dd"
+      },
+      "pageId": "21a7deb8-9124-4cea-b6ac-7e346462d6ce",
+      "layout": {
+        "x": 0,
+        "y": 9,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    },
+    {
+      "id": "f6ed67c5-0191-4938-8720-03b7696a9362",
+      "title": "Grid Status - Right Now",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "39bb23d6-878a-49ac-92f1-bd24e41fd9a7"
+      },
+      "pageId": "21a7deb8-9124-4cea-b6ac-7e346462d6ce",
+      "layout": {
+        "x": 0,
+        "y": 18,
+        "width": 24,
+        "height": 9
+      },
+      "visualType": "table",
+      "visualOptions": {}
+    },
+    {
+      "id": "c15fa92a-0758-46f9-9c45-7b921d969a07",
+      "title": "Aegean Sea - Live Vessel Positions",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "4599e010-7c26-4c6b-9f54-d6a8cbe0defd"
+      },
+      "pageId": "ab1eff69-0192-41b0-8444-ce0bd9e84ca8",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 14,
+        "height": 12
+      },
+      "visualType": "map",
+      "visualOptions": {
+        "map__type": "bubble",
+        "map__latitudeColumn": "latitude",
+        "map__longitudeColumn": "longitude",
+        "map__labelColumn": "vessel_name",
+        "map__sizeColumn": "marker_size"
+      }
+    },
+    {
+      "id": "7511deff-69fb-4d2b-89ec-5605630c90df",
+      "title": "Fleet Status",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "f78a14fe-7a25-445f-baa5-4760ca991159"
+      },
+      "pageId": "ab1eff69-0192-41b0-8444-ce0bd9e84ca8",
+      "layout": {
+        "x": 14,
+        "y": 0,
+        "width": 10,
+        "height": 12
+      },
+      "visualType": "table",
+      "visualOptions": {}
+    },
+    {
+      "id": "20a67b3c-f84c-45e7-a07a-a9af6db93fe7",
+      "title": "Vessel Speed Trend (15 min)",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "f11c1ede-86c7-4f8d-8275-9a17d3b3ddd6"
+      },
+      "pageId": "ab1eff69-0192-41b0-8444-ce0bd9e84ca8",
+      "layout": {
+        "x": 0,
+        "y": 12,
+        "width": 12,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    },
+    {
+      "id": "0e90ff43-5087-4be4-9686-4c39bd6b5549",
+      "title": "ETA Countdown (15 min)",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "4690a671-bb0d-42ac-b9b2-d8d3bd33008e"
+      },
+      "pageId": "ab1eff69-0192-41b0-8444-ce0bd9e84ca8",
+      "layout": {
+        "x": 12,
+        "y": 12,
+        "width": 12,
+        "height": 9
+      },
+      "visualType": "line",
+      "visualOptions": {}
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [],
+  "dataSources": [
+    {
+      "id": "a1114aab-4e87-4725-97db-d90b2e4b90a5",
+      "name": "AegeanPowerEH",
+      "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
+      "database": "AegeanPowerEH",
+      "kind": "manual-kusto"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Overview",
+      "id": "62527ee9-b145-4e0e-91b0-36b05a74768c"
+    },
+    {
+      "name": "Wind",
+      "id": "d04a601e-9c79-4dbb-9d8a-bf4416a6392f"
+    },
+    {
+      "name": "Solar & Emissions",
+      "id": "3f9f6336-c47f-444b-9b47-86ff8aeabd5c"
+    },
+    {
+      "name": "Grid Stability",
+      "id": "21a7deb8-9124-4cea-b6ac-7e346462d6ce"
+    },
+    {
+      "name": "Fleet",
+      "id": "ab1eff69-0192-41b0-8444-ce0bd9e84ca8"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "let w = toscalar(WindTurbineTelemetry | where timestamp > ago(30s) | summarize arg_max(timestamp,*) by turbine_id | summarize sum(power_mw));\nlet s = toscalar(SolarInverterTelemetry | where timestamp > ago(30s) | summarize arg_max(timestamp,*) by inverter_id | summarize sum(power_kw)/1000);\nlet g = toscalar(EmissionsStream | where timestamp > ago(60s) | summarize arg_max(timestamp,*) by plant_id | summarize sum(power_output_mw));\nprint MW = round(w + s + g, 1)",
+      "id": "06103cb1-7fde-4835-b5f0-438be80d424c",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "let w = toscalar(WindTurbineTelemetry | where timestamp > ago(30s) | summarize arg_max(timestamp,*) by turbine_id | summarize sum(power_mw));\nlet s = toscalar(SolarInverterTelemetry | where timestamp > ago(30s) | summarize arg_max(timestamp,*) by inverter_id | summarize sum(power_kw)/1000);\nlet g = toscalar(EmissionsStream | where timestamp > ago(60s) | summarize arg_max(timestamp,*) by plant_id | summarize sum(power_output_mw));\nprint Renewable_Pct = round(100.0 * (w + s) / (w + s + g), 1)",
+      "id": "25e0d3c3-c648-48df-9d1f-454d48b0c740",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "GridTelemetry\n| where grid_id == \"GR-MAIN\" and timestamp > ago(2m)\n| top 1 by timestamp desc\n| project Hz = round(frequency_hz, 3)",
+      "id": "8ac30a40-f35c-4503-baa7-3c293775292d",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(2m) and vibration_mm_s > 7.0\n| summarize Faults = dcount(turbine_id)",
+      "id": "7acbc924-ee7b-46cd-a7cd-d5970eff42de",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "VesselPositions\n| where timestamp > ago(2m)\n| summarize arg_max(timestamp,*) by vessel_id\n| where eta_hours > 0\n| summarize Vessels = count()",
+      "id": "fdf5864f-709e-4f5d-84b7-48e0441d5871",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "EmissionsStream\n| where timestamp > ago(2m)\n| summarize arg_max(timestamp,*) by plant_id\n| summarize ETS_Pct = round(max(compliance_pct), 1)",
+      "id": "5f33f84c-5d61-4101-a264-642760dd43c5",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "let w = toscalar(WindTurbineTelemetry | where timestamp > ago(30s) | summarize arg_max(timestamp,*) by turbine_id | summarize sum(power_mw));\nlet s = toscalar(SolarInverterTelemetry | where timestamp > ago(30s) | summarize arg_max(timestamp,*) by inverter_id | summarize sum(power_kw)/1000);\nlet g = toscalar(EmissionsStream | where timestamp > ago(60s) | summarize arg_max(timestamp,*) by plant_id | summarize sum(power_output_mw));\nunion \n    (print Source=\"Wind\",  MW=round(w,1)),\n    (print Source=\"Solar\", MW=round(s,1)),\n    (print Source=\"Gas\",   MW=round(g,1))",
+      "id": "96321bd0-f887-4f01-9afe-d2a23667043d",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "union\n    (WindTurbineTelemetry | where timestamp > ago(15m) | summarize MW=sum(power_mw) by bin(timestamp,10s) | extend Source=\"Wind\"),\n    (SolarInverterTelemetry | where timestamp > ago(15m) | summarize MW=sum(power_kw)/1000 by bin(timestamp,10s) | extend Source=\"Solar\"),\n    (EmissionsStream | where timestamp > ago(15m) | summarize MW=sum(power_output_mw) by bin(timestamp,30s) | extend Source=\"Gas\")\n| order by timestamp asc",
+      "id": "93e927c0-9444-4113-92d7-13d39cd5f8ae",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "let offline = WindTurbineTelemetry\n    | where timestamp > ago(3m) and fault_type == \"DEMO_FORCED_FAILURE\"\n    | summarize Spikes = count(), Max_Vib = 0.0, Min_Power_MW = 0.0, Severity = \"OFFLINE\" by Asset = turbine_id\n    | extend Type = \"Wind Turbine\";\nlet vibration = WindTurbineTelemetry\n    | where timestamp > ago(3m) and (fault_type != \"DEMO_FORCED_FAILURE\" or isempty(fault_type))\n    | extend severity = case(vibration_mm_s > 7.0, \"CRITICAL\", vibration_mm_s > 5.0, \"WARNING\", \"\")\n    | where severity != \"\"\n    | summarize Spikes = count(), Max_Vib = round(max(vibration_mm_s),2), Min_Power_MW = round(min(power_mw),2), Severity = max(severity) by Asset = turbine_id\n    | extend Type = \"Wind Turbine\";\nunion offline, vibration\n| project Asset, Type, Spikes, Max_Vib, Min_Power_MW, Severity\n| order by Severity asc",
+      "id": "07026d2c-437d-4d7c-9e84-86bc2b81b99b",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(15m)\n| extend region = case(\n    turbine_id startswith \"WT-THR\", \"Thrace (mainland)\",\n    turbine_id startswith \"WT-TIN\", \"Tinos (Cyclades)\",\n    turbine_id startswith \"WT-NAX\", \"Naxos (Cyclades)\",\n    \"other\")\n| summarize total_mw = sum(power_mw) by bin(timestamp, 10s), region\n| order by timestamp asc",
+      "id": "640d8781-f9c0-437c-9d24-59546b79bdcb",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(10m) and turbine_id == \"WT-NAX-07\"\n| project timestamp, Vibration_mm_s = vibration_mm_s\n| order by timestamp asc",
+      "id": "083c84e5-86bd-4957-9fd1-a8bd9330b3f9",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(5m)\n| extend severity = case(\n    vibration_mm_s > 7.0, \"CRITICAL\",\n    vibration_mm_s > 5.0, \"WARNING\",\n    vibration_mm_s > 4.0, \"Elevated\",\n    \"\")\n| where severity != \"\"\n| summarize \n    Spikes = count(),\n    Avg_Vib = round(avg(vibration_mm_s), 2),\n    Max_Vib = round(max(vibration_mm_s), 2),\n    Severity = max(severity)\n  by Turbine_ID = turbine_id\n| order by Spikes desc",
+      "id": "ef5dfc66-5fe8-4c74-a221-ebbf4482a7f9",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(15m) and power_mw > 0\n| project wind_speed_ms = round(wind_speed_ms,0), power_mw\n| summarize avg_power = avg(power_mw) by wind_speed_ms\n| order by wind_speed_ms asc",
+      "id": "94c53083-54c0-43ac-9ca8-d0373ed619ad",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(20m) and turbine_id == \"WT-NAX-07\" // Last 20 minutes for one turbine \n| make-series vibration = avg(vibration_mm_s) on timestamp step 5s // Bucket into evenly-spaced 5-second slots — anomaly detection needs a regular time series\n| extend (anomalies, score, baseline) = series_decompose_anomalies(vibration, 1.0) // Built-in KQL anomaly detection: returns flags, scores, and the learned baseline\n// Sensitivity 1 — lower = more alerts, higher = only the loudest anomalies\n",
+      "id": "3d8edc54-afe5-4f7e-b70f-b47518ad484b",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "WindTurbineTelemetry\n| where timestamp > ago(10m) and turbine_id == \"WT-NAX-04\"\n| project timestamp, Power_MW = power_mw, Vibration_mm_s = vibration_mm_s\n| order by timestamp asc",
+      "id": "162ad691-024e-4e10-994f-ef484294979e",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "SolarInverterTelemetry\n| where timestamp > ago(15m)\n| extend park = case(inverter_id startswith \"SI-THE\", \"Thessaly (80 MW)\", \"Crete (60 MW)\")\n| summarize MW = sum(power_kw)/1000 by bin(timestamp, 10s), park\n| order by timestamp asc",
+      "id": "2c5e4872-e819-4f6b-8d60-80d5296622c3",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "SolarInverterTelemetry\n| where timestamp > ago(30s)\n| summarize arg_max(timestamp, *) by inverter_id\n| where irradiance_wm2 > 100\n| project Inverter = inverter_id, Power_kW = round(power_kw,0), Efficiency_Pct = round(efficiency_pct,1), Panel_Temp_C = panel_temp_c\n| order by Efficiency_Pct asc",
+      "id": "276a353c-6a64-4f39-8ee4-79474a73695f",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "EmissionsStream\n| where timestamp > ago(15m)\n| summarize CO2_kg_per_hr = avg(co2_kg_per_hour) by bin(timestamp, 30s), plant_name\n| order by timestamp asc",
+      "id": "42cd6364-af8d-4e92-a95f-184e56338612",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "EmissionsStream\n| where timestamp > ago(2m)\n| summarize arg_max(timestamp, *) by plant_id\n| project Plant = plant_name, ['Used (%)'] = round(compliance_pct, 1), ['Cumulative tCO2'] = cumulative_co2_tonnes_today, ['Daily Cap tCO2'] = ets_daily_allowance_tonnes\n| order by ['Used (%)'] desc",
+      "id": "0be9a1d4-b9ed-4e3d-a5e2-b6adedd23351",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "GridTelemetry\n| where timestamp > ago(15m) and grid_id != \"GR-MAIN\"\n| summarize freq = avg(frequency_hz) by bin(timestamp, 10s), grid_name\n| order by timestamp asc",
+      "id": "0fa5ecd4-f22c-4c05-8dc6-fe6506977def",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "GridTelemetry\n| where timestamp > ago(15m) and grid_id == \"GR-MAIN\"\n| project timestamp, Load_MW = load_mw, Generation_MW = generation_mw\n| order by timestamp asc",
+      "id": "812caaaf-1361-447d-995b-da4588f6a7dd",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "GridTelemetry\n| where timestamp > ago(30s)\n| summarize arg_max(timestamp, *) by grid_id\n| project Grid = grid_name, Frequency_Hz = round(frequency_hz,3), Load_MW = round(load_mw,1), Gen_MW = round(generation_mw,1), Voltage_kV = round(voltage_kv,1), Balance_MW = round(balance_mw,2)\n| order by Grid asc",
+      "id": "39bb23d6-878a-49ac-92f1-bd24e41fd9a7",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "VesselPositions\n| where timestamp > ago(2m)\n| summarize arg_max(timestamp, *) by vessel_id\n| extend marker_size = 30\n| project vessel_name, vessel_type, latitude, longitude, speed_knots, destination, eta_hours, marker_size",
+      "id": "4599e010-7c26-4c6b-9f54-d6a8cbe0defd",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "VesselPositions\n| where timestamp > ago(2m)\n| summarize arg_max(timestamp, *) by vessel_id\n| project Vessel = vessel_name, Type = vessel_type, Lat = round(latitude, 4), Lon = round(longitude, 4), Speed_kn = speed_knots, Heading = heading_deg, Destination = destination, ETA_h = eta_hours, Cargo = cargo_status\n| order by ETA_h asc",
+      "id": "f78a14fe-7a25-445f-baa5-4760ca991159",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "VesselPositions\n| where timestamp > ago(15m)\n| summarize speed = avg(speed_knots) by bin(timestamp, 30s), vessel_name\n| order by timestamp asc",
+      "id": "f11c1ede-86c7-4f8d-8275-9a17d3b3ddd6",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "a1114aab-4e87-4725-97db-d90b2e4b90a5"
+      },
+      "text": "VesselPositions\n| where timestamp > ago(15m)\n| summarize eta = avg(eta_hours) by bin(timestamp, 30s), vessel_name\n| order by timestamp asc",
+      "id": "4690a671-bb0d-42ac-b9b2-d8d3bd33008e",
+      "usedVariables": []
+    }
+  ]
+}
