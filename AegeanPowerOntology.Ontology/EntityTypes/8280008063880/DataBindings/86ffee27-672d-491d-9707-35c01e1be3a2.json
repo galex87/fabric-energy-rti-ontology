@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "86ffee27-672d-491d-9707-35c01e1be3a2",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "vessel_id",
+        "targetPropertyId": "5151189004561192553"
+      },
+      {
+        "sourceColumnName": "vessel_name",
+        "targetPropertyId": "5151189003492749180"
+      },
+      {
+        "sourceColumnName": "vessel_type",
+        "targetPropertyId": "5151189002649960350"
+      },
+      {
+        "sourceColumnName": "flag",
+        "targetPropertyId": "5151189002941158198"
+      },
+      {
+        "sourceColumnName": "imo_number",
+        "targetPropertyId": "5151189004237350301"
+      },
+      {
+        "sourceColumnName": "capacity_m3",
+        "targetPropertyId": "5151189006579181908"
+      },
+      {
+        "sourceColumnName": "current_cargo_m3",
+        "targetPropertyId": "5151189002397124649"
+      },
+      {
+        "sourceColumnName": "origin_port",
+        "targetPropertyId": "5151189004684363245"
+      },
+      {
+        "sourceColumnName": "origin_country",
+        "targetPropertyId": "5151189005235292160"
+      },
+      {
+        "sourceColumnName": "destination",
+        "targetPropertyId": "5151189005843988109"
+      },
+      {
+        "sourceColumnName": "speed_knots",
+        "targetPropertyId": "5151189003634174644"
+      },
+      {
+        "sourceColumnName": "status",
+        "targetPropertyId": "5151189002796941004"
+      },
+      {
+        "sourceColumnName": "supply_plant_id",
+        "targetPropertyId": "5151189005170486861"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "vessels",
+      "sourceSchema": null
+    }
+  }
+}

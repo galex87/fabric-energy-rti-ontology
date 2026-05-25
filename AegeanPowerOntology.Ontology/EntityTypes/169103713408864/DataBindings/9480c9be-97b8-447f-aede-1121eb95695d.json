@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "9480c9be-97b8-447f-aede-1121eb95695d",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "plant_id",
+        "targetPropertyId": "5153712205474136516"
+      },
+      {
+        "sourceColumnName": "plant_name",
+        "targetPropertyId": "5153712208240549407"
+      },
+      {
+        "sourceColumnName": "plant_type",
+        "targetPropertyId": "5153712206250510996"
+      },
+      {
+        "sourceColumnName": "fuel_type",
+        "targetPropertyId": "5153712206558672652"
+      },
+      {
+        "sourceColumnName": "capacity_mw",
+        "targetPropertyId": "5153712207462496123"
+      },
+      {
+        "sourceColumnName": "commissioning_year",
+        "targetPropertyId": "5153712206049293019"
+      },
+      {
+        "sourceColumnName": "region",
+        "targetPropertyId": "5153712207414168207"
+      },
+      {
+        "sourceColumnName": "prefecture",
+        "targetPropertyId": "5153712206859392629"
+      },
+      {
+        "sourceColumnName": "latitude",
+        "targetPropertyId": "5153712207233789636"
+      },
+      {
+        "sourceColumnName": "longitude",
+        "targetPropertyId": "5153712207362017524"
+      },
+      {
+        "sourceColumnName": "operator",
+        "targetPropertyId": "5153712208512146350"
+      },
+      {
+        "sourceColumnName": "status",
+        "targetPropertyId": "5153712208269819629"
+      },
+      {
+        "sourceColumnName": "grid_zone",
+        "targetPropertyId": "5153712206838784897"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "power_plants",
+      "sourceSchema": null
+    }
+  }
+}

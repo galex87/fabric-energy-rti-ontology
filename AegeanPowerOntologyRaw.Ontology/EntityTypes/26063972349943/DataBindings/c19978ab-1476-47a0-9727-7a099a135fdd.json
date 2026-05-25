@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "c19978ab-1476-47a0-9727-7a099a135fdd",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "srv_ref",
+        "targetPropertyId": "1393340534627447735"
+      },
+      {
+        "sourceColumnName": "srv_cls",
+        "targetPropertyId": "1393340534763365192"
+      },
+      {
+        "sourceColumnName": "lvl_cd",
+        "targetPropertyId": "1393340532898724911"
+      },
+      {
+        "sourceColumnName": "srv_status",
+        "targetPropertyId": "1393340533453724950"
+      },
+      {
+        "sourceColumnName": "obj_ref",
+        "targetPropertyId": "1393340533160184342"
+      },
+      {
+        "sourceColumnName": "obj_cls",
+        "targetPropertyId": "1393340535788478835"
+      },
+      {
+        "sourceColumnName": "parent_ref",
+        "targetPropertyId": "1393340534557187696"
+      },
+      {
+        "sourceColumnName": "txt_note",
+        "targetPropertyId": "1393340536106231941"
+      },
+      {
+        "sourceColumnName": "dt_open",
+        "targetPropertyId": "1393340532473841942"
+      },
+      {
+        "sourceColumnName": "dt_plan",
+        "targetPropertyId": "1393340534303029537"
+      },
+      {
+        "sourceColumnName": "dt_close",
+        "targetPropertyId": "1393340534978891098"
+      },
+      {
+        "sourceColumnName": "res_assign",
+        "targetPropertyId": "1393340535081628597"
+      },
+      {
+        "sourceColumnName": "amt_total",
+        "targetPropertyId": "1393340534443851462"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+      "sourceTableName": "srv_activity",
+      "sourceSchema": null
+    }
+  }
+}

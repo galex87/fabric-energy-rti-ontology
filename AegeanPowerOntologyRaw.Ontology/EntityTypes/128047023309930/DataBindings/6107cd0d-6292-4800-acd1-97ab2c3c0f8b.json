@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "6107cd0d-6292-4800-acd1-97ab2c3c0f8b",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "rpt_seq",
+        "targetPropertyId": "1388429501810155328"
+      },
+      {
+        "sourceColumnName": "entity_cd",
+        "targetPropertyId": "1388429500370743078"
+      },
+      {
+        "sourceColumnName": "entity_nm",
+        "targetPropertyId": "1388429500295088397"
+      },
+      {
+        "sourceColumnName": "per_cd",
+        "targetPropertyId": "1388429500007026972"
+      },
+      {
+        "sourceColumnName": "co2_qty",
+        "targetPropertyId": "1388429502396077349"
+      },
+      {
+        "sourceColumnName": "ets_alloc",
+        "targetPropertyId": "1388429503419825001"
+      },
+      {
+        "sourceColumnName": "fuel_qty",
+        "targetPropertyId": "1388429501340909648"
+      },
+      {
+        "sourceColumnName": "ef_ratio",
+        "targetPropertyId": "1388429499501158303"
+      },
+      {
+        "sourceColumnName": "pct_compl",
+        "targetPropertyId": "1388429501631447697"
+      },
+      {
+        "sourceColumnName": "flg_compl",
+        "targetPropertyId": "1388429501841495997"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+      "sourceTableName": "env_reporting",
+      "sourceSchema": null
+    }
+  }
+}

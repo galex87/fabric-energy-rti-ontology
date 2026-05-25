@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "120a3f4f-94aa-4777-af85-9dca30edf1b0",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "eqp_ref",
+        "targetPropertyId": "1405803697338707181"
+      },
+      {
+        "sourceColumnName": "descr",
+        "targetPropertyId": "1405803694892224697"
+      },
+      {
+        "sourceColumnName": "loc_cd",
+        "targetPropertyId": "1405803694896156763"
+      },
+      {
+        "sourceColumnName": "oem_cd",
+        "targetPropertyId": "1405803695792238724"
+      },
+      {
+        "sourceColumnName": "type_cd",
+        "targetPropertyId": "1405803698168724298"
+      },
+      {
+        "sourceColumnName": "rated_kw",
+        "targetPropertyId": "1405803696433486391"
+      },
+      {
+        "sourceColumnName": "ht_hub",
+        "targetPropertyId": "1405803694865774632"
+      },
+      {
+        "sourceColumnName": "dia_rot",
+        "targetPropertyId": "1405803697210865881"
+      },
+      {
+        "sourceColumnName": "spd_min",
+        "targetPropertyId": "1405803694785179129"
+      },
+      {
+        "sourceColumnName": "spd_nom",
+        "targetPropertyId": "1405803698516874309"
+      },
+      {
+        "sourceColumnName": "spd_max",
+        "targetPropertyId": "1405803695238272747"
+      },
+      {
+        "sourceColumnName": "coord_x",
+        "targetPropertyId": "1405803696403448810"
+      },
+      {
+        "sourceColumnName": "coord_y",
+        "targetPropertyId": "1405803695300114750"
+      },
+      {
+        "sourceColumnName": "dt_start",
+        "targetPropertyId": "1405803697190475250"
+      },
+      {
+        "sourceColumnName": "flg_active",
+        "targetPropertyId": "1405803694798821758"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+      "sourceTableName": "wt_master",
+      "sourceSchema": null
+    }
+  }
+}

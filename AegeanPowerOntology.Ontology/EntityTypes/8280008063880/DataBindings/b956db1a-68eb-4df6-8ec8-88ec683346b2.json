@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "b956db1a-68eb-4df6-8ec8-88ec683346b2",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "timestamp",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "vessel_id",
+        "targetPropertyId": "5151189004561192553"
+      },
+      {
+        "sourceColumnName": "latitude",
+        "targetPropertyId": "5134808564268907566"
+      },
+      {
+        "sourceColumnName": "longitude",
+        "targetPropertyId": "5134808564978650879"
+      },
+      {
+        "sourceColumnName": "heading_deg",
+        "targetPropertyId": "5134808568168795454"
+      },
+      {
+        "sourceColumnName": "eta_hours",
+        "targetPropertyId": "5134808565635195845"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "KustoTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "d9184fc4-b59e-a890-401f-a07debd37cc3",
+      "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
+      "databaseName": "AegeanPowerEH",
+      "sourceTableName": "VesselPositions"
+    }
+  }
+}

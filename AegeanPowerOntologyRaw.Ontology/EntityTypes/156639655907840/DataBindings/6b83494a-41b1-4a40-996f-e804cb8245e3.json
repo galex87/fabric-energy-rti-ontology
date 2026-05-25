@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "6b83494a-41b1-4a40-996f-e804cb8245e3",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "loc_id",
+        "targetPropertyId": "1410102709966536206"
+      },
+      {
+        "sourceColumnName": "name_full",
+        "targetPropertyId": "1410102706520709937"
+      },
+      {
+        "sourceColumnName": "gen_cls",
+        "targetPropertyId": "1410102705077157235"
+      },
+      {
+        "sourceColumnName": "fuel_cls",
+        "targetPropertyId": "1410102706207950785"
+      },
+      {
+        "sourceColumnName": "cap_inst",
+        "targetPropertyId": "1410102705498759365"
+      },
+      {
+        "sourceColumnName": "yr_comm",
+        "targetPropertyId": "1410102706175796544"
+      },
+      {
+        "sourceColumnName": "zone_adm",
+        "targetPropertyId": "1410102703938426668"
+      },
+      {
+        "sourceColumnName": "sub_zone",
+        "targetPropertyId": "1410102704464364802"
+      },
+      {
+        "sourceColumnName": "geo_lat",
+        "targetPropertyId": "1410102707032892206"
+      },
+      {
+        "sourceColumnName": "geo_lon",
+        "targetPropertyId": "1410102703292600743"
+      },
+      {
+        "sourceColumnName": "org_ref",
+        "targetPropertyId": "1410102706579863219"
+      },
+      {
+        "sourceColumnName": "rec_status",
+        "targetPropertyId": "1410102704601373701"
+      },
+      {
+        "sourceColumnName": "net_area",
+        "targetPropertyId": "1410102703981663797"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+      "sourceTableName": "gen_sites",
+      "sourceSchema": null
+    }
+  }
+}

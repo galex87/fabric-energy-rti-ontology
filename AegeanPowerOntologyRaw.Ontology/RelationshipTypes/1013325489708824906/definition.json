@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/relationshipType/1.0.0/schema.json",
+  "namespace": "usertypes",
+  "id": "1013325489708824906",
+  "name": "connects_to_island_grid",
+  "namespaceType": "Custom",
+  "source": {
+    "entityTypeId": "120039956602372"
+  },
+  "target": {
+    "entityTypeId": "150714464554166"
+  }
+}

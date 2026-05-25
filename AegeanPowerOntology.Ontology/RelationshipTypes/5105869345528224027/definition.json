@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/relationshipType/1.0.0/schema.json",
+  "namespace": "usertypes",
+  "id": "5105869345528224027",
+  "name": "supplies_plant",
+  "namespaceType": "Custom",
+  "source": {
+    "entityTypeId": "8280008063880"
+  },
+  "target": {
+    "entityTypeId": "169103713408864"
+  }
+}

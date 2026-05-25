@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "f5425094-b5ec-4abe-943f-8eba574d9010",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "eqp_ref",
+        "targetPropertyId": "1402811656834109807"
+      },
+      {
+        "sourceColumnName": "descr",
+        "targetPropertyId": "1402811656606620178"
+      },
+      {
+        "sourceColumnName": "loc_cd",
+        "targetPropertyId": "1402811655087745124"
+      },
+      {
+        "sourceColumnName": "oem_cd",
+        "targetPropertyId": "1402811656859300175"
+      },
+      {
+        "sourceColumnName": "type_cd",
+        "targetPropertyId": "1402811655288263714"
+      },
+      {
+        "sourceColumnName": "rated_kw",
+        "targetPropertyId": "1402811654179471184"
+      },
+      {
+        "sourceColumnName": "mod_cls",
+        "targetPropertyId": "1402811655659059624"
+      },
+      {
+        "sourceColumnName": "ang_tilt",
+        "targetPropertyId": "1402811655327902452"
+      },
+      {
+        "sourceColumnName": "ang_azm",
+        "targetPropertyId": "1402811655390426380"
+      },
+      {
+        "sourceColumnName": "coord_x",
+        "targetPropertyId": "1402811655650830605"
+      },
+      {
+        "sourceColumnName": "coord_y",
+        "targetPropertyId": "1402811652921170523"
+      },
+      {
+        "sourceColumnName": "dt_start",
+        "targetPropertyId": "1402811652671194817"
+      },
+      {
+        "sourceColumnName": "flg_active",
+        "targetPropertyId": "1402811654102357554"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+      "sourceTableName": "pv_master",
+      "sourceSchema": null
+    }
+  }
+}

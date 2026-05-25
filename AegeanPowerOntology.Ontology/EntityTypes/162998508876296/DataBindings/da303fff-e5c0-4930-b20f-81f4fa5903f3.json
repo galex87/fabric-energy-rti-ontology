@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "da303fff-e5c0-4930-b20f-81f4fa5903f3",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "inverter_id",
+        "targetPropertyId": "5155581108854576964"
+      },
+      {
+        "sourceColumnName": "inverter_name",
+        "targetPropertyId": "5155581108047705535"
+      },
+      {
+        "sourceColumnName": "plant_id",
+        "targetPropertyId": "5155581106516979873"
+      },
+      {
+        "sourceColumnName": "manufacturer",
+        "targetPropertyId": "5155581104770769807"
+      },
+      {
+        "sourceColumnName": "model",
+        "targetPropertyId": "5155581106399541173"
+      },
+      {
+        "sourceColumnName": "capacity_kw",
+        "targetPropertyId": "5155581105421116189"
+      },
+      {
+        "sourceColumnName": "panel_type",
+        "targetPropertyId": "5155581108498639925"
+      },
+      {
+        "sourceColumnName": "panel_tilt_deg",
+        "targetPropertyId": "5155581108445556059"
+      },
+      {
+        "sourceColumnName": "panel_azimuth_deg",
+        "targetPropertyId": "5155581105966552964"
+      },
+      {
+        "sourceColumnName": "latitude",
+        "targetPropertyId": "5155581104884765805"
+      },
+      {
+        "sourceColumnName": "longitude",
+        "targetPropertyId": "5155581108167645110"
+      },
+      {
+        "sourceColumnName": "commissioning_date",
+        "targetPropertyId": "5155581106591986200"
+      },
+      {
+        "sourceColumnName": "status",
+        "targetPropertyId": "5155581104756651360"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "solar_inverters",
+      "sourceSchema": null
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/relationshipType/1.0.0/schema.json",
+  "namespace": "usertypes",
+  "id": "995637491193831489",
+  "name": "raised_for_power_plant",
+  "namespaceType": "Custom",
+  "source": {
+    "entityTypeId": "26063972349943"
+  },
+  "target": {
+    "entityTypeId": "156639655907840"
+  }
+}

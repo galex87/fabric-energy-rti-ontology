@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "17ceb8dd-25f1-4f61-9e60-8bcaca88016c",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "turbine_id",
+        "targetPropertyId": "5156846891205568951"
+      },
+      {
+        "sourceColumnName": "turbine_name",
+        "targetPropertyId": "5156846888551177709"
+      },
+      {
+        "sourceColumnName": "plant_id",
+        "targetPropertyId": "5156846887707510244"
+      },
+      {
+        "sourceColumnName": "manufacturer",
+        "targetPropertyId": "5156846890097826092"
+      },
+      {
+        "sourceColumnName": "model",
+        "targetPropertyId": "5156846888785705994"
+      },
+      {
+        "sourceColumnName": "capacity_mw",
+        "targetPropertyId": "5156846887884036283"
+      },
+      {
+        "sourceColumnName": "hub_height_m",
+        "targetPropertyId": "5156846890426449875"
+      },
+      {
+        "sourceColumnName": "rotor_diameter_m",
+        "targetPropertyId": "5156846888000326651"
+      },
+      {
+        "sourceColumnName": "cut_in_speed_ms",
+        "targetPropertyId": "5156846890799436564"
+      },
+      {
+        "sourceColumnName": "rated_speed_ms",
+        "targetPropertyId": "5156846887500515171"
+      },
+      {
+        "sourceColumnName": "cut_out_speed_ms",
+        "targetPropertyId": "5156846890130879431"
+      },
+      {
+        "sourceColumnName": "latitude",
+        "targetPropertyId": "5156846891501277953"
+      },
+      {
+        "sourceColumnName": "longitude",
+        "targetPropertyId": "5156846888765500200"
+      },
+      {
+        "sourceColumnName": "commissioning_date",
+        "targetPropertyId": "5156846890524724943"
+      },
+      {
+        "sourceColumnName": "status",
+        "targetPropertyId": "5156846888854209842"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "wind_turbines",
+      "sourceSchema": null
+    }
+  }
+}

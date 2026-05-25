@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "47a2e696-156c-41cd-a301-11345950cae9",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "order_id",
+        "targetPropertyId": "5148619486015320105"
+      },
+      {
+        "sourceColumnName": "order_type",
+        "targetPropertyId": "5148619485784087407"
+      },
+      {
+        "sourceColumnName": "priority",
+        "targetPropertyId": "5148619482941216362"
+      },
+      {
+        "sourceColumnName": "status",
+        "targetPropertyId": "5148619483272532487"
+      },
+      {
+        "sourceColumnName": "asset_id",
+        "targetPropertyId": "5148619484693854285"
+      },
+      {
+        "sourceColumnName": "asset_type",
+        "targetPropertyId": "5148619484573357017"
+      },
+      {
+        "sourceColumnName": "plant_id",
+        "targetPropertyId": "5148619484028492478"
+      },
+      {
+        "sourceColumnName": "description",
+        "targetPropertyId": "5148619482448839825"
+      },
+      {
+        "sourceColumnName": "created_date",
+        "targetPropertyId": "5148619482680136571"
+      },
+      {
+        "sourceColumnName": "scheduled_date",
+        "targetPropertyId": "5148619482786817951"
+      },
+      {
+        "sourceColumnName": "completed_date",
+        "targetPropertyId": "5148619484994422227"
+      },
+      {
+        "sourceColumnName": "technician",
+        "targetPropertyId": "5148619483915337581"
+      },
+      {
+        "sourceColumnName": "cost_eur",
+        "targetPropertyId": "5148619486016805266"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "maintenance_orders",
+      "sourceSchema": null
+    }
+  }
+}

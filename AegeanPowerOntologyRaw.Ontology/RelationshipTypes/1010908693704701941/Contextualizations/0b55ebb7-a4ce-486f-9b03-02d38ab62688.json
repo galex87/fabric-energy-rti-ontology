@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "0b55ebb7-a4ce-486f-9b03-02d38ab62688",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+    "sourceTableName": "vsl_tracking",
+    "sourceSchema": null,
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "mov_ref",
+      "targetPropertyId": "1396294522960913574"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "dest_ref",
+      "targetPropertyId": "1410102709966536206"
+    }
+  ]
+}

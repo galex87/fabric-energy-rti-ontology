@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "865ab87f-92fa-44ad-9772-6a6c45cfc024",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "record_id",
+        "targetPropertyId": "5147343726067098515"
+      },
+      {
+        "sourceColumnName": "plant_id",
+        "targetPropertyId": "5147343724335682268"
+      },
+      {
+        "sourceColumnName": "plant_name",
+        "targetPropertyId": "5147343723072240416"
+      },
+      {
+        "sourceColumnName": "period",
+        "targetPropertyId": "5147343723167866536"
+      },
+      {
+        "sourceColumnName": "co2_tonnes",
+        "targetPropertyId": "5147343724422635611"
+      },
+      {
+        "sourceColumnName": "ets_allowance_tonnes",
+        "targetPropertyId": "5147343723047509314"
+      },
+      {
+        "sourceColumnName": "fuel_consumed_mwh",
+        "targetPropertyId": "5147343726509427708"
+      },
+      {
+        "sourceColumnName": "emission_factor_tco2_per_mwh",
+        "targetPropertyId": "5147343725604671320"
+      },
+      {
+        "sourceColumnName": "compliance_pct",
+        "targetPropertyId": "5147343725769848916"
+      },
+      {
+        "sourceColumnName": "compliance_status",
+        "targetPropertyId": "5147343725495650226"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "emissions_ledger",
+      "sourceSchema": null
+    }
+  }
+}
