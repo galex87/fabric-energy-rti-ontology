@@ -85,6 +85,10 @@ Plus the **Ontology + Data Agent** side:
   - **Data sent to Azure OpenAI can be processed outside your capacity's geographic region, compliance boundary, or national cloud instance**
   - **Data sent to Azure OpenAI can be stored outside your capacity's geographic region, compliance boundary, or national cloud instance**
 
+**Ontology (preview)** — [official docs](https://learn.microsoft.com/en-us/fabric/iq/ontology/overview-tenant-settings)
+- **Enable Ontology item (preview)** *(without this, ontology items fail to create)*
+- **User can create Graph (preview)** *(required by the ontology — otherwise you'll see "Unable to create the Ontology (preview) item")*
+
 If any of the above is disabled, items will fail to sync, the Data Agent will refuse to publish, or chat will return policy errors. Settings can take up to one hour to propagate after the admin toggles them.
 
 ---
