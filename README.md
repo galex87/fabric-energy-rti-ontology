@@ -144,7 +144,12 @@ Open **`AegeanPowerStream`** → **Edit**.
 
 2. Click **Publish** in the top toolbar.
 
-3. Switch to **Live view** (top right of the canvas). Click the **CustomApp source** node → **Sample code** tab → copy the **primary connection string**.
+3. Switch to **Live view** (top-right of the canvas). Click the **customapp** source node. In the right-side **Details** pane (Protocol: **Event Hub** → **SAS Key Authentication**), copy the value of **Connection string-primary key**.
+
+   It looks like:
+   ```
+   Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=key_<guid>;SharedAccessKey=<base64>;EntityPath=<eventhub_name>
+   ```
 
    ![Eventstream connection string location](docs/images/eventstream-connection-string.png)
 
