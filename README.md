@@ -15,7 +15,7 @@ A fictional Greek energy company — **Aegean Power S.A.** — operates wind far
                                     │
                                     ▼
                       ┌─────────────────────────┐
-                      │  AegeanPowerStream2     │  Eventstream (5 filters)
+                      │  AegeanPowerStream     │  Eventstream (5 filters)
                       └─────────────┬───────────┘
                                     │
               ┌────────┬────────┬───┴────┬────────┬─────────┐
@@ -105,9 +105,9 @@ You should now see 8 Delta tables under `Tables/`:
 
 ### 6 · Wire the Eventstream
 
-The Eventstream `AegeanPowerStream2` synced with destinations pointing to the **original** workspace's Eventhouse GUID. You need to re-bind:
+The Eventstream `AegeanPowerStream` synced with destinations pointing to the **original** workspace's Eventhouse GUID. You need to re-bind:
 
-1. Open **`AegeanPowerStream2`** → **Edit**.
+1. Open **`AegeanPowerStream`** → **Edit**.
 2. For each of the 5 destinations (`destwindturbinetelemetry`, `destsolarinvertertelemetry`, `destgridtelemetry`, `destvesselpositions`, `destemissionsstream`):
    - Click the destination → **Edit** → set Eventhouse to *your* `AegeanPowerEH` → table = matching name → save.
 3. Click **Publish**.
@@ -137,7 +137,7 @@ Expect `n > 0`.
 
 Open **`WT-Failures-Activator`** → **WT-Failures-Rule**:
 
-- **Event stream**: confirm it points to *your* `AegeanPowerStream2 → derivedwindturbinetelemetry`.
+- **Event stream**: confirm it points to *your* `AegeanPowerStream → derivedwindturbinetelemetry`.
 - **Action → Run Notebook**: re-pick *your* `Dispatch_Maintenance_Crew` notebook.
 - **Parameters**: ensure `turbine_id` maps to the event's `turbine_id`.
 - **Save** → **Start**.

@@ -97,7 +97,7 @@ print(f"\nDeleted {deleted} item(s) from {CTRL}")
 # ============================================================
 
 # -- Eventstream destination ---------------------------------
-EVENTHUB_CONNECTION_STRING = "REPLACE_ME_WITH_EVENTSTREAM_CUSTOM_ENDPOINT_CONNECTION_STRING"  # see README: AegeanPowerStream2 → Source → Custom App → Sample code → Connection string-primary key
+EVENTHUB_CONNECTION_STRING = "REPLACE_ME_WITH_EVENTSTREAM_CUSTOM_ENDPOINT_CONNECTION_STRING"  # see README: AegeanPowerStream → Source → Custom App → Sample code → Connection string-primary key
 
 # -- Master clock --------------------------------------------
 INTERVAL_SECONDS = 2          # base tick rate (everything is a multiple of this)

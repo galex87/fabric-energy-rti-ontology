@@ -11,7 +11,7 @@ Common pitfalls when running this demo. In order of how often they bite.
 **Cause:** Eventstream restart can lose the JSON-to-column field mapping for derived streams whose filter operators had a stale `inputSchema`.
 
 **Fix:**
-1. Open `AegeanPowerStream2` → for each destination → **Edit** → re-save (don't change anything, just re-bind).
+1. Open `AegeanPowerStream` → for each destination → **Edit** → re-save (don't change anything, just re-bind).
 2. **Publish**.
 3. If still broken, drop and recreate the destination tables in `AegeanPowerEH` with explicit columns + JSON ingestion mapping, then re-bind the eventstream destination.
 
@@ -60,7 +60,7 @@ If you forked an older version, ensure this exact line is in `gen_wind`.
 
 **Cause:** The committed simulator notebook has a placeholder `REPLACE_ME_…` value. Each workspace gets its own connection string.
 
-**Fix:** Follow steps 6–7 of the README. Connection string lives at `AegeanPowerStream2` → Source → CustomApp → **Sample code** → copy primary key.
+**Fix:** Follow steps 6–7 of the README. Connection string lives at `AegeanPowerStream` → Source → CustomApp → **Sample code** → copy primary key.
 
 ---
 

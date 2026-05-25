@@ -2,7 +2,7 @@
   {
     "uniqueIdentifier": "a2f53f1f-576f-4244-873f-2cf5b02adc7e",
     "payload": {
-      "name": "AegeanPowerStream2",
+      "name": "AegeanPowerStream",
       "description": "Container Description",
       "type": "eventstreams"
     },
@@ -16,7 +16,7 @@
         "eventstreamArtifactId": "584b725a-6c4c-4a4d-9e45-4d2c875a86ee",
         "eventTypes": [
           {
-            "name": "AegeanPowerStream2"
+            "name": "AegeanPowerStream"
           }
         ]
       },
