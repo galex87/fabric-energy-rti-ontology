@@ -1,8 +1,0 @@
-fac_cd,fac_nm,fac_tp,fl_tp,cap_mw,cmsnyr,rgn_cd,prf,lat,lon,opr,sts,grd_zn
-PP-THR-01,Thrace Wind Complex,Wind Farm,Wind,120.0,2019,Eastern Macedonia and Thrace,Evros,40.8500,25.8700,Aegean Power SA,Active,GR-MAIN
-PP-TIN-01,Tinos Wind Farm,Wind Farm,Wind,17.0,2021,South Aegean,Cyclades,37.6100,25.1500,Aegean Power SA,Active,GR-TIN
-PP-NAX-01,Naxos Wind Farm,Wind Farm,Wind,29.4,2020,South Aegean,Cyclades,37.0700,25.4700,Aegean Power SA,Active,GR-NAX
-PP-THE-01,Thessaly Solar Park,Solar Park,Solar,80.0,2022,Thessaly,Larissa,39.6500,22.4000,Aegean Power SA,Active,GR-MAIN
-PP-CRE-01,Crete Solar Park,Solar Park,Solar,60.0,2023,Crete,Heraklion,35.3300,25.1400,Aegean Power SA,Active,GR-CRE
-PP-LAV-01,Lavrio Gas CCGT,Gas Power Plant,Natural Gas,400.0,2015,Attica,East Attica,37.7200,24.0500,Aegean Power SA,Active,GR-MAIN
-PP-MEG-01,Megalopoli Gas Unit,Gas Power Plant,Natural Gas,200.0,2018,Peloponnese,Arcadia,37.4000,22.1400,Aegean Power SA,Active,GR-MAIN

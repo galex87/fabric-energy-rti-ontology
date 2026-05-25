@@ -1,9 +1,0 @@
-entry_id,site_code,site_name,rpt_period,co2_mt,ets_quota,fuel_mwh,ef_factor,compl_pct,compl_flag
-EM-2026-01-LAV,PP-LAV-01,Lavrio Gas CCGT,2026-01,18500,20000,52857,0.35,92.5,Compliant
-EM-2026-01-MEG,PP-MEG-01,Megalopoli Gas Unit,2026-01,9800,11000,28000,0.35,89.1,Compliant
-EM-2026-02-LAV,PP-LAV-01,Lavrio Gas CCGT,2026-02,17200,20000,49143,0.35,86.0,Compliant
-EM-2026-02-MEG,PP-MEG-01,Megalopoli Gas Unit,2026-02,10100,11000,28857,0.35,91.8,Compliant
-EM-2026-03-LAV,PP-LAV-01,Lavrio Gas CCGT,2026-03,19800,20000,56571,0.35,99.0,Near Limit
-EM-2026-03-MEG,PP-MEG-01,Megalopoli Gas Unit,2026-03,10500,11000,30000,0.35,95.5,Near Limit
-EM-2026-04-LAV,PP-LAV-01,Lavrio Gas CCGT,2026-04,8900,20000,25429,0.35,44.5,Compliant
-EM-2026-04-MEG,PP-MEG-01,Megalopoli Gas Unit,2026-04,4200,11000,12000,0.35,38.2,Compliant
