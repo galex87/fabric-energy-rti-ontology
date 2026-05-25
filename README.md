@@ -144,7 +144,7 @@ Open **`AegeanPowerStream`** → **Edit**.
 
 2. Click **Publish** in the top toolbar.
 
-3. Click the **CustomApp source** → **Sample code** tab → copy the **primary connection string**.
+3. Switch to **Live view** (top right of the canvas). Click the **CustomApp source** node → **Sample code** tab → copy the **primary connection string**.
 
 ### 8 · Paste the connection string into the simulator
 
