@@ -115,7 +115,7 @@ Notebooks in the repo intentionally have **no default Lakehouse** so they sync c
 - **`Dispatch_Maintenance_Crew`**
 - **`Load_CSVs_to_Delta`**
 
-How to bind: open the notebook → left **Lakehouses** sidebar → **+ Add** → **Existing Lakehouse** → pick `AegeanPowerLH` → ⭐ **Set as default** (star icon on the lakehouse in the sidebar).
+How to bind: open the notebook → left **Lakehouses** sidebar → **+ Add lakehouse** → **Existing lakehouse** → pick `AegeanPowerLH` → in the sidebar, right-click the lakehouse → **Set as default lakehouse**.
 
 ### 5 · Upload seed data to the Lakehouse
 
