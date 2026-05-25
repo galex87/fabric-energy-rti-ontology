@@ -155,13 +155,15 @@ Open **`AegeanPowerStream`** → **Edit**.
 
 ### 8 · Paste the connection string into the simulator
 
-Open **`AegeanPower_Simulator`** notebook → find this line (around line 100):
+Open the **`AegeanPower_Simulator`** notebook. Scroll to the **Parameters** section (the first code cell under the *"Parameters — Edit these before running"* heading) and locate the line:
 
 ```python
 EVENTHUB_CONNECTION_STRING = "REPLACE_ME_WITH_EVENTSTREAM_CUSTOM_ENDPOINT_CONNECTION_STRING"
 ```
 
-Replace the placeholder with the connection string from step 7.
+Replace the placeholder with the connection string you copied in step 7. Save the notebook.
+
+![Simulator Parameters cell — replace EVENTHUB_CONNECTION_STRING](docs/images/simulator-parameters-cell.png)
 
 ### 9 · Run the simulator
 
