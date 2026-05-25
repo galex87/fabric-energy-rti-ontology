@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "6793cc01-d730-49f7-97c6-9a5bf1fccbb3",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+    "sourceTableName": "wind_turbines",
+    "sourceSchema": null,
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "turbine_id",
+      "targetPropertyId": "5156846891205568951"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "plant_id",
+      "targetPropertyId": "5153712205474136516"
+    }
+  ]
+}

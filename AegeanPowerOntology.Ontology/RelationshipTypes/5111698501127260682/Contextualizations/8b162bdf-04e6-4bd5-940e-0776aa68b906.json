@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "8b162bdf-04e6-4bd5-940e-0776aa68b906",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+    "sourceTableName": "solar_inverters",
+    "sourceSchema": null,
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "inverter_id",
+      "targetPropertyId": "5155581108854576964"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "plant_id",
+      "targetPropertyId": "5153712205474136516"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/relationshipType/1.0.0/schema.json",
+  "namespace": "usertypes",
+  "id": "5109619182864709655",
+  "name": "feeds_grid",
+  "namespaceType": "Custom",
+  "source": {
+    "entityTypeId": "117983598487913"
+  },
+  "target": {
+    "entityTypeId": "17700073418448"
+  }
+}

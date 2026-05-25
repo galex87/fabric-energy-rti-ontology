@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "1e3198cc-3a79-479b-8a92-87c12587e6db",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "grid_id",
+        "targetPropertyId": "5152487629157518362"
+      },
+      {
+        "sourceColumnName": "grid_name",
+        "targetPropertyId": "5152487629773851942"
+      },
+      {
+        "sourceColumnName": "island",
+        "targetPropertyId": "5152487631887989392"
+      },
+      {
+        "sourceColumnName": "region",
+        "targetPropertyId": "5152487629330159678"
+      },
+      {
+        "sourceColumnName": "population",
+        "targetPropertyId": "5152487629038002364"
+      },
+      {
+        "sourceColumnName": "peak_demand_mw",
+        "targetPropertyId": "5152487630932574784"
+      },
+      {
+        "sourceColumnName": "installed_capacity_mw",
+        "targetPropertyId": "5152487628832433358"
+      },
+      {
+        "sourceColumnName": "interconnected",
+        "targetPropertyId": "5152487632472239862"
+      },
+      {
+        "sourceColumnName": "interconnection_cable",
+        "targetPropertyId": "5152487631112615022"
+      },
+      {
+        "sourceColumnName": "nominal_frequency_hz",
+        "targetPropertyId": "5152487629456760449"
+      },
+      {
+        "sourceColumnName": "latitude",
+        "targetPropertyId": "5152487630815353118"
+      },
+      {
+        "sourceColumnName": "longitude",
+        "targetPropertyId": "5152487632845271565"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "island_grids",
+      "sourceSchema": null
+    }
+  }
+}

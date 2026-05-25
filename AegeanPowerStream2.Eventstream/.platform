@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "AegeanPowerStream2",
+    "description": "AegeanPower telemetry stream v2 (clean topology, all stream_type=* filters)."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "875a86ee-4d2c-9e45-4a4d-6c4c584b725a"
+  }
+}

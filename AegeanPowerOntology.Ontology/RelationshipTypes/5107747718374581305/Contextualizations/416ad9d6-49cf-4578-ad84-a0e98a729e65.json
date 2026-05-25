@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "416ad9d6-49cf-4578-ad84-a0e98a729e65",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+    "sourceTableName": "substations",
+    "sourceSchema": null,
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "substation_id",
+      "targetPropertyId": "5149821039544813840"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "fed_by_plant_id",
+      "targetPropertyId": "5153712205474136516"
+    }
+  ]
+}

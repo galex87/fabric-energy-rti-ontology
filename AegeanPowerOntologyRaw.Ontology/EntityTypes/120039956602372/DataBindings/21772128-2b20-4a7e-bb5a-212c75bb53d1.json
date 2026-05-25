@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "21772128-2b20-4a7e-bb5a-212c75bb53d1",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "node_ref",
+        "targetPropertyId": "1390704752056145874"
+      },
+      {
+        "sourceColumnName": "node_descr",
+        "targetPropertyId": "1390704753782073129"
+      },
+      {
+        "sourceColumnName": "vlt_lvl",
+        "targetPropertyId": "1390704752888166750"
+      },
+      {
+        "sourceColumnName": "node_cls",
+        "targetPropertyId": "1390704751653095954"
+      },
+      {
+        "sourceColumnName": "area_cd",
+        "targetPropertyId": "1390704753100719358"
+      },
+      {
+        "sourceColumnName": "geo_lat",
+        "targetPropertyId": "1390704752523821957"
+      },
+      {
+        "sourceColumnName": "geo_lon",
+        "targetPropertyId": "1390704752106829444"
+      },
+      {
+        "sourceColumnName": "link_net",
+        "targetPropertyId": "1390704750625913004"
+      },
+      {
+        "sourceColumnName": "link_src",
+        "targetPropertyId": "1390704750170233869"
+      },
+      {
+        "sourceColumnName": "node_flg",
+        "targetPropertyId": "1390704752641561438"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "65e827ef-c164-bcc6-44e8-ad8174b1118c",
+      "sourceTableName": "node_infra",
+      "sourceSchema": null
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "e7a42c0f-09ce-4a56-af82-d44a936dcb2b",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "timestamp",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "inverter_id",
+        "targetPropertyId": "1402811656834109807"
+      },
+      {
+        "sourceColumnName": "power_kw",
+        "targetPropertyId": "1376890412601766434"
+      },
+      {
+        "sourceColumnName": "irradiance_wm2",
+        "targetPropertyId": "1376890415488457198"
+      },
+      {
+        "sourceColumnName": "panel_temp_c",
+        "targetPropertyId": "1376890416246575424"
+      },
+      {
+        "sourceColumnName": "efficiency_pct",
+        "targetPropertyId": "1376890414673700204"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "KustoTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "d9184fc4-b59e-a890-401f-a07debd37cc3",
+      "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
+      "databaseName": "AegeanPowerEH",
+      "sourceTableName": "SolarInverterTelemetry"
+    }
+  }
+}

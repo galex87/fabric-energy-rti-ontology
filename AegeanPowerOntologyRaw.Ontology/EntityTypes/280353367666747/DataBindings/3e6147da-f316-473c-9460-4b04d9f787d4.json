@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "3e6147da-f316-473c-9460-4b04d9f787d4",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "timestamp",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "turbine_id",
+        "targetPropertyId": "1405803697338707181"
+      },
+      {
+        "sourceColumnName": "power_mw",
+        "targetPropertyId": "1378093743768203846"
+      },
+      {
+        "sourceColumnName": "wind_speed_ms",
+        "targetPropertyId": "1378093743210857308"
+      },
+      {
+        "sourceColumnName": "vibration_mm_s",
+        "targetPropertyId": "1378093744707512666"
+      },
+      {
+        "sourceColumnName": "rotor_rpm",
+        "targetPropertyId": "1378093746073266263"
+      },
+      {
+        "sourceColumnName": "nacelle_temp_c",
+        "targetPropertyId": "1378093745414981206"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "KustoTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "d9184fc4-b59e-a890-401f-a07debd37cc3",
+      "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
+      "databaseName": "AegeanPowerEH",
+      "sourceTableName": "WindTurbineTelemetry"
+    }
+  }
+}

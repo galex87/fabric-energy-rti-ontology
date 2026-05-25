@@ -1,0 +1,1081 @@
+{
+  "sources": [
+    {
+      "id": "6045af1d-de10-4068-b186-1fbeff6cc92b",
+      "name": "customapp",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "24499411-e9a7-4d04-83a1-e132914460a5",
+      "name": "destwindturbinetelemetry",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+        "databaseName": "AegeanPowerEH",
+        "tableName": "WindTurbineTelemetry",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "derivedwindturbinetelemetry"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "derivedwindturbinetelemetry",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2a00c690-a312-4819-b573-80debed7c458",
+      "name": "destgridtelemetry",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+        "databaseName": "AegeanPowerEH",
+        "tableName": "GridTelemetry",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "derivedgridtelemetry"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "derivedgridtelemetry",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2d9f070c-348c-5dfd-8731-0a461ca8fbf4",
+      "name": "6L1b4h5vg15Mitscrgw2Mx-641fd16a-73bb-47f7-ae38-8d9d17e2bb9c",
+      "type": "Activator",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "17e2bb9c-8d9d-ae38-47f7-73bb641fd16a",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "derivedwindturbinetelemetry"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "derivedwindturbinetelemetry",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "97213968-8d40-47f0-9318-398f20a079f6",
+      "name": "destemissionsstream",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+        "databaseName": "AegeanPowerEH",
+        "tableName": "EmissionsStream",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "derivedemissionsstream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "derivedemissionsstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "c27d7193-57bd-40ea-a61e-98035a2928a5",
+      "name": "destvesselpositions",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+        "databaseName": "AegeanPowerEH",
+        "tableName": "VesselPositions",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "derivedvesselpositions"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "derivedvesselpositions",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "f219e484-3b21-4ce2-837d-4ec88d9b2ac6",
+      "name": "destsolarinvertertelemetry",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+        "databaseName": "AegeanPowerEH",
+        "tableName": "SolarInverterTelemetry",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "derivedsolarinvertertelemetry"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "derivedsolarinvertertelemetry",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "2cb1f3c5-d1e6-41ee-86ef-5e6171e57e4a",
+      "name": "derivedemissionsstream",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "filteremissionsstream"
+        }
+      ]
+    },
+    {
+      "id": "35dd61ad-4ebe-4d9d-b94c-deb971b8839f",
+      "name": "derivedvesselpositions",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "filtervesselpositions"
+        }
+      ]
+    },
+    {
+      "id": "8fd47cc5-50ce-4004-bf85-a9c646e166bc",
+      "name": "derivedgridtelemetry",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "filtergridtelemetry"
+        }
+      ]
+    },
+    {
+      "id": "af00b22e-6f6b-45ce-9251-5556cd02857d",
+      "name": "derivedsolarinvertertelemetry",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "filtersolarinvertertelemetry"
+        }
+      ]
+    },
+    {
+      "id": "e401a157-e05b-4837-bede-8e44810e5d0c",
+      "name": "aegeanstream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "customapp"
+        }
+      ]
+    },
+    {
+      "id": "e828a7c2-1ba4-474a-bb59-59799819a315",
+      "name": "derivedwindturbinetelemetry",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "filterwindturbinetelemetry"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "filteremissionsstream",
+      "type": "Filter",
+      "inputNodes": [
+        {
+          "name": "aegeanstream"
+        }
+      ],
+      "properties": {
+        "conditions": [
+          {
+            "column": {
+              "expressionType": "ColumnReference",
+              "node": null,
+              "columnName": "stream_type",
+              "columnPathSegments": []
+            },
+            "operatorType": "Equals",
+            "value": {
+              "expressionType": "Literal",
+              "dataType": "Nvarchar(max)",
+              "value": "EmissionsStream"
+            }
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "aegeanstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "filtergridtelemetry",
+      "type": "Filter",
+      "inputNodes": [
+        {
+          "name": "aegeanstream"
+        }
+      ],
+      "properties": {
+        "conditions": [
+          {
+            "column": {
+              "expressionType": "ColumnReference",
+              "node": null,
+              "columnName": "stream_type",
+              "columnPathSegments": []
+            },
+            "operatorType": "Equals",
+            "value": {
+              "expressionType": "Literal",
+              "dataType": "Nvarchar(max)",
+              "value": "GridTelemetry"
+            }
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "aegeanstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "filtersolarinvertertelemetry",
+      "type": "Filter",
+      "inputNodes": [
+        {
+          "name": "aegeanstream"
+        }
+      ],
+      "properties": {
+        "conditions": [
+          {
+            "column": {
+              "expressionType": "ColumnReference",
+              "node": null,
+              "columnName": "stream_type",
+              "columnPathSegments": []
+            },
+            "operatorType": "Equals",
+            "value": {
+              "expressionType": "Literal",
+              "dataType": "Nvarchar(max)",
+              "value": "SolarInverterTelemetry"
+            }
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "aegeanstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "filtervesselpositions",
+      "type": "Filter",
+      "inputNodes": [
+        {
+          "name": "aegeanstream"
+        }
+      ],
+      "properties": {
+        "conditions": [
+          {
+            "column": {
+              "expressionType": "ColumnReference",
+              "node": null,
+              "columnName": "stream_type",
+              "columnPathSegments": []
+            },
+            "operatorType": "Equals",
+            "value": {
+              "expressionType": "Literal",
+              "dataType": "Nvarchar(max)",
+              "value": "VesselPositions"
+            }
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "aegeanstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "filterwindturbinetelemetry",
+      "type": "Filter",
+      "inputNodes": [
+        {
+          "name": "aegeanstream"
+        }
+      ],
+      "properties": {
+        "conditions": [
+          {
+            "column": {
+              "expressionType": "ColumnReference",
+              "node": null,
+              "columnName": "stream_type",
+              "columnPathSegments": []
+            },
+            "operatorType": "Equals",
+            "value": {
+              "expressionType": "Literal",
+              "dataType": "Nvarchar(max)",
+              "value": "WindTurbineTelemetry"
+            }
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "aegeanstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "timestamp",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "stream_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "grid_name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "frequency_hz",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "load_mw",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "generation_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "voltage_kv",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "balance_mw",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

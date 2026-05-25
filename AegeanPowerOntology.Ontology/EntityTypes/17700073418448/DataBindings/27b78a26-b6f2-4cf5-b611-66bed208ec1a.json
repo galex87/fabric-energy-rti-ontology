@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "27b78a26-b6f2-4cf5-b611-66bed208ec1a",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "timestamp",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "grid_id",
+        "targetPropertyId": "5152487629157518362"
+      },
+      {
+        "sourceColumnName": "frequency_hz",
+        "targetPropertyId": "5140121328514906690"
+      },
+      {
+        "sourceColumnName": "load_mw",
+        "targetPropertyId": "5140121327878096450"
+      },
+      {
+        "sourceColumnName": "generation_mw",
+        "targetPropertyId": "5140121327433741657"
+      },
+      {
+        "sourceColumnName": "voltage_kv",
+        "targetPropertyId": "5140121329235145583"
+      },
+      {
+        "sourceColumnName": "balance_mw",
+        "targetPropertyId": "5140121327377585509"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "KustoTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "d9184fc4-b59e-a890-401f-a07debd37cc3",
+      "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
+      "databaseName": "AegeanPowerEH",
+      "sourceTableName": "GridTelemetry"
+    }
+  }
+}

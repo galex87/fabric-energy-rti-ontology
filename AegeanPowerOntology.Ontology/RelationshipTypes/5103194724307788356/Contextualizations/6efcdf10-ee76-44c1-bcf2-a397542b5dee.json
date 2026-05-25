@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "6efcdf10-ee76-44c1-bcf2-a397542b5dee",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+    "sourceTableName": "emissions_ledger",
+    "sourceSchema": null,
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "record_id",
+      "targetPropertyId": "5147343726067098515"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "plant_id",
+      "targetPropertyId": "5153712205474136516"
+    }
+  ]
+}

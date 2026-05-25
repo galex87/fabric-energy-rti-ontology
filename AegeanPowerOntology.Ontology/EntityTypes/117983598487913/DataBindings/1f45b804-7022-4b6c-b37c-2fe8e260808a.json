@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "1f45b804-7022-4b6c-b37c-2fe8e260808a",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "substation_id",
+        "targetPropertyId": "5149821039544813840"
+      },
+      {
+        "sourceColumnName": "substation_name",
+        "targetPropertyId": "5149821038140388071"
+      },
+      {
+        "sourceColumnName": "voltage_kv",
+        "targetPropertyId": "5149821041756992356"
+      },
+      {
+        "sourceColumnName": "substation_type",
+        "targetPropertyId": "5149821041146978392"
+      },
+      {
+        "sourceColumnName": "region",
+        "targetPropertyId": "5149821039177883070"
+      },
+      {
+        "sourceColumnName": "latitude",
+        "targetPropertyId": "5149821042115118961"
+      },
+      {
+        "sourceColumnName": "longitude",
+        "targetPropertyId": "5149821038417393724"
+      },
+      {
+        "sourceColumnName": "connected_grid_id",
+        "targetPropertyId": "5149821039591959748"
+      },
+      {
+        "sourceColumnName": "fed_by_plant_id",
+        "targetPropertyId": "5149821039609004363"
+      },
+      {
+        "sourceColumnName": "status",
+        "targetPropertyId": "5149821038760185871"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "sourceTableName": "substations",
+      "sourceSchema": null
+    }
+  }
+}
