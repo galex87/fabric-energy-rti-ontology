@@ -77,9 +77,7 @@ Plus the **Ontology + Data Agent** side:
 - **Git integration** — to sync the workspace with this GitHub repo
 - **Fabric Data Agent** — see [Configure Fabric data agent tenant settings](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-tenant-settings)
 - **Ontology + Graph** — see [Required tenant settings for ontology](https://learn.microsoft.com/en-us/fabric/iq/ontology/overview-tenant-settings)
-- **Anomaly Detector (preview)** — see [Anomaly detection in Real-Time Intelligence](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection?tabs=eventhouse). Two things must be in place:
-  1. The tenant must permit the **Anomaly Detector** preview item type (Admin Portal → Tenant settings). If disabled, sync returns `PowerBIFeatureDisabled / The user is not allowed to create this fabric item`.
-  2. The **Python language extension (Python 3.11.7 DL)** must be enabled on `AegeanPowerEH` — open the Eventhouse → upper toolbar → **Plugins** → enable. Plugin enablement can take up to one hour.
+- **Anomaly Detector (preview)** — see [Anomaly detection in Real-Time Intelligence](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection?tabs=eventhouse).
 
 Settings can take up to one hour to take effect after the admin toggles them.
 
