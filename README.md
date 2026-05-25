@@ -69,9 +69,9 @@ Plus the **Ontology + Data Agent** side:
 
 ### 1 · Fork this repo
 
-Click **Fork** (top-right on GitHub) → owner = your account → **untick** "Copy main branch only" → **Create fork**.
+Click **Fork** (top-right on GitHub) → owner = your account → **Create fork**.
 
-You now own `https://github.com/<you>/fabric-energy-rti-ontology` with branches `main` and `EnergyDemo`.
+You now own `https://github.com/<you>/fabric-energy-rti-ontology` with the `main` branch.
 
 ### 2 · Create an empty Fabric workspace
 
@@ -84,7 +84,7 @@ In the workspace: **Workspace settings → Git integration → Connect**:
 - Provider: **GitHub**
 - Authorize (PAT with `Contents: read/write` on your fork)
 - Repository URL: `https://github.com/<you>/fabric-energy-rti-ontology`
-- Branch: **`EnergyDemo`**
+- Branch: **`main`**
 - Git folder: *(blank)*
 - **Connect and sync** → **Update all**
 
