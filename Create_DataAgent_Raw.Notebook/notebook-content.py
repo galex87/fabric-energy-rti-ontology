@@ -3,6 +3,9 @@
 # METADATA ********************
 
 # META {
+# META   "kernel_info": {
+# META     "name": "synapse_pyspark"
+# META   },
 # META   "dependencies": {
 # META     "lakehouse": {
 # META       "default_lakehouse": "74b1118c-ad81-44e8-bcc6-c16465e827ef",
@@ -22,6 +25,13 @@
 
 %pip install fabric-data-agent-sdk --quiet
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 from fabric.dataagent.client import (
@@ -33,11 +43,25 @@ from fabric.dataagent.client import (
 AGENT_NAME = "AegeanPower_Raw_Agent"
 LAKEHOUSE_NAME = "AegeanPowerLH_Raw"
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Create the Data Agent
 data_agent = create_data_agent(AGENT_NAME)
 print(f"Data Agent '{AGENT_NAME}' created successfully.")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -45,11 +69,25 @@ print(f"Data Agent '{AGENT_NAME}' created successfully.")
 ds = data_agent.add_datasource(LAKEHOUSE_NAME, type="lakehouse")
 print(f"Datasource added: {ds}")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Show available tables
 datasource = data_agent.get_datasources()[0]
 datasource.pretty_print()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -65,10 +103,24 @@ for t in tables:
     except Exception as e:
         print(f"Error selecting {t}: {e}")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Verify selections
 datasource.pretty_print()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -76,6 +128,13 @@ datasource.pretty_print()
 # This is intentional - we want to see how it handles the cryptic schema
 data_agent.publish()
 print(f"Data Agent '{AGENT_NAME}' published successfully.")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # MARKDOWN ********************
 
