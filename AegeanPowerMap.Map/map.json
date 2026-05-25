@@ -1,0 +1,276 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/map/definition/2.0.0/schema.json",
+  "basemap": {
+    "options": {
+      "renderWorldCopies": false,
+      "style": "road"
+    },
+    "controls": {
+      "zoom": true,
+      "pitch": true,
+      "compass": true,
+      "scale": true,
+      "traffic": false
+    }
+  },
+  "dataSources": [
+    {
+      "itemType": "Lakehouse",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce"
+    },
+    {
+      "itemType": "KqlDatabase",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b"
+    }
+  ],
+  "iconSources": [],
+  "layerSources": [
+    {
+      "id": "54f03d2d-10e8-576c-a3ee-75a036c1752a",
+      "name": "Files/map/substations.geojson",
+      "type": "geojson",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "relativePath": "Files/map/substations.geojson",
+      "refreshIntervalMs": 0
+    },
+    {
+      "id": "1e5a4036-b59c-591f-b2f3-fbeed12f269f",
+      "name": "Files/map/island_grids.geojson",
+      "type": "geojson",
+      "itemId": "6f476a96-1369-854d-45a9-ee2bbd9c69ce",
+      "relativePath": "Files/map/island_grids.geojson",
+      "refreshIntervalMs": 0
+    },
+    {
+      "id": "c36ef2cf-694d-4b58-a39f-c69e7071c89d",
+      "name": "VesselTracking",
+      "type": "kusto",
+      "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+      "refreshIntervalMs": 5000
+    },
+    {
+      "id": "e2a962ab-5f55-4272-b91e-ebff3e8057c2",
+      "name": "Gas Plants",
+      "type": "kusto",
+      "options": {
+        "cluster": false
+      },
+      "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+      "refreshIntervalMs": 3600000
+    },
+    {
+      "id": "c17b06d4-91b4-4238-810c-da4cd86fe5ca",
+      "name": "Wind Farms",
+      "type": "kusto",
+      "options": {
+        "cluster": false
+      },
+      "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+      "refreshIntervalMs": 3600000
+    },
+    {
+      "id": "5e884bde-9f9e-4fda-8760-bf9fa6d608d2",
+      "name": "Solar Parks",
+      "type": "kusto",
+      "options": {
+        "cluster": false
+      },
+      "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+      "refreshIntervalMs": 3600000
+    }
+  ],
+  "layerSettings": [
+    {
+      "id": "0df88f0b-978e-53af-8207-9d8526ebe03e",
+      "name": "Substations",
+      "sourceId": "54f03d2d-10e8-576c-a3ee-75a036c1752a",
+      "options": {
+        "color": "#9B59B6",
+        "visible": true,
+        "bubbleOptions": {
+          "color": "#9B59B6"
+        },
+        "lineOptions": {
+          "strokeColor": "#9B59B6"
+        },
+        "polygonOptions": {
+          "fillColor": "#9B59B6"
+        },
+        "polygonExtrusionOptions": {
+          "fillColor": "#9B59B6"
+        }
+      }
+    },
+    {
+      "id": "ee89710d-81c1-5342-8a75-3990edaed29a",
+      "name": "Island Grids",
+      "sourceId": "1e5a4036-b59c-591f-b2f3-fbeed12f269f",
+      "options": {
+        "color": "#1ABC9C",
+        "visible": true,
+        "bubbleOptions": {
+          "color": "#1ABC9C"
+        },
+        "lineOptions": {
+          "strokeColor": "#1ABC9C"
+        },
+        "polygonOptions": {
+          "fillColor": "#1ABC9C"
+        },
+        "polygonExtrusionOptions": {
+          "fillColor": "#1ABC9C"
+        }
+      }
+    },
+    {
+      "id": "54de769f-e688-4857-94d5-ad4d3c2c068d",
+      "name": "VesselTracking",
+      "sourceId": "c36ef2cf-694d-4b58-a39f-c69e7071c89d",
+      "options": {
+        "color": "#0e0e0f",
+        "type": "vector",
+        "visible": true,
+        "bubbleOptions": {
+          "color": "#0e0e0f"
+        },
+        "markerOptions": {
+          "fillColor": "#0e0e0f"
+        },
+        "lineOptions": {
+          "strokeColor": "#0e0e0f"
+        },
+        "polygonOptions": {
+          "fillColor": "#0e0e0f"
+        },
+        "polygonExtrusionOptions": {
+          "fillColor": "#0e0e0f"
+        },
+        "dataLabelOptions": {
+          "enabled": true,
+          "placement": "point"
+        },
+        "dataLabelKeys": [
+          "vessel_name",
+          "vessel_type"
+        ]
+      },
+      "latitudeColumnName": "latitude",
+      "longitudeColumnName": "longitude"
+    },
+    {
+      "id": "98dd15f3-9ff9-48db-9412-29f775b7ae5c",
+      "name": "Gas Plants",
+      "sourceId": "e2a962ab-5f55-4272-b91e-ebff3e8057c2",
+      "options": {
+        "color": "#CA5010",
+        "type": "vector",
+        "visible": true,
+        "bubbleOptions": {
+          "color": "#CA5010",
+          "sizeType": "fixed",
+          "sizeProperty": "co2_kg_per_hour",
+          "enableSeriesGroup": false,
+          "paletteId": "a"
+        },
+        "markerOptions": {
+          "fillColor": "#CA5010",
+          "iconOptions": {
+            "image": "98dd15f3-9ff9-48db-9412-29f775b7ae5c:Square"
+          }
+        },
+        "lineOptions": {
+          "strokeColor": "#CA5010"
+        },
+        "polygonOptions": {
+          "fillColor": "#CA5010"
+        },
+        "polygonExtrusionOptions": {
+          "fillColor": "#CA5010"
+        },
+        "minZoom": 1,
+        "maxZoom": 12,
+        "pointLayerType": "bubble",
+        "dataLabelOptions": {
+          "enabled": false,
+          "placement": "point"
+        }
+      },
+      "latitudeColumnName": "latitude",
+      "longitudeColumnName": "longitude"
+    },
+    {
+      "id": "a700cc4e-a377-43f6-9225-7a61d91de533",
+      "name": "Wind Farms",
+      "sourceId": "c17b06d4-91b4-4238-810c-da4cd86fe5ca",
+      "options": {
+        "color": "#3A96DD",
+        "type": "vector",
+        "visible": true,
+        "bubbleOptions": {
+          "color": "#3A96DD",
+          "sizeType": "fixed",
+          "sizeProperty": "power_mw",
+          "enableSeriesGroup": false,
+          "seriesGroup": "power_mw",
+          "paletteId": "a"
+        },
+        "markerOptions": {
+          "fillColor": "#3A96DD",
+          "iconOptions": {
+            "image": "a700cc4e-a377-43f6-9225-7a61d91de533:Square"
+          }
+        },
+        "lineOptions": {
+          "strokeColor": "#3A96DD"
+        },
+        "polygonOptions": {
+          "fillColor": "#3A96DD"
+        },
+        "polygonExtrusionOptions": {
+          "fillColor": "#3A96DD"
+        },
+        "pointLayerType": "bubble",
+        "tooltipKeys": [],
+        "dataLabelOptions": {
+          "enabled": true,
+          "placement": "point"
+        },
+        "dataLabelKeys": []
+      },
+      "latitudeColumnName": "latitude",
+      "longitudeColumnName": "longitude"
+    },
+    {
+      "id": "09293b59-1718-497a-96c2-3628850027f1",
+      "name": "Solar Parks",
+      "sourceId": "5e884bde-9f9e-4fda-8760-bf9fa6d608d2",
+      "options": {
+        "color": "#f2e70a",
+        "type": "vector",
+        "visible": true,
+        "bubbleOptions": {
+          "color": "#f2e70a",
+          "enableSeriesGroup": false,
+          "seriesGroup": "panel_temp_c",
+          "paletteId": "a"
+        },
+        "markerOptions": {
+          "fillColor": "#f2e70a"
+        },
+        "lineOptions": {
+          "strokeColor": "#f2e70a"
+        },
+        "polygonOptions": {
+          "fillColor": "#f2e70a"
+        },
+        "polygonExtrusionOptions": {
+          "fillColor": "#f2e70a"
+        }
+      },
+      "latitudeColumnName": "latitude",
+      "longitudeColumnName": "longitude"
+    }
+  ]
+}
