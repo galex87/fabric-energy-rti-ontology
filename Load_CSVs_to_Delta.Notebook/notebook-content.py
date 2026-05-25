@@ -35,7 +35,7 @@ from pyspark.sql.functions import col
 CSV = 'Files/data'
 
 tables = [
-    ('power_plants.csv', 'power_plants', {'capacity_mw':'double','latitude':'double','longitude':'double','commissioned_year':'int'}),
+    ('power_plants.csv', 'power_plants', {'capacity_mw':'double','latitude':'double','longitude':'double','commissioning_year':'int'}),
     ('wind_turbines.csv', 'wind_turbines', {'rated_power_kw':'double','hub_height_m':'double','rotor_diameter_m':'double','latitude':'double','longitude':'double'}),
     ('solar_inverters.csv', 'solar_inverters', {'rated_power_kw':'double','panel_tilt_deg':'double','panel_azimuth_deg':'double','latitude':'double','longitude':'double'}),
     ('substations.csv', 'substations', {'capacity_mva':'double','latitude':'double','longitude':'double'}),
