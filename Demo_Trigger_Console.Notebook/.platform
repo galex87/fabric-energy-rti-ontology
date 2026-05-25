@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Demo_Trigger_Console",
+    "description": "One-click controls"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f6af419a-4115-8c05-439b-5043c4fcc713"
+  }
+}

@@ -1,0 +1,77 @@
+# Fabric notebook source
+
+# METADATA ********************
+
+# META {
+# META   "kernel_info": {
+# META     "name": "synapse_pyspark"
+# META   },
+# META   "dependencies": {
+# META     "lakehouse": {
+# META       "default_lakehouse": "bd9c69ce-ee2b-45a9-854d-13696f476a96",
+# META       "default_lakehouse_name": "AegeanPowerLH",
+# META       "default_lakehouse_workspace_id": "21dbf808-03bb-44d9-a8f4-ac6166b1ce08"
+# META     }
+# META   }
+# META }
+
+# CELL ********************
+
+ABFSS = 'abfss://21dbf808-03bb-44d9-a8f4-ac6166b1ce08@onelake.dfs.fabric.microsoft.com/bd9c69ce-ee2b-45a9-854d-13696f476a96'
+CSV = f'{ABFSS}/Files/data'
+print(f'Reading from: {CSV}')
+df = spark.read.option('header', True).option('inferSchema', True).csv(f'{CSV}/power_plants.csv')
+df.show()
+print(f'Row count: {df.count()}')
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql.functions import col
+
+ABFSS = 'abfss://21dbf808-03bb-44d9-a8f4-ac6166b1ce08@onelake.dfs.fabric.microsoft.com/bd9c69ce-ee2b-45a9-854d-13696f476a96'
+CSV = f'{ABFSS}/Files/data'
+
+tables = [
+    ('power_plants.csv', 'power_plants', {'capacity_mw':'double','latitude':'double','longitude':'double','commissioned_year':'int'}),
+    ('wind_turbines.csv', 'wind_turbines', {'rated_power_kw':'double','hub_height_m':'double','rotor_diameter_m':'double','latitude':'double','longitude':'double'}),
+    ('solar_inverters.csv', 'solar_inverters', {'rated_power_kw':'double','panel_tilt_deg':'double','panel_azimuth_deg':'double','latitude':'double','longitude':'double'}),
+    ('substations.csv', 'substations', {'capacity_mva':'double','latitude':'double','longitude':'double'}),
+    ('island_grids.csv', 'island_grids', {'peak_demand_mw':'double'}),
+    ('vessels.csv', 'vessels', {'speed_knots':'double'}),
+    ('maintenance_orders.csv', 'maintenance_orders', {}),
+    ('emissions_ledger.csv', 'emissions_ledger', {'co2_tonnes':'double','ets_cap_tonnes':'double','compliance_pct':'double'})
+]
+
+for csv_file, tbl, overrides in tables:
+    df = spark.read.option('header', True).option('inferSchema', True).csv(f'{CSV}/{csv_file}')
+    for c, dtype in overrides.items():
+        df = df.withColumn(c, col(c).cast(dtype))
+    df.write.mode('overwrite').format('delta').saveAsTable(tbl)
+    print(f'OK: {tbl} = {df.count()} rows')
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+print('=== ALL TABLES ===')
+for t in spark.catalog.listTables():
+    print(f'  {t.name}: {spark.table(t.name).count()} rows')
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }

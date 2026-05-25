@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Dispatch_Maintenance_Crew",
+    "description": "Triggered by Operations Agent on turbine OFFLINE event"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "92e06608-2a32-a20b-49e9-9d31182f8a42"
+  }
+}
