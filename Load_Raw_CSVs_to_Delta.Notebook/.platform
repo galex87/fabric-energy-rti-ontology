@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Load_Raw_CSVs_to_Delta"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6e52507a-a5c4-a7bc-482b-e7487b3c97fb"
+  }
+}
