@@ -132,13 +132,19 @@ You should now see 8 Delta tables under `Tables/`:
 
 ### 7 · Wire the Eventstream
 
-The Eventstream `AegeanPowerStream` synced with destinations pointing to the **original** workspace's Eventhouse GUID. You need to re-bind:
+Open **`AegeanPowerStream`** → **Edit**.
 
-1. Open **`AegeanPowerStream`** → **Edit**.
-2. For each of the 5 destinations (`destwindturbinetelemetry`, `destsolarinvertertelemetry`, `destgridtelemetry`, `destvesselpositions`, `destemissionsstream`):
-   - Click the destination → **Edit** → set Eventhouse to *your* `AegeanPowerEH` → table = matching name → save.
-3. Click **Publish**.
-4. Click the **CustomApp source** → **Sample code** tab → copy the **primary connection string**.
+1. Click each of the 5 destinations (`destwindturbinetelemetry`, `destsolarinvertertelemetry`, `destgridtelemetry`, `destvesselpositions`, `destemissionsstream`) and **verify** the right-side pane shows:
+   - **Workspace** = your workspace
+   - **Eventhouse** = `AegeanPowerEH`
+   - **KQL Destination table** = the matching name
+   - **Input data format** = `Json`
+
+   Fabric usually auto-remaps these on first sync, so they may already be correct. If anything looks wrong, fix it and save.
+
+2. Click **Publish** in the top toolbar.
+
+3. Click the **CustomApp source** → **Sample code** tab → copy the **primary connection string**.
 
 ### 8 · Paste the connection string into the simulator
 
