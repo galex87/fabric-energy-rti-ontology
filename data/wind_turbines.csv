@@ -1,0 +1,21 @@
+turbine_id,turbine_name,plant_id,manufacturer,model,capacity_mw,hub_height_m,rotor_diameter_m,cut_in_speed_ms,rated_speed_ms,cut_out_speed_ms,latitude,longitude,commissioning_date,status
+WT-THR-01,Thrace Alpha-1,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8520,25.8650,2019-03-15,Active
+WT-THR-02,Thrace Alpha-2,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8540,25.8680,2019-03-15,Active
+WT-THR-03,Thrace Alpha-3,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8510,25.8720,2019-04-01,Active
+WT-THR-04,Thrace Beta-1,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8480,25.8750,2019-04-01,Active
+WT-THR-05,Thrace Beta-2,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8460,25.8770,2019-04-15,Active
+WT-THR-06,Thrace Beta-3,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8500,25.8800,2019-04-15,Active
+WT-THR-07,Thrace Gamma-1,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8530,25.8830,2019-05-01,Active
+WT-THR-08,Thrace Gamma-2,PP-THR-01,Vestas,V150-4.2,4.2,105,150,3.0,12.0,25.0,40.8550,25.8860,2019-05-01,Active
+WT-TIN-01,Tinos North-1,PP-TIN-01,Siemens Gamesa,SG 3.4-132,3.4,84,132,3.0,11.5,25.0,37.6100,25.1450,2021-06-01,Active
+WT-TIN-02,Tinos North-2,PP-TIN-01,Siemens Gamesa,SG 3.4-132,3.4,84,132,3.0,11.5,25.0,37.6130,25.1480,2021-06-01,Active
+WT-TIN-03,Tinos North-3,PP-TIN-01,Siemens Gamesa,SG 3.4-132,3.4,84,132,3.0,11.5,25.0,37.6160,25.1520,2021-06-15,Active
+WT-TIN-04,Tinos South-1,PP-TIN-01,Siemens Gamesa,SG 3.4-132,3.4,84,132,3.0,11.5,25.0,37.6000,25.1620,2021-07-01,Active
+WT-TIN-05,Tinos South-2,PP-TIN-01,Siemens Gamesa,SG 3.4-132,3.4,84,132,3.0,11.5,25.0,37.6030,25.1650,2021-07-01,Active
+WT-NAX-01,Naxos Ridge-1,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0800,25.4600,2020-09-01,Active
+WT-NAX-02,Naxos Ridge-2,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0780,25.4630,2020-09-01,Active
+WT-NAX-03,Naxos Ridge-3,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0760,25.4660,2020-09-15,Active
+WT-NAX-04,Naxos Valley-1,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0650,25.4780,2020-10-01,Active
+WT-NAX-05,Naxos Valley-2,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0630,25.4810,2020-10-01,Active
+WT-NAX-06,Naxos Valley-3,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0600,25.4840,2020-10-15,Active
+WT-NAX-07,Naxos Hilltop-1,PP-NAX-01,Enercon,E-138 EP3,4.2,81,138,2.5,12.0,28.0,37.0700,25.4920,2020-11-01,Active

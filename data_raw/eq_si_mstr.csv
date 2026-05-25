@@ -1,0 +1,16 @@
+eq_id,eq_nm,fac_cd,mfr,mdl,cap_kw,pnl_tp,tlt_dg,azm_dg,lat,lon,cmsndt,sts
+SI-THE-01,Thessaly Block A-1,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6520,22.3950,2022-04-01,Active
+SI-THE-02,Thessaly Block A-2,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6530,22.3980,2022-04-01,Active
+SI-THE-03,Thessaly Block A-3,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6540,22.4010,2022-04-15,Active
+SI-THE-04,Thessaly Block B-1,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6480,22.4050,2022-05-01,Active
+SI-THE-05,Thessaly Block B-2,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6490,22.4080,2022-05-01,Active
+SI-THE-06,Thessaly Block B-3,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6500,22.4110,2022-05-15,Active
+SI-THE-07,Thessaly Block C-1,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6460,22.4150,2022-06-01,Active
+SI-THE-08,Thessaly Block C-2,PP-THE-01,SMA,Sunny Central 2750-EV,10000,Monocrystalline,30,180,39.6470,22.4180,2022-06-01,Active
+SI-CRE-01,Crete East-1,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3320,25.1350,2023-03-01,Active
+SI-CRE-02,Crete East-2,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3330,25.1380,2023-03-01,Active
+SI-CRE-03,Crete East-3,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3340,25.1410,2023-03-15,Active
+SI-CRE-04,Crete West-1,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3280,25.1450,2023-04-01,Active
+SI-CRE-05,Crete West-2,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3290,25.1480,2023-04-01,Active
+SI-CRE-06,Crete West-3,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3300,25.1510,2023-04-15,Active
+SI-CRE-07,Crete West-4,PP-CRE-01,Huawei,SUN2000-330KTL,8570,Bifacial,25,180,35.3310,25.1540,2023-05-01,Active

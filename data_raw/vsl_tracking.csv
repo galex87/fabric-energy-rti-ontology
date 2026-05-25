@@ -1,0 +1,4 @@
+mov_ref,descr,cls_type,reg_flag,ext_ref,cap_vol,cur_vol,port_orig,cty_orig,port_dest,spd_cur,mov_status,dest_ref
+VE-LNG-01,Hellas Spirit,LNG Carrier,Greece,9200001,174000,165000,Damietta,Egypt,Revithoussa LNG Terminal,16.5,En Route,PP-LAV-01
+VE-LNG-02,Aegean Breeze,LNG Carrier,Malta,9200002,145000,140000,Arzew,Algeria,Revithoussa LNG Terminal,15.8,En Route,PP-MEG-01
+VE-SVC-01,Poseidon Service,Crew Transfer Vessel,Greece,9200003,0,0,Lavrio Port,Greece,Naxos Wind Farm,22.0,Dispatched,PP-NAX-01

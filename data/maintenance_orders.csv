@@ -1,0 +1,16 @@
+order_id,order_type,priority,status,asset_id,asset_type,plant_id,description,created_date,scheduled_date,completed_date,technician,cost_eur
+MO-2026-001,Corrective,High,Completed,WT-THR-03,WindTurbine,PP-THR-01,Gearbox oil leak detected during routine inspection,2026-01-15,2026-01-18,2026-01-19,Dimitris Papadopoulos,12500
+MO-2026-002,Preventive,Medium,Completed,WT-TIN-02,WindTurbine,PP-TIN-01,Annual blade inspection and surface repair,2026-01-20,2026-02-01,2026-02-02,Nikos Alexiou,4200
+MO-2026-003,Corrective,High,Completed,SI-CRE-04,SolarInverter,PP-CRE-01,IGBT module failure causing DC arc fault,2026-02-01,2026-02-03,2026-02-04,Maria Konstantinou,8900
+MO-2026-004,Preventive,Low,Completed,WT-NAX-01,WindTurbine,PP-NAX-01,Lubrication service for main bearing,2026-02-10,2026-02-15,2026-02-15,Giorgos Vlachos,1800
+MO-2026-005,Corrective,Medium,Completed,WT-THR-06,WindTurbine,PP-THR-01,Yaw system misalignment causing vibration,2026-02-20,2026-02-22,2026-02-23,Dimitris Papadopoulos,6700
+MO-2026-006,Preventive,Medium,Completed,SI-THE-03,SolarInverter,PP-THE-01,Thermal paste replacement on power modules,2026-03-01,2026-03-05,2026-03-05,Eleni Mavridou,2100
+MO-2026-007,Corrective,High,Completed,WT-NAX-05,WindTurbine,PP-NAX-01,Pitch bearing hairline crack found via ultrasound,2026-03-05,2026-03-08,2026-03-10,Nikos Alexiou,22000
+MO-2026-008,Preventive,Low,Completed,WT-TIN-04,WindTurbine,PP-TIN-01,Hydraulic filter and coolant replacement,2026-03-10,2026-03-15,2026-03-15,Giorgos Vlachos,950
+MO-2026-009,Inspection,Medium,Completed,SI-CRE-01,SolarInverter,PP-CRE-01,Arc fault detection system calibration,2026-03-15,2026-03-18,2026-03-18,Maria Konstantinou,1500
+MO-2026-010,Corrective,High,Completed,WT-THR-01,WindTurbine,PP-THR-01,Generator winding insulation breakdown,2026-03-20,2026-03-23,2026-03-25,Dimitris Papadopoulos,35000
+MO-2026-011,Preventive,Medium,Completed,WT-NAX-03,WindTurbine,PP-NAX-01,Annual blade inspection and leading edge repair,2026-03-25,2026-04-01,2026-04-01,Nikos Alexiou,4200
+MO-2026-012,Corrective,Medium,In Progress,SI-THE-07,SolarInverter,PP-THE-01,DC string underperformance due to hotspot,2026-04-05,2026-04-10,,Eleni Mavridou,3500
+MO-2026-013,Inspection,Low,Scheduled,WT-TIN-01,WindTurbine,PP-TIN-01,Quarterly vibration analysis and alignment check,2026-04-08,2026-04-20,,Giorgos Vlachos,1200
+MO-2026-014,Preventive,Medium,Scheduled,SI-CRE-06,SolarInverter,PP-CRE-01,Cooling system flush and fan replacement,2026-04-10,2026-04-22,,Maria Konstantinou,2800
+MO-2026-015,Corrective,Critical,Open,WT-NAX-07,WindTurbine,PP-NAX-01,Bearing vibration anomaly — Operations Agent alert,2026-04-14,,,Pending Dispatch,0

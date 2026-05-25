@@ -1,0 +1,9 @@
+node_id,node_name,voltage_lvl,node_type,area_code,lat,lng,grid_code,supply_site,node_status
+SUB-ALE-01,Alexandroupoli Substation,150,Onshore Transmission,Eastern Macedonia and Thrace,40.8400,25.8800,GR-MAIN,PP-THR-01,Active
+SUB-TIN-01,Tinos Substation,20,Island Distribution,South Aegean,37.6000,25.1500,GR-TIN,PP-TIN-01,Active
+SUB-NAX-01,Naxos Substation,20,Island Distribution,South Aegean,37.0700,25.4600,GR-NAX,PP-NAX-01,Active
+SUB-LAR-01,Larissa Substation,150,Onshore Transmission,Thessaly,39.6400,22.4100,GR-MAIN,PP-THE-01,Active
+SUB-HER-01,Heraklion Substation,150,Onshore Transmission,Crete,35.3400,25.1300,GR-CRE,PP-CRE-01,Active
+SUB-LAV-01,Lavrio Substation,400,High Voltage Transmission,Attica,37.7100,24.0600,GR-MAIN,PP-LAV-01,Active
+SUB-MEG-01,Megalopoli Substation,400,High Voltage Transmission,Peloponnese,37.3900,22.1500,GR-MAIN,PP-MEG-01,Active
+SUB-SYR-01,Syros Hub Substation,150,Island Hub,South Aegean,37.4400,24.9400,GR-CYC,,Active

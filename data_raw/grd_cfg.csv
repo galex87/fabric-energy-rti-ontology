@@ -1,0 +1,7 @@
+grd_cd,grd_nm,isl_nm,rgn_cd,pop,pk_mw,inst_mw,ic_flg,ic_cbl,nom_hz,lat,lon
+GR-MAIN,Mainland Grid,Mainland,Attica,8500000,8500.0,18000.0,true,N/A,50.0,37.7200,24.0500
+GR-CRE,Crete Grid,Crete,Crete,635000,850.0,1200.0,true,Crete-Attica HVDC 2x200MW,50.0,35.2400,24.9000
+GR-NAX,Naxos Grid,Naxos,South Aegean,22000,35.0,55.0,true,Cyclades Interconnection Phase 2,50.0,37.1000,25.3700
+GR-TIN,Tinos Grid,Tinos,South Aegean,9000,25.0,40.0,true,Cyclades Interconnection Phase 1,50.0,37.5400,25.1600
+GR-MYK,Mykonos Grid,Mykonos,South Aegean,12000,65.0,85.0,true,Cyclades Interconnection Phase 1,50.0,37.4500,25.3300
+GR-CYC,Cyclades Hub,Syros,South Aegean,21000,30.0,50.0,true,Cyclades Interconnection Hub,50.0,37.4400,24.9400
