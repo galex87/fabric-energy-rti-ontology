@@ -175,14 +175,9 @@ WindTurbineTelemetry | where timestamp > ago(2m) | summarize n=count()
 
 Expect `n > 0`.
 
-### 10 · Re-bind the Activator
+### 10 · Open the Real-Time Dashboard
 
-Open **`WT-Failures-Activator`** → **WT-Failures-Rule**:
-
-- **Event stream**: confirm it points to *your* `AegeanPowerStream → derivedwindturbinetelemetry`.
-- **Action → Run Notebook**: re-pick *your* `Dispatch_Maintenance_Crew` notebook.
-- **Parameters**: ensure `turbine_id` maps to the event's `turbine_id`.
-- **Save** → **Start**.
+Open **`AegeanPower_Live_Operations`**. Within ~30 s tiles should start populating with live wind, solar, grid, vessel, and emissions data. If tiles are empty, re-bind the data source: top toolbar → **Manage** → **Data sources** → edit → re-pick your `AegeanPowerEH` → **Save**.
 
 ### 11 · Re-bind Ontology data bindings
 
@@ -201,15 +196,7 @@ Open **`AegeanPowerDataAgent`** → **+ Data source**:
 
 Click **Publish**.
 
-### 13 · Re-bind the dashboard data source
-
-Open **`AegeanPower_Live_Operations`**. Tiles will be empty because the dashboard still references the original Eventhouse cluster URL.
-
-- Top toolbar → **Manage** → **Data sources**
-- Edit the existing entry → re-pick your `AegeanPowerEH`
-- **Save** → refresh the page → tiles populate.
-
-### 14 · You're ready
+### 13 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
 
