@@ -146,6 +146,8 @@ Open **`AegeanPowerStream`** → **Edit**.
 
 3. Switch to **Live view** (top right of the canvas). Click the **CustomApp source** node → **Sample code** tab → copy the **primary connection string**.
 
+   ![Eventstream connection string location](docs/images/eventstream-connection-string.png)
+
 ### 8 · Paste the connection string into the simulator
 
 Open **`AegeanPower_Simulator`** notebook → find this line (around line 100):
