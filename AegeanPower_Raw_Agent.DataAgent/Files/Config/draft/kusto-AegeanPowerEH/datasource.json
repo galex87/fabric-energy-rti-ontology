@@ -1,0 +1,774 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "AegeanPowerEH",
+  "type": "kusto",
+  "userDescription": null,
+  "metadata": {},
+  "elements": [
+    {
+      "id": "b1aeeadc-1a20-4b77-aa49-df22b0cd46a4",
+      "is_selected": false,
+      "display_name": "Functions",
+      "type": "function_grouping",
+      "description": null,
+      "children": [
+        {
+          "id": "7fbefd3f-e962-4de2-b62f-6cff79f2bd1b",
+          "is_selected": false,
+          "display_name": "TurbineVibration",
+          "type": "kusto.function",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "bdb749f7-c20b-4c1f-b0ad-2b05f13702c3",
+          "is_selected": false,
+          "display_name": "VesselTracking",
+          "type": "kusto.function",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "c4bc6d6b-bb5e-45ef-a59c-ee378a8b8e91",
+      "is_selected": false,
+      "display_name": "Materialized Views",
+      "type": "materialized_view_grouping",
+      "description": null,
+      "children": [
+        {
+          "id": "40d90047-5c19-48bc-8e90-75b91084d333",
+          "is_selected": false,
+          "display_name": "TurbineLatestMV",
+          "type": "kusto.materialized_view",
+          "description": null,
+          "children": [
+            {
+              "id": "latitude",
+              "is_selected": true,
+              "display_name": "latitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "longitude",
+              "is_selected": true,
+              "display_name": "longitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "nacelle_temp_c",
+              "is_selected": true,
+              "display_name": "nacelle_temp_c",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "power_mw",
+              "is_selected": true,
+              "display_name": "power_mw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "rotor_rpm",
+              "is_selected": true,
+              "display_name": "rotor_rpm",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "turbine_id",
+              "is_selected": true,
+              "display_name": "turbine_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vibration_mm_s",
+              "is_selected": true,
+              "display_name": "vibration_mm_s",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "wind_speed_ms",
+              "is_selected": true,
+              "display_name": "wind_speed_ms",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "5d672317-df98-451f-9677-033c7db3be7a",
+          "is_selected": false,
+          "display_name": "VesselTrackingMV",
+          "type": "kusto.materialized_view",
+          "description": null,
+          "children": [
+            {
+              "id": "cargo_status",
+              "is_selected": true,
+              "display_name": "cargo_status",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "destination",
+              "is_selected": true,
+              "display_name": "destination",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "eta_hours",
+              "is_selected": true,
+              "display_name": "eta_hours",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "heading_deg",
+              "is_selected": true,
+              "display_name": "heading_deg",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "latitude",
+              "is_selected": true,
+              "display_name": "latitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "longitude",
+              "is_selected": true,
+              "display_name": "longitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "speed_knots",
+              "is_selected": true,
+              "display_name": "speed_knots",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vessel_id",
+              "is_selected": true,
+              "display_name": "vessel_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vessel_name",
+              "is_selected": true,
+              "display_name": "vessel_name",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vessel_type",
+              "is_selected": true,
+              "display_name": "vessel_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "467c56f8-9126-4796-8208-27829cdba7ae",
+      "is_selected": false,
+      "display_name": "Shortcuts",
+      "type": "shortcut_grouping",
+      "description": null,
+      "children": []
+    },
+    {
+      "id": "88903dea-7c03-4318-ae05-75a59718a080",
+      "is_selected": false,
+      "display_name": "Tables",
+      "type": "table_grouping",
+      "description": null,
+      "children": [
+        {
+          "id": "1bcfb86a-b928-4449-8258-ffbdbf8ddfb0",
+          "is_selected": true,
+          "display_name": "EmissionsStream",
+          "type": "kusto.table",
+          "description": null,
+          "children": [
+            {
+              "id": "co2_kg_per_hour",
+              "is_selected": true,
+              "display_name": "co2_kg_per_hour",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "compliance_pct",
+              "is_selected": true,
+              "display_name": "compliance_pct",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "cumulative_co2_tonnes_today",
+              "is_selected": true,
+              "display_name": "cumulative_co2_tonnes_today",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "ets_daily_allowance_tonnes",
+              "is_selected": true,
+              "display_name": "ets_daily_allowance_tonnes",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "fuel_type",
+              "is_selected": true,
+              "display_name": "fuel_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "plant_id",
+              "is_selected": true,
+              "display_name": "plant_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "plant_name",
+              "is_selected": true,
+              "display_name": "plant_name",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "power_output_mw",
+              "is_selected": true,
+              "display_name": "power_output_mw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "stream_type",
+              "is_selected": true,
+              "display_name": "stream_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "d0ee59d9-3e11-4c41-aad2-7d19a6e41739",
+          "is_selected": true,
+          "display_name": "GridTelemetry",
+          "type": "kusto.table",
+          "description": null,
+          "children": [
+            {
+              "id": "balance_mw",
+              "is_selected": true,
+              "display_name": "balance_mw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "frequency_hz",
+              "is_selected": true,
+              "display_name": "frequency_hz",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "generation_mw",
+              "is_selected": true,
+              "display_name": "generation_mw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "grid_id",
+              "is_selected": true,
+              "display_name": "grid_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "grid_name",
+              "is_selected": true,
+              "display_name": "grid_name",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "load_mw",
+              "is_selected": true,
+              "display_name": "load_mw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "stream_type",
+              "is_selected": true,
+              "display_name": "stream_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "voltage_kv",
+              "is_selected": true,
+              "display_name": "voltage_kv",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "91ba4fd7-0ae7-45ba-b3cd-4453beee3d11",
+          "is_selected": true,
+          "display_name": "SolarInverterTelemetry",
+          "type": "kusto.table",
+          "description": null,
+          "children": [
+            {
+              "id": "efficiency_pct",
+              "is_selected": true,
+              "display_name": "efficiency_pct",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "inverter_id",
+              "is_selected": true,
+              "display_name": "inverter_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "irradiance_wm2",
+              "is_selected": true,
+              "display_name": "irradiance_wm2",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "latitude",
+              "is_selected": true,
+              "display_name": "latitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "longitude",
+              "is_selected": true,
+              "display_name": "longitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "panel_temp_c",
+              "is_selected": true,
+              "display_name": "panel_temp_c",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "plant_id",
+              "is_selected": true,
+              "display_name": "plant_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "power_kw",
+              "is_selected": true,
+              "display_name": "power_kw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "stream_type",
+              "is_selected": true,
+              "display_name": "stream_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "6630dc2e-6838-464a-9680-43c3ccee69a7",
+          "is_selected": true,
+          "display_name": "VesselPositions",
+          "type": "kusto.table",
+          "description": null,
+          "children": [
+            {
+              "id": "cargo_status",
+              "is_selected": true,
+              "display_name": "cargo_status",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "destination",
+              "is_selected": true,
+              "display_name": "destination",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "eta_hours",
+              "is_selected": true,
+              "display_name": "eta_hours",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "heading_deg",
+              "is_selected": true,
+              "display_name": "heading_deg",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "latitude",
+              "is_selected": true,
+              "display_name": "latitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "longitude",
+              "is_selected": true,
+              "display_name": "longitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "speed_knots",
+              "is_selected": true,
+              "display_name": "speed_knots",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "stream_type",
+              "is_selected": true,
+              "display_name": "stream_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vessel_id",
+              "is_selected": true,
+              "display_name": "vessel_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vessel_name",
+              "is_selected": true,
+              "display_name": "vessel_name",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vessel_type",
+              "is_selected": true,
+              "display_name": "vessel_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "0086784d-2236-40d7-841d-8514fa5d2f39",
+          "is_selected": true,
+          "display_name": "WindTurbineTelemetry",
+          "type": "kusto.table",
+          "description": null,
+          "children": [
+            {
+              "id": "latitude",
+              "is_selected": true,
+              "display_name": "latitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "longitude",
+              "is_selected": true,
+              "display_name": "longitude",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "nacelle_temp_c",
+              "is_selected": true,
+              "display_name": "nacelle_temp_c",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "plant_id",
+              "is_selected": true,
+              "display_name": "plant_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "power_mw",
+              "is_selected": true,
+              "display_name": "power_mw",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "rotor_rpm",
+              "is_selected": true,
+              "display_name": "rotor_rpm",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "stream_type",
+              "is_selected": true,
+              "display_name": "stream_type",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "timestamp",
+              "is_selected": true,
+              "display_name": "timestamp",
+              "type": "kusto.column",
+              "data_type": "System.DateTime",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "turbine_id",
+              "is_selected": true,
+              "display_name": "turbine_id",
+              "type": "kusto.column",
+              "data_type": "System.String",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "vibration_mm_s",
+              "is_selected": true,
+              "display_name": "vibration_mm_s",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "wind_speed_ms",
+              "is_selected": true,
+              "display_name": "wind_speed_ms",
+              "type": "kusto.column",
+              "data_type": "System.Double",
+              "description": null,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

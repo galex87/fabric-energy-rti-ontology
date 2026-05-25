@@ -1,0 +1,16 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+
+annotation PBI_ProTooling = ["MCP-PBIModeling"]
+
+ref table vessels
+ref table power_plants
+ref table emissions_ledger
+ref table wind_turbines
+ref table maintenance_orders
+ref table solar_inverters
+ref table island_grids
+ref table substations
+

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "e65b3374-1235-9313-4cac-6adb155aca95",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "AegeanPowerOntologyRaw",
+  "type": "ontology",
+  "userDescription": null,
+  "metadata": {},
+  "elements": [
+    {
+      "id": "PowerPlant",
+      "is_selected": true,
+      "display_name": "PowerPlant",
+      "type": "ontology.entity",
+      "description": "plant_id,plant_name,plant_type,fuel_type,capacity_mw,commissioning_year,region,prefecture,latitude,longitude,operator,status,grid_zone",
+      "children": []
+    },
+    {
+      "id": "WindTurbine",
+      "is_selected": true,
+      "display_name": "WindTurbine",
+      "type": "ontology.entity",
+      "description": "turbine_id,power_mw,turbine_name,wind_speed_ms,plant_id,vibration_mm_s,manufacturer,rotor_rpm,model,nacelle_temp_c,capacity_mw,hub_height_m,rotor_diameter_m,cut_in_speed_ms,rated_speed_ms,cut_out_speed_ms,latitude,longitude,commissioning_date,status",
+      "children": []
+    },
+    {
+      "id": "SolarInverter",
+      "is_selected": true,
+      "display_name": "SolarInverter",
+      "type": "ontology.entity",
+      "description": "inverter_id,power_kw,inverter_name,irradiance_wm2,plant_id,panel_temp_c,manufacturer,efficiency_pct,model,capacity_kw,panel_type,panel_tilt_deg,panel_azimuth_deg,latitude,longitude,commissioning_date,status",
+      "children": []
+    },
+    {
+      "id": "IslandGrid",
+      "is_selected": true,
+      "display_name": "IslandGrid",
+      "type": "ontology.entity",
+      "description": "grid_id,frequency_hz,grid_name,load_mw,island,generation_mw,region,voltage_kv,population,balance_mw,peak_demand_mw,installed_capacity_mw,interconnected,interconnection_cable,nominal_frequency_hz,latitude,longitude",
+      "children": []
+    },
+    {
+      "id": "Vessel",
+      "is_selected": true,
+      "display_name": "Vessel",
+      "type": "ontology.entity",
+      "description": "vessel_id,stream_type,capacity_m3,latitude,current_cargo_m3,longitude,flag,speed_knots,imo_number,heading_deg,origin_country,destination,origin_port,eta_hours,supply_plant_id,cargo_status,vessel_name,vessel_type",
+      "children": []
+    },
+    {
+      "id": "MaintenanceOrder",
+      "is_selected": true,
+      "display_name": "MaintenanceOrder",
+      "type": "ontology.entity",
+      "description": "order_id,order_type,priority,status,asset_id,asset_type,plant_id,description,created_date,scheduled_date,completed_date,technician,cost_eur",
+      "children": []
+    },
+    {
+      "id": "Substation",
+      "is_selected": true,
+      "display_name": "Substation",
+      "type": "ontology.entity",
+      "description": "substation_id,substation_name,voltage_kv,substation_type,region,latitude,longitude,connected_grid_id,fed_by_plant_id,status",
+      "children": []
+    },
+    {
+      "id": "EmissionsRecord",
+      "is_selected": true,
+      "display_name": "EmissionsRecord",
+      "type": "ontology.entity",
+      "description": "record_id,plant_id,plant_name,period,co2_tonnes,ets_allowance_tonnes,fuel_consumed_mwh,emission_factor,compliance_pct,compliance_status",
+      "children": []
+    }
+  ]
+}

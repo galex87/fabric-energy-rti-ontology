@@ -1,0 +1,80 @@
+table maintenance_orders
+
+	measure 'Maintenance Cost EUR' = SUM(maintenance_orders[cost_eur])
+		formatString: #,##0.00
+
+	measure 'Open Orders' = CALCULATE(COUNTROWS(maintenance_orders), maintenance_orders[status] = "Open" || maintenance_orders[status] = "In Progress")
+		formatString: #,##0
+
+	column order_id
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: order_id
+
+	column order_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: order_type
+
+	column priority
+		dataType: string
+		summarizeBy: none
+		sourceColumn: priority
+
+	column status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: status
+
+	column asset_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: asset_id
+
+	column asset_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: asset_type
+
+	column plant_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: plant_id
+
+	column description
+		dataType: string
+		summarizeBy: none
+		sourceColumn: description
+
+	column created_date
+		dataType: string
+		summarizeBy: none
+		sourceColumn: created_date
+
+	column scheduled_date
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scheduled_date
+
+	column completed_date
+		dataType: string
+		summarizeBy: none
+		sourceColumn: completed_date
+
+	column technician
+		dataType: string
+		summarizeBy: none
+		sourceColumn: technician
+
+	column cost_eur
+		dataType: double
+		sourceColumn: cost_eur
+
+	partition maintenance_orders = entity
+		mode: directLake
+		source
+			entityName: maintenance_orders
+			schemaName: dbo
+			expressionSource: DL_Lakehouse
+

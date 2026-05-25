@@ -1,0 +1,57 @@
+table substations
+
+	column substation_id
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: substation_id
+
+	column substation_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: substation_name
+
+	column voltage_kv
+		dataType: double
+		sourceColumn: voltage_kv
+
+	column substation_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: substation_type
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column latitude
+		dataType: double
+		sourceColumn: latitude
+
+	column longitude
+		dataType: double
+		sourceColumn: longitude
+
+	column connected_grid_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: connected_grid_id
+
+	column fed_by_plant_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: fed_by_plant_id
+
+	column status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: status
+
+	partition substations = entity
+		mode: directLake
+		source
+			entityName: substations
+			schemaName: dbo
+			expressionSource: DL_Lakehouse
+

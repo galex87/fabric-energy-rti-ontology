@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "AegeanPowerLH_Raw"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "65e827ef-c164-bcc6-44e8-ad8174b1118c"
+  }
+}
