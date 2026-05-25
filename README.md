@@ -72,24 +72,13 @@ Plus the **Ontology + Data Agent** side:
 - **Contributor** or higher on the workspace you create.
 - A GitHub account.
 
-**Tenant admin settings** (Fabric Admin Portal → Tenant settings) — confirm these are **Enabled** for your security group or the whole org:
+**Tenant admin settings** — make sure your Fabric admin has enabled the tenant settings required for:
 
-**Git integration**
-- **Users can synchronize workspace items with their Git repositories**
-- **Users can sync workspace items with GitHub repositories**
+- **Git integration** — to sync the workspace with this GitHub repo
+- **Fabric Data Agent** — see [Configure Fabric data agent tenant settings](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-tenant-settings)
+- **Ontology + Graph** — see [Required tenant settings for ontology](https://learn.microsoft.com/en-us/fabric/iq/ontology/overview-tenant-settings)
 
-**Copilot and Azure OpenAI** (required for Data Agent — [official docs](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-tenant-settings))
-- **Users can use Copilot and other features powered by Azure OpenAI**
-- **Capacities can be designated as Fabric Copilot capacities** *(and the capacity backing your workspace must be designated)*
-- *If your capacity region is outside the EU data boundary or the US, also enable:*
-  - **Data sent to Azure OpenAI can be processed outside your capacity's geographic region, compliance boundary, or national cloud instance**
-  - **Data sent to Azure OpenAI can be stored outside your capacity's geographic region, compliance boundary, or national cloud instance**
-
-**Ontology (preview)** — [official docs](https://learn.microsoft.com/en-us/fabric/iq/ontology/overview-tenant-settings)
-- **Enable Ontology item (preview)** *(without this, ontology items fail to create)*
-- **User can create Graph (preview)** *(required by the ontology — otherwise you'll see "Unable to create the Ontology (preview) item")*
-
-If any of the above is disabled, items will fail to sync, the Data Agent will refuse to publish, or chat will return policy errors. Settings can take up to one hour to propagate after the admin toggles them.
+Settings can take up to one hour to take effect after the admin toggles them.
 
 ---
 
