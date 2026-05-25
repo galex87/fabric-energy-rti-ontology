@@ -65,7 +65,27 @@ Plus the **Ontology + Data Agent** side:
 
 ## Quickstart
 
-> Prereqs: Fabric capacity (F2+ or P SKU). Trial may not support Git integration in all regions. Contributor or higher on a workspace.
+### 0 · Prerequisites
+
+**Personal:**
+- Fabric capacity (F2+ or P SKU). Trial may not support Git integration in all regions.
+- **Contributor** or higher on the workspace you create.
+- A GitHub account.
+
+**Tenant admin settings** (Fabric Admin Portal → Tenant settings) — confirm these are **Enabled** for your security group or the whole org:
+
+| Section | Setting |
+|---|---|
+| Git integration | **Users can synchronize workspace items with their Git repositories** |
+| Git integration | **Users can synchronize workspace items with GitHub repositories** |
+| Copilot and Azure OpenAI | **Users can create and use Data Agents** (preview) |
+| OneLake | **Users can create OneLake catalog items** (covers Ontology + Graph) |
+| Microsoft Fabric | **Users can create Fabric items** |
+| Real-Time Intelligence | **Users can create Eventstreams / Eventhouses / Activators** |
+
+If any of the above is disabled, ask your Fabric admin to enable it for the group you belong to. Without these, items will fail to sync or appear greyed-out after sync.
+
+---
 
 ### 1 · Fork this repo
 
