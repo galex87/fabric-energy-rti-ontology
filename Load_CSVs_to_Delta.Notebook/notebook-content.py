@@ -36,13 +36,13 @@ CSV = 'Files/data'
 
 tables = [
     ('power_plants.csv', 'power_plants', {'capacity_mw':'double','latitude':'double','longitude':'double','commissioning_year':'int'}),
-    ('wind_turbines.csv', 'wind_turbines', {'rated_power_kw':'double','hub_height_m':'double','rotor_diameter_m':'double','latitude':'double','longitude':'double'}),
-    ('solar_inverters.csv', 'solar_inverters', {'rated_power_kw':'double','panel_tilt_deg':'double','panel_azimuth_deg':'double','latitude':'double','longitude':'double'}),
-    ('substations.csv', 'substations', {'capacity_mva':'double','latitude':'double','longitude':'double'}),
-    ('island_grids.csv', 'island_grids', {'peak_demand_mw':'double'}),
-    ('vessels.csv', 'vessels', {'speed_knots':'double'}),
-    ('maintenance_orders.csv', 'maintenance_orders', {}),
-    ('emissions_ledger.csv', 'emissions_ledger', {'co2_tonnes':'double','ets_cap_tonnes':'double','compliance_pct':'double'})
+    ('wind_turbines.csv', 'wind_turbines', {'capacity_mw':'double','hub_height_m':'double','rotor_diameter_m':'double','cut_in_speed_ms':'double','rated_speed_ms':'double','cut_out_speed_ms':'double','latitude':'double','longitude':'double'}),
+    ('solar_inverters.csv', 'solar_inverters', {'capacity_kw':'double','panel_tilt_deg':'double','panel_azimuth_deg':'double','latitude':'double','longitude':'double'}),
+    ('substations.csv', 'substations', {'voltage_kv':'double','latitude':'double','longitude':'double'}),
+    ('island_grids.csv', 'island_grids', {'population':'int','peak_demand_mw':'double','installed_capacity_mw':'double','nominal_frequency_hz':'double','latitude':'double','longitude':'double'}),
+    ('vessels.csv', 'vessels', {'capacity_m3':'double','current_cargo_m3':'double','speed_knots':'double'}),
+    ('maintenance_orders.csv', 'maintenance_orders', {'cost_eur':'double'}),
+    ('emissions_ledger.csv', 'emissions_ledger', {'co2_tonnes':'double','ets_allowance_tonnes':'double','fuel_consumed_mwh':'double','emission_factor_tco2_per_mwh':'double','compliance_pct':'double'})
 ]
 
 for csv_file, tbl, overrides in tables:
