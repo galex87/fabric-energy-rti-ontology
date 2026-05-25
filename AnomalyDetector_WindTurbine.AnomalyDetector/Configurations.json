@@ -1,0 +1,65 @@
+{
+  "$id": "https://developer.microsoft.com/json-schemas/fabric/item/anomalyDetector/definition/1.0.0/schema.json",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "univariateConfigurations": [
+    {
+      "configurationId": "39b4e2dc-aa5c-4c6d-a66c-f851837612a2",
+      "configurationName": "WindAnomalyDetector",
+      "fabricDataSource": {
+        "dataSourceType": "KqlDb",
+        "tableName": "WindTurbineTelemetry",
+        "timestampColumnName": "timestamp",
+        "instanceIDColumnName": "turbine_id",
+        "attributeColumnName": "vibration_mm_s",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b"
+      },
+      "modelOption": {
+        "analysisCompletedAt": "2026-04-27T11:17:47.8215364+00:00",
+        "modelSelection": {
+          "modelAlgorithm": "SR_WINDOW",
+          "modelVersion": "1.0",
+          "modelName": "Seasonal Signal Monitor",
+          "modelDescription": "Understands recurring patterns \u2014 like weekly sales dips or holiday surges \u2014 so it can tell the difference between expected seasonal changes and true anomalies."
+        },
+        "parameters": [
+          {
+            "$type": "String",
+            "value": "daily",
+            "name": "Granularity"
+          },
+          {
+            "$type": "String",
+            "value": "auto",
+            "name": "ImputeMode"
+          },
+          {
+            "$type": "Float",
+            "value": 0.9,
+            "name": "MaxAnomalyRatio"
+          },
+          {
+            "$type": "Integer",
+            "value": 22,
+            "name": "Periodicity"
+          },
+          {
+            "$type": "Integer",
+            "value": 0,
+            "name": "Regularization"
+          },
+          {
+            "$type": "Integer",
+            "value": 45,
+            "name": "Sensitivity"
+          }
+        ]
+      },
+      "analysisRequestId": "e3629f9a-8c77-4973-95ac-2e3ba33ec4c2",
+      "detectionSettings": {
+        "confidence": 75,
+        "autoPublish": false
+      }
+    }
+  ]
+}
