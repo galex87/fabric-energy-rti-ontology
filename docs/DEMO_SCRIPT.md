@@ -1,0 +1,111 @@
+# Demo Script — AegeanPower Live Operations + Ontology
+
+A 12–15 minute end-to-end story across **Real-Time Intelligence** and **Ontology-driven Data Agents**.
+
+---
+
+## Setup (off-screen, before guests arrive)
+
+1. `AegeanPower_Simulator` notebook is running and emitting (KQL `WindTurbineTelemetry | top 1 by timestamp desc` returns recent data).
+2. `WT-Failures-Activator` rule shows **Running**.
+3. No leftover failure: `Files/control/` is empty (or run the cleanup cell at the top of the simulator).
+4. Three tabs open:
+   - `AegeanPower_Live_Operations` (dashboard with map)
+   - `AegeanPowerDataAgent` (chat ready)
+   - `Demo_Trigger_Console` (for the live fault)
+
+---
+
+## Act 1 — The world (1 min)
+
+Open the dashboard. Talk track:
+
+> "This is Aegean Power S.A. — a fictional Greek utility running 20 wind turbines across Thrace, Tinos, and Naxos, 15 solar inverters in Thessaly and Crete, two gas plants in Athens, and a fleet of three service vessels.
+> Every 2 seconds, every asset reports power, wind speed, vibration, emissions, position. Everything you see is live."
+
+Point out: turbine power tiles, vessel map, emissions tile, grid frequency.
+
+---
+
+## Act 2 — Ontology-driven Data Agent (4 min)
+
+Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
+
+1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
+2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, ontology resolves it.
+3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
+
+Talk track:
+
+> "The agent isn't reading SQL we wrote. It's reading our **ontology** — a semantic layer that maps business concepts (plants, turbines, vessels, maintenance orders) to physical tables. Without it, the agent would guess columns. With it, it joins on `plant_id` because the ontology says it can."
+
+---
+
+## Act 3 — The fault, live (3 min)
+
+Switch to `Demo_Trigger_Console`. Run the **Trigger WT-NAX-04 failure** cell:
+
+```python
+import os
+os.makedirs('/lakehouse/default/Files/control', exist_ok=True)
+with open('/lakehouse/default/Files/control/failed_turbines.txt', 'w') as f:
+    f.write('WT-NAX-04\n')
+```
+
+Switch immediately back to the dashboard. Within ~2 seconds:
+
+- `WT-NAX-04` power tile drops from ~3 MW → 0 MW.
+- `fault_type` column shows `DEMO_FORCED_FAILURE`.
+
+Talk track:
+
+> "I just forced turbine WT-NAX-04 offline. The simulator emitted a failure event into Eventstream. Eventstream filtered it into the wind turbine table in our Eventhouse. The dashboard auto-refreshed. **All without me touching anything.**"
+
+---
+
+## Act 4 — Autonomous response (3 min)
+
+Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appears, then the **Action** column shows a notebook run.
+
+Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbine_id = "WT-NAX-04"` as a parameter.
+
+Switch back to the dashboard map. Within ~5 s the vessel **`VE-SVC-01` (Poseidon Service)** changes heading and starts moving toward Naxos.
+
+Talk track:
+
+> "Activator detected the `fault_type` transition. It triggered the Dispatch notebook automatically — no human in the loop. The notebook wrote a control file telling the simulator to re-route the service vessel.
+> **Real-time data → real-world action. End-to-end in under 10 seconds.**"
+
+---
+
+## Act 5 — The bigger picture (1 min)
+
+Switch back to the Data Agent. Ask:
+
+> *"What is happening right now at Naxos Wind Farm, and is anyone responding?"*
+
+The agent answers with both the maintenance order context (from the Lakehouse) **and** the dispatched vessel (visible in the operational data). Cross-domain reasoning grounded in the ontology.
+
+---
+
+## Close (30 s)
+
+> "Three things to remember:
+> 1. **One platform.** Real-time, batch, AI, BI — all in Fabric.
+> 2. **Ontology pays off.** Same data, but the clean semantic layer is the difference between a Data Agent that guesses and one that gives boardroom answers.
+> 3. **Autonomous operations are real.** Activator + Notebook is enough to close a real-world loop today."
+
+---
+
+## Reset (between runs)
+
+In `Demo_Trigger_Console`, run the **Reset** cell:
+
+```python
+import os
+for f in ['/lakehouse/default/Files/control/failed_turbines.txt',
+          '/lakehouse/default/Files/control/dispatch_poseidon.txt']:
+    if os.path.exists(f): os.remove(f)
+```
+
+Wait ~15 seconds (Activator state needs to see at least one `NONE` event for `WT-NAX-04` before the next trigger will fire). See [TROUBLESHOOTING.md](TROUBLESHOOTING.md#activator-fires-once-but-not-again) for why.

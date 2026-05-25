@@ -1,0 +1,29 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Local secrets / scratch
+*.local.json
+*.secret
+.env
+*.pem
+*.key
+
+# Fabric local artifacts
+*.ipynb_checkpoints
+
+# Temp
+*.tmp
+*.log
