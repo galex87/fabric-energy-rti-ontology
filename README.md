@@ -105,20 +105,31 @@ In the workspace: **Workspace settings → Git integration → Connect**:
 
 Fabric pulls every item into your workspace.
 
-### 4 · Upload seed data to the Lakehouse
+### 4 · Bind a default Lakehouse to each notebook
+
+Notebooks in the repo intentionally have **no default Lakehouse** so they sync cleanly across any workspace. For each of these four notebooks, open them and bind `AegeanPowerLH` as the default Lakehouse:
+
+- **`AegeanPower_Simulator`**
+- **`Demo_Trigger_Console`**
+- **`Dispatch_Maintenance_Crew`**
+- **`Load_CSVs_to_Delta`**
+
+How to bind: open the notebook → left **Lakehouses** sidebar → **+ Add** → **Existing Lakehouse** → pick `AegeanPowerLH` → ⭐ **Set as default** (star icon on the lakehouse in the sidebar).
+
+### 5 · Upload seed data to the Lakehouse
 
 1. Open **`AegeanPowerLH`** in the workspace.
 2. **Files** → **Upload** → **Upload folder** → select your local clone's `data/` folder.
 3. Confirm `Files/data/*.csv` shows 8 files.
 
-### 5 · Load CSVs to Delta tables
+### 6 · Load CSVs to Delta tables
 
 Open **`Load_CSVs_to_Delta`** notebook → **Run all**.
 
 You should now see 8 Delta tables under `Tables/`:
 `power_plants`, `wind_turbines`, `solar_inverters`, `maintenance_orders`, `vessels`, `substations`, `emissions_ledger`, `island_grids`.
 
-### 6 · Wire the Eventstream
+### 7 · Wire the Eventstream
 
 The Eventstream `AegeanPowerStream` synced with destinations pointing to the **original** workspace's Eventhouse GUID. You need to re-bind:
 
@@ -128,7 +139,7 @@ The Eventstream `AegeanPowerStream` synced with destinations pointing to the **o
 3. Click **Publish**.
 4. Click the **CustomApp source** → **Sample code** tab → copy the **primary connection string**.
 
-### 7 · Paste the connection string into the simulator
+### 8 · Paste the connection string into the simulator
 
 Open **`AegeanPower_Simulator`** notebook → find this line (around line 100):
 
@@ -136,9 +147,9 @@ Open **`AegeanPower_Simulator`** notebook → find this line (around line 100):
 EVENTHUB_CONNECTION_STRING = "REPLACE_ME_WITH_EVENTSTREAM_CUSTOM_ENDPOINT_CONNECTION_STRING"
 ```
 
-Replace the placeholder with the connection string from step 6.
+Replace the placeholder with the connection string from step 7.
 
-### 8 · Run the simulator
+### 9 · Run the simulator
 
 **`AegeanPower_Simulator`** → **Run all**. After ~30 s, verify data is flowing in a KQL query window:
 
@@ -148,7 +159,7 @@ WindTurbineTelemetry | where timestamp > ago(2m) | summarize n=count()
 
 Expect `n > 0`.
 
-### 9 · Re-bind the Activator
+### 10 · Re-bind the Activator
 
 Open **`WT-Failures-Activator`** → **WT-Failures-Rule**:
 
@@ -157,7 +168,7 @@ Open **`WT-Failures-Activator`** → **WT-Failures-Rule**:
 - **Parameters**: ensure `turbine_id` maps to the event's `turbine_id`.
 - **Save** → **Start**.
 
-### 10 · Add data sources to the Data Agent
+### 11 · Add data sources to the Data Agent
 
 Open **`AegeanPowerDataAgent`** → **+ Data source**:
 - Type: **Lakehouse** → **AegeanPowerLH** → tick all 8 tables.
@@ -165,11 +176,11 @@ Open **`AegeanPowerDataAgent`** → **+ Data source**:
 
 Click **Publish**.
 
-### 11 · Open the dashboard
+### 12 · Open the dashboard
 
 Open **`AegeanPower_Live_Operations`**. If tiles are empty, click each query → re-bind data source to your `AegeanPowerEH` → **Save**.
 
-### 12 · You're ready
+### 13 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
 

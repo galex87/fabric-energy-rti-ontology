@@ -7,16 +7,7 @@
 # META     "name": "synapse_pyspark"
 # META   },
 # META   "dependencies": {
-# META     "lakehouse": {
-# META       "default_lakehouse": "bd9c69ce-ee2b-45a9-854d-13696f476a96",
-# META       "default_lakehouse_name": "AegeanPowerLH",
-# META       "default_lakehouse_workspace_id": "21dbf808-03bb-44d9-a8f4-ac6166b1ce08",
-# META       "known_lakehouses": [
-# META         {
-# META           "id": "bd9c69ce-ee2b-45a9-854d-13696f476a96"
-# META         }
-# META       ]
-# META     }
+# META     "lakehouse": {}
 # META   }
 # META }
 
