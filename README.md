@@ -76,8 +76,8 @@ Plus the **Ontology + Data Agent** side:
 
 | Section | Setting |
 |---|---|
-| Git integration | **Users can synchronize workspace items with their Git repositories** |
-| Git integration | **Users can synchronize workspace items with GitHub repositories** |
+| Git integration | **Users can sync workspace items with their Git repositories** |
+| Git integration | **Users can sync workspace items with GitHub repositories** |
 | Copilot and Azure OpenAI | **Users can create and use Data Agents** (preview) |
 | OneLake | **Users can create OneLake catalog items** (covers Ontology + Graph) |
 | Microsoft Fabric | **Users can create Fabric items** |
