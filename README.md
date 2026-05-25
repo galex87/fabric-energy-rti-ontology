@@ -74,16 +74,18 @@ Plus the **Ontology + Data Agent** side:
 
 **Tenant admin settings** (Fabric Admin Portal → Tenant settings) — confirm these are **Enabled** for your security group or the whole org:
 
-| Section | Setting |
-|---|---|
-| Git integration | **Users can sync workspace items with their Git repositories** |
-| Git integration | **Users can sync workspace items with GitHub repositories** |
-| Copilot and Azure OpenAI | **Users can create and use Data Agents** (preview) |
-| OneLake | **Users can create OneLake catalog items** (covers Ontology + Graph) |
-| Microsoft Fabric | **Users can create Fabric items** |
-| Real-Time Intelligence | **Users can create Eventstreams / Eventhouses / Activators** |
+**Git integration**
+- **Users can synchronize workspace items with their Git repositories**
+- **Users can sync workspace items with GitHub repositories**
 
-If any of the above is disabled, ask your Fabric admin to enable it for the group you belong to. Without these, items will fail to sync or appear greyed-out after sync.
+**Copilot and Azure OpenAI** (required for Data Agent — [official docs](https://learn.microsoft.com/en-us/fabric/data-science/data-agent-tenant-settings))
+- **Users can use Copilot and other features powered by Azure OpenAI**
+- **Capacities can be designated as Fabric Copilot capacities** *(and the capacity backing your workspace must be designated)*
+- *If your capacity region is outside the EU data boundary or the US, also enable:*
+  - **Data sent to Azure OpenAI can be processed outside your capacity's geographic region, compliance boundary, or national cloud instance**
+  - **Data sent to Azure OpenAI can be stored outside your capacity's geographic region, compliance boundary, or national cloud instance**
+
+If any of the above is disabled, items will fail to sync, the Data Agent will refuse to publish, or chat will return policy errors. Settings can take up to one hour to propagate after the admin toggles them.
 
 ---
 
