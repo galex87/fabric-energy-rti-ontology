@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "AnomalyDetector",
+    "displayName": "AnomalyDetector_WindTurbine"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "da6c8d03-bf55-8d74-48bb-b6f4cecbd004"
+  }
+}

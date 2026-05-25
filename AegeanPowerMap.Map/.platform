@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Map",
+    "displayName": "AegeanPowerMap",
+    "description": "Aegean Power S.A. geospatial operations map"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f18dcf5a-47b6-bba0-4260-79a75b233ed2"
+  }
+}
