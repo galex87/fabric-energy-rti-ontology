@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "AegeanPower_Simulator",
+    "description": "Wind/solar/grid/vessel/emissions telemetry simulator \u2192 AegeanPowerStream2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "df1a025e-0815-4c3d-b70a-12652f01f18f"
+  }
+}
