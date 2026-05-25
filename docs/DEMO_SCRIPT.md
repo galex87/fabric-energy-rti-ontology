@@ -78,6 +78,18 @@ Talk track:
 
 ---
 
+## Act 4b — Anomaly Detector (optional, 1 min)
+
+Open `AnomalyDetector_WindTurbine`. The detector is bound to `WindTurbineTelemetry.vibration_mm_s` grouped by `turbine_id`.
+
+Talk track:
+
+> "Activator catches **known** failure signatures — like `fault_type = DEMO_FORCED_FAILURE`. But what about the **unknown** ones? The Anomaly Detector continuously scores live telemetry and surfaces statistical outliers. Below is `WT-NAX-07` — a turbine slowly developing a bearing issue. No explicit rule flagged it; the model did."
+
+Point to the vibration trend with the model's anomaly markers. Mention that detected anomalies can be published to Real-Time Hub and chained into an Activator rule the same way `fault_type` was — closing the loop on novel issues.
+
+---
+
 ## Act 5 — The bigger picture (1 min)
 
 Switch back to the Data Agent. Ask:
