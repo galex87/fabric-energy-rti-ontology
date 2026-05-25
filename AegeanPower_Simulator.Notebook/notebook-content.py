@@ -522,24 +522,12 @@ else:
 # CELL ********************
 
 # === DEMO CONTROL FILES (read by generators each tick) ===
-# Reads from AegeanPowerLH/Files/control/ regardless of attached default lakehouse.
+# Reads from /lakehouse/default/Files/control/ — requires AegeanPowerLH bound
+# as the default lakehouse on this notebook (see README step 4).
 import os
-WS_ID  = "21dbf808-03bb-44d9-a8f4-ac6166b1ce08"
-LH_ID  = "bd9c69ce-ee2b-45a9-854d-13696f476a96"  # AegeanPowerLH
-ABFSS  = f"abfss://{WS_ID}@onelake.dfs.fabric.microsoft.com/{LH_ID}"
 CTRL_LOCAL = "/lakehouse/default/Files/control"
 
-def _read_remote(rel_path):
-    """Read a small text file from AegeanPowerLH via Spark."""
-    try:
-        df = spark.read.text(f"{ABFSS}/Files/control/{rel_path}")
-        rows = df.collect()
-        return "\n".join(r.value for r in rows)
-    except Exception:
-        return ""
-
 def get_failed_turbines():
-    # Fast local mount path first
     try:
         p = f"{CTRL_LOCAL}/failed_turbines.txt"
         if os.path.exists(p):
@@ -547,9 +535,7 @@ def get_failed_turbines():
                 return {line.strip() for line in f if line.strip() and not line.startswith("#")}
     except Exception:
         pass
-    # Fallback to remote ABFSS
-    txt = _read_remote("failed_turbines.txt")
-    return {line.strip() for line in txt.splitlines() if line.strip() and not line.startswith("#")}
+    return set()
 
 def poseidon_dispatched():
     try:
@@ -562,13 +548,6 @@ def poseidon_dispatched():
                 return float(lat), float(lon)
     except Exception:
         pass
-    txt = _read_remote("dispatch_poseidon.txt").strip()
-    if txt:
-        try:
-            lat, lon = txt.split(",")
-            return float(lat), float(lon)
-        except Exception:
-            return None
     return None
 
 

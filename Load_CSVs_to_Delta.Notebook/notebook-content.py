@@ -13,8 +13,8 @@
 
 # CELL ********************
 
-ABFSS = 'abfss://21dbf808-03bb-44d9-a8f4-ac6166b1ce08@onelake.dfs.fabric.microsoft.com/bd9c69ce-ee2b-45a9-854d-13696f476a96'
-CSV = f'{ABFSS}/Files/data'
+# Uses the notebook's default lakehouse (bind AegeanPowerLH per README step 4)
+CSV = 'Files/data'
 print(f'Reading from: {CSV}')
 df = spark.read.option('header', True).option('inferSchema', True).csv(f'{CSV}/power_plants.csv')
 df.show()
@@ -31,8 +31,8 @@ print(f'Row count: {df.count()}')
 
 from pyspark.sql.functions import col
 
-ABFSS = 'abfss://21dbf808-03bb-44d9-a8f4-ac6166b1ce08@onelake.dfs.fabric.microsoft.com/bd9c69ce-ee2b-45a9-854d-13696f476a96'
-CSV = f'{ABFSS}/Files/data'
+# Uses the notebook's default lakehouse (bind AegeanPowerLH per README step 4)
+CSV = 'Files/data'
 
 tables = [
     ('power_plants.csv', 'power_plants', {'capacity_mw':'double','latitude':'double','longitude':'double','commissioned_year':'int'}),

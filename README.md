@@ -168,19 +168,32 @@ Open **`WT-Failures-Activator`** → **WT-Failures-Rule**:
 - **Parameters**: ensure `turbine_id` maps to the event's `turbine_id`.
 - **Save** → **Start**.
 
-### 11 · Add data sources to the Data Agent
+### 11 · Re-bind Ontology data bindings
+
+The Ontology's entity data bindings still point to the original Eventhouse cluster URL. Open **`AegeanPowerOntology`** → for each entity (PowerPlant, WindTurbine, SolarInverter, IslandGrid, Vessel, MaintenanceOrder, Substation, EmissionsRecord):
+
+- Click the entity → **Data bindings** tab
+- Re-pick the source: your `AegeanPowerEH` (KQL DB) or `AegeanPowerLH` (Lakehouse) → matching table
+- **Save**
+
+### 12 · Add data sources to the Data Agent
 
 Open **`AegeanPowerDataAgent`** → **+ Data source**:
-- Type: **Lakehouse** → **AegeanPowerLH** → tick all 8 tables.
-- (Optional) Add KQL DB source → **AegeanPowerEH** → tick all 5 tables.
+- Type: **Ontology** → **AegeanPowerOntology** (recommended — gives the agent semantic context)
+- *Or* Type: **Lakehouse** → **AegeanPowerLH** → tick all 8 tables
+- *Optional:* KQL DB source → **AegeanPowerEH** → tick all 5 tables
 
 Click **Publish**.
 
-### 12 · Open the dashboard
+### 13 · Re-bind the dashboard data source
 
-Open **`AegeanPower_Live_Operations`**. If tiles are empty, click each query → re-bind data source to your `AegeanPowerEH` → **Save**.
+Open **`AegeanPower_Live_Operations`**. Tiles will be empty because the dashboard still references the original Eventhouse cluster URL.
 
-### 13 · You're ready
+- Top toolbar → **Manage** → **Data sources**
+- Edit the existing entry → re-pick your `AegeanPowerEH`
+- **Save** → refresh the page → tiles populate.
+
+### 14 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
 
