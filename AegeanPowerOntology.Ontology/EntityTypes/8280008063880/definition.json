@@ -80,6 +80,27 @@
       "redefines": null,
       "baseTypeNamespaceType": null,
       "valueType": "String"
+    },
+    {
+      "id": "5151189005843988109",
+      "name": "destination",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "String"
+    },
+    {
+      "id": "5151189003634174644",
+      "name": "speed_knots",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "Double"
+    },
+    {
+      "id": "5151189002796941004",
+      "name": "status",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "String"
     }
   ],
   "timeseriesProperties": [
@@ -110,27 +131,6 @@
       "redefines": null,
       "baseTypeNamespaceType": null,
       "valueType": "Double"
-    },
-    {
-      "id": "5151189005843988109",
-      "name": "destination",
-      "redefines": null,
-      "baseTypeNamespaceType": null,
-      "valueType": "String"
-    },
-    {
-      "id": "5151189003634174644",
-      "name": "speed_knots",
-      "redefines": null,
-      "baseTypeNamespaceType": null,
-      "valueType": "Double"
-    },
-    {
-      "id": "5151189002796941004",
-      "name": "status",
-      "redefines": null,
-      "baseTypeNamespaceType": null,
-      "valueType": "String"
     }
   ],
   "untypedProperties": []
