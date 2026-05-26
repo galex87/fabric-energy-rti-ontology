@@ -406,8 +406,8 @@ else:
         print(f"\nok ontology updated ({patched} bindings)")
         print("   (this also triggers graph ingestion — same as clicking Save in the editor)")
 
-        # The graph ingestion runs on a separate auto-created "Graph model"
-        # item named "<ontology>_graph_<guid>". Find it and poll its job.
+        # The graph ingestion runs on a separate auto-created Graph item
+        # (item type "GraphModel" or similar). Find it by type.
         import time as _t
         print("\nWaiting for graph ingestion to complete...")
         graph_item = None
@@ -417,13 +417,16 @@ else:
             try:
                 if graph_item is None:
                     all_items = fab("GET", f"/workspaces/{WS_ID}/items").json().get("value", [])
-                    graph_item = next(
-                        (i for i in all_items if i.get("displayName","").startswith("AegeanPowerOntology_graph_")),
-                        None
-                    )
-                    if graph_item is None:
+                    # Prefer items whose type mentions "graph" (Graph, GraphModel, etc.)
+                    candidates = [i for i in all_items if "graph" in (i.get("type","").lower())]
+                    if not candidates:
+                        # Fallback: items whose name references the ontology
+                        candidates = [i for i in all_items if "ontology" in i.get("displayName","").lower() and i.get("id") != ONTO_ID]
+                    if candidates:
+                        graph_item = candidates[0]
+                        print(f"  found graph item: {graph_item['displayName']}  type={graph_item.get('type')}  id={graph_item['id']}")
+                    else:
                         print("  (no Graph item yet, waiting...)"); _t.sleep(5); continue
-                    print(f"  found graph item: {graph_item['displayName']} ({graph_item['id']})")
 
                 jobs = fab("GET",
                     f"/workspaces/{WS_ID}/items/{graph_item['id']}/jobs/instances?$top=5",
