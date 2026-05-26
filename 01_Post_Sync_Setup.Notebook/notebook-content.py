@@ -407,17 +407,11 @@ else:
     else:
         print("  no DataBindings parts found")
 
-    # Best-effort: trigger ontology graph refresh (preview API endpoints vary)
-    for endpoint in ["refresh", "build", "sync", "rebuild"]:
-        try:
-            r = fab("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/{endpoint}", raise_on_error=False)
-            if r.status_code in (200, 201, 202, 204):
-                print(f"ok ontology graph refresh triggered via /{endpoint} (HTTP {r.status_code})")
-                break
-        except Exception:
-            pass
-    else:
-        print("  graph refresh API not available — open the ontology in the UI and click Save/Refresh on each binding if needed")
+    # Per https://learn.microsoft.com/en-us/fabric/graph/manage-data the graph
+    # data refresh is only triggered by clicking "Save" in the UI editor.
+    # No public REST endpoint exists yet. Surface this clearly:
+    print("\n  -> Open AegeanPowerOntology in the workspace and click Save to trigger graph ingestion.")
+    print("     (Optional: set up a scheduled refresh via the ontology item's ... menu.)")
 
 
 # METADATA ********************
