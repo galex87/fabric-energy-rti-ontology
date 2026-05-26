@@ -58,28 +58,26 @@ PROMPTS = [
     "Naxos Wind Farm: show every turbine and any open maintenance orders against them.",
 ]
 
+assistant = client.beta.assistants.create(model="not-used")
+
 def ask(question, idx):
     print(f"\n{'=' * 80}\nQ{idx:02d}: {question}\n{'-' * 80}")
     t0 = time.time()
     thread = client.beta.threads.create()
     client.beta.threads.messages.create(thread_id=thread.id, role="user", content=question)
-    run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id=client.get_assistant_id())
-    while run.status in ("queued", "in_progress"):
-        time.sleep(2)
-        run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+    run = client.beta.threads.runs.create_and_poll(thread_id=thread.id, assistant_id=assistant.id)
     dt = time.time() - t0
     if run.status != "completed":
         print(f"  STATUS = {run.status} ({dt:.1f}s)")
         return
-    msgs = client.beta.threads.messages.list(thread_id=thread.id, order="asc")
-    answer = ""
-    for m in msgs.data:
-        if m.role == "assistant":
-            for c in m.content:
-                if hasattr(c, "text"):
-                    answer = c.text.value
+    msgs = client.beta.threads.messages.list(thread_id=thread.id)
+    answers = [m for m in msgs.data if m.run_id == run.id and m.role == "assistant"]
+    answers = sorted(answers, key=lambda m: (m.created_at, m.id))
     print(f"  ({dt:.1f}s)")
-    print(answer)
+    for m in answers:
+        for c in m.content:
+            if hasattr(c, "text"):
+                print(c.text.value)
 
 for i, q in enumerate(PROMPTS, 1):
     try:
