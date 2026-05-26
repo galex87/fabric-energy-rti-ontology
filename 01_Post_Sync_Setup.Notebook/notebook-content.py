@@ -451,7 +451,7 @@ else:
                     print(f"  poll error: HTTP {jobs.status_code} {jobs.text[:120]}")
                     _t.sleep(10); continue
                 arr = jobs.json().get("value", [])
-                arr.sort(key=lambda j: j.get("startTimeUtc",""), reverse=True)
+                arr.sort(key=lambda j: j.get("startTimeUtc") or "", reverse=True)
                 if not arr:
                     print(".", end="", flush=True); _t.sleep(1); continue
                 j = arr[0]
