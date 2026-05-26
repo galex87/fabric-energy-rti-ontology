@@ -46,16 +46,26 @@ print("Connected to", DATA_AGENT_NAME)
 # CELL ********************
 
 PROMPTS = [
-    "How many wind turbines do we have per manufacturer?",
-    "Show all power plants in the Cyclades prefecture, with type, fuel, capacity and grid.",
-    "Show all substations with their voltage, type, and the plant they feed.",
-    "Which plants have both an open critical maintenance order AND a vessel currently dispatched to supply them?",
-    "Naxos Wind Farm: show every turbine, the grid it sits on, the substation feeding it, any vessels supplying it, and any open maintenance orders against its turbines.",
-    "List all maintenance orders that are open or in progress, with the asset, plant, priority and technician.",
+    # 1. PowerPlant — static
+    "Show every power plant with its type, fuel, capacity, region and prefecture.",
+    # 2. WindTurbine — static, grouped
+    "List all wind turbines grouped by plant, with manufacturer, model and rated capacity.",
+    # 3. SolarInverter — static, focused
     "List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.",
-    "Compare total installed capacity of renewable plants (wind + solar) vs natural-gas plants.",
-    "Show every power plant with its type, fuel, region, prefecture, capacity and grid.",
-    "Give me a fleet master list: every turbine and inverter with its plant name, prefecture, grid, and capacity.",
+    # 4. IslandGrid — static + live
+    "For every island grid, show its installed capacity alongside its current frequency, load and generation.",
+    # 5. Vessel — static + live
+    "For every vessel, show its type and the plant it is assigned to supply, alongside its current position, speed and destination.",
+    # 6. Substation — multi-entity join (static)
+    "Show every substation with its voltage, the grid it belongs to, and the plant it feeds.",
+    # 7. MaintenanceOrder — multi-entity join (static)
+    "List every open or in-progress maintenance order with the affected asset, its plant, the priority and the technician.",
+    # 8. EmissionsRecord — period filter (static)
+    "For each gas plant, show total CO2 emitted across all available 2026 periods and the latest compliance status.",
+    # 9. Multi-entity, single plant (the mic-drop)
+    "Naxos Wind Farm: every turbine with manufacturer and capacity, the grid it sits on, the substation feeding it, the vessel assigned to supply it, and any open maintenance orders against its turbines.",
+    # 10. Fleet snapshot — static + live aggregate
+    "For each wind farm, show total nameplate capacity and the sum of current power output across its turbines.",
 ]
 
 assistant = client.beta.assistants.create(model="not-used")

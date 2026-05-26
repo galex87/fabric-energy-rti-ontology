@@ -1,38 +1,18 @@
-# Demo Prompts — AegeanPowerDataAgent
+# Demo flight — 10 prompts, full entity coverage
 
-The 10 prompts in the demo flight (run from `Test_Demo_Prompts.Notebook`).
+Run via `Test_Demo_Prompts.Notebook`. Each prompt is tagged with what it exercises.
 
-> **Demo split**: Data Agent for cross-entity reasoning; Real-Time Dashboard for live numbers, the map, and the forced-failure cascade.
+| # | Prompt | Entity / pattern |
+|---|---|---|
+| 1 | Show every power plant with its type, fuel, capacity, region and prefecture. | **PowerPlant** — static inventory |
+| 2 | List all wind turbines grouped by plant, with manufacturer, model and rated capacity. | **WindTurbine** — static, grouped by FK |
+| 3 | List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity. | **SolarInverter** — static, focused filter |
+| 4 | For every island grid, show its installed capacity alongside its current frequency, load and generation. | **IslandGrid** — static + live colocated |
+| 5 | For every vessel, show its type and the plant it is assigned to supply, alongside its current position, speed and destination. | **Vessel** — static + live colocated |
+| 6 | Show every substation with its voltage, the grid it belongs to, and the plant it feeds. | **Substation** — multi-entity FK join |
+| 7 | List every open or in-progress maintenance order with the affected asset, its plant, the priority and the technician. | **MaintenanceOrder** — multi-entity join |
+| 8 | For each gas plant, show total CO2 emitted across all available 2026 periods and the latest compliance status. | **EmissionsRecord** — `period` string filter + aggregate |
+| 9 | Naxos Wind Farm: every turbine with manufacturer and capacity, the grid it sits on, the substation feeding it, the vessel assigned to supply it, and any open maintenance orders against its turbines. | **Mic-drop** — 5-entity drilldown around one plant |
+| 10 | For each wind farm, show total nameplate capacity and the sum of current power output across its turbines. | **Fleet snapshot** — static + live aggregate |
 
----
-
-## The flight
-
-1. **How many wind turbines do we have per manufacturer?** — warmup, grouping.
-2. **Show all power plants in the Cyclades prefecture, with type, fuel, capacity and grid.** — geography: prefecture vs region.
-3. **Show all substations with their voltage, type, and the plant they feed.** — entity + FK join.
-4. **Which plants have both an open critical maintenance order AND a vessel currently dispatched to supply them?** — multi-entity intersection (mic-drop #1).
-5. **Naxos Wind Farm: show every turbine, the grid it sits on, the substation feeding it, any vessels supplying it, and any open maintenance orders against its turbines.** — five entity types around one plant (mic-drop #2).
-6. **List all maintenance orders that are open or in progress, with the asset, plant, priority and technician.** — open-MO inventory.
-7. **List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.** — focused filter on one plant.
-8. **Compare total installed capacity of renewable plants (wind + solar) vs natural-gas plants.** — two aggregates, narrative compare.
-9. **Show every power plant with its type, fuel, region, prefecture, capacity and grid.** — full plant inventory.
-10. **Give me a fleet master list: every turbine and inverter with its plant name, prefecture, grid, and capacity.** — closer, 42-row master list.
-
----
-
-## What lives on the dashboard, not the agent
-
-- Live turbine MW, inverter MW, grid frequency.
-- Live vessel position + ETA on a map.
-- Forced-failure cascade (force a turbine offline → KQL event → MO materializes live).
-- Anything that requires aggregating streaming columns over a time window.
-
----
-
-## Backup prompts (if a primary fails live)
-
-- *"How many power plants do we have in total, and what types?"*
-- *"Show all wind turbines with their plant name, manufacturer and capacity."*
-- *"Which power plants are in the South Aegean region?"*
-- *"How many maintenance orders have been completed this year?"*
+All 8 entity types touched; prompts 4, 5 and 10 force the agent to fetch live timeseriesProperties alongside static fields.
