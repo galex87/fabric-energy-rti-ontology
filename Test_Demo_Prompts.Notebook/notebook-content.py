@@ -48,13 +48,13 @@ print("Connected to", DATA_AGENT_NAME)
 PROMPTS = [
     "How many wind turbines do we have per manufacturer?",
     "Show all power plants in the Cyclades prefecture, with type, fuel, capacity and grid.",
-    "Show the current live status, destination and speed of every vessel in our fleet, and which plant each one is assigned to supply.",
+    "Show all substations with their voltage, type, and the plant they feed.",
     "Which plants have both an open critical maintenance order AND a vessel currently dispatched to supply them?",
     "Naxos Wind Farm: show every turbine, the grid it sits on, the substation feeding it, any vessels supplying it, and any open maintenance orders against its turbines.",
-    "Show CO2 emissions for our natural-gas plants in March 2026, with ETS allowances and compliance status.",
-    "Who has the most open maintenance orders right now, and which ones are they?",
+    "List all maintenance orders that are open or in progress, with the asset, plant, priority and technician.",
+    "List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.",
     "Compare total installed capacity of renewable plants (wind + solar) vs natural-gas plants.",
-    "Give me a live snapshot: which turbines are below 30% of their nameplate capacity right now, and which plants do they belong to?",
+    "Show every power plant with its type, fuel, region, prefecture, capacity and grid.",
     "Give me a fleet master list: every turbine and inverter with its plant name, prefecture, grid, and capacity.",
 ]
 
