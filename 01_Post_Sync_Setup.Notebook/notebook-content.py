@@ -405,6 +405,38 @@ else:
                 body={"definition": {"parts": parts}})
         print(f"\nok ontology updated ({patched} bindings)")
         print("   (this also triggers graph ingestion — same as clicking Save in the editor)")
+
+        # Wait for the graph ingestion job to finish (visible in workspace Monitor)
+        import time as _t
+        print("\nWaiting for ontology graph ingestion to complete...")
+        deadline = _t.time() + 600   # 10 min cap
+        last_status = None
+        update_start = _t.time()
+        while _t.time() < deadline:
+            try:
+                jobs = fab("GET", f"/workspaces/{WS_ID}/items/{ONTO_ID}/jobs/instances?$top=5").json().get("value", [])
+            except Exception as e:
+                print(f"  (poll error: {e})"); _t.sleep(10); continue
+            # find most recent job (started after we issued updateDefinition)
+            jobs.sort(key=lambda j: j.get("startTimeUtc",""), reverse=True)
+            if not jobs:
+                print("  no job yet, waiting...")
+                _t.sleep(5); continue
+            j = jobs[0]
+            status = j.get("status","?")
+            jtype  = j.get("jobType","?")
+            if status != last_status:
+                print(f"  [{jtype}] status={status}")
+                last_status = status
+            if status in ("Completed", "Succeeded"):
+                print(f"\nok graph ingestion finished ({jtype})")
+                break
+            if status in ("Failed", "Cancelled"):
+                print(f"\n!! graph ingestion {status}: {j.get('failureReason',{}).get('message','')}")
+                break
+            _t.sleep(5)
+        else:
+            print("\n!! timed out waiting for graph ingestion (still running in background)")
     else:
         print("  no DataBindings parts found")
 
