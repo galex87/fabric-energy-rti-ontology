@@ -122,11 +122,10 @@ This single notebook does **everything that doesn't survive Git sync**:
 | 6 | Downloads the 8 seed CSVs from GitHub into `AegeanPowerLH/Files/data/` |
 | 7 | Writes the CSVs to 8 Delta tables under `Tables/` |
 | 8 | Rebinds Ontology data bindings (KQL + Lakehouse) |
-| 9 | Publishes the Eventstream |
 
 Idempotent — safe to re-run. Takes ~3-5 minutes.
 
-> If step 9 reports "auto-publish not available", open `AegeanPowerStream` → Edit → click **Publish** in the toolbar (1 click).
+> After the notebook finishes, open **`AegeanPowerStream`** → **Edit** → **Publish** (1 click in the toolbar). Fabric currently has no public REST endpoint to publish an eventstream, so this is the only manual eventstream step.
 
 ### 5 · Run the simulator
 

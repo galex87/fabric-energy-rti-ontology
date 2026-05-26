@@ -417,35 +417,12 @@ else:
 
 # MARKDOWN ********************
 
-# ## 9 · Publish the Eventstream (best effort)
-
-# CELL ********************
-
-try:
-    r = fab("POST", f"/workspaces/{WS_ID}/eventstreams/{ES_ID}/publish", raise_on_error=False)
-    if r.status_code in (200, 201, 202, 204):
-        print(f"ok eventstream published (HTTP {r.status_code})")
-    else:
-        raise RuntimeError(f"HTTP {r.status_code}: {r.text[:300]}")
-except Exception as e:
-    print(f"auto-publish not available: {e}")
-    print("  -> Manual step: open AegeanPowerStream -> Edit -> Publish in the toolbar.")
-
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# MARKDOWN ********************
-
 # ## DONE
 #
 # What's left to do manually:
-# 1. Open **AegeanPower_Simulator** -> Run all (starts live data flow).
-# 2. Open **AegeanPowerDataAgent** -> + Data source -> Ontology -> pick AegeanPowerOntology -> Publish.
+# 1. Open **AegeanPowerStream** -> Edit -> Publish (1 click, top toolbar).
+# 2. Open **AegeanPower_Simulator** -> Run all (starts live data flow).
+# 3. Open **AegeanPowerDataAgent** -> + Data source -> Ontology -> pick AegeanPowerOntology -> Publish.
 #
 # Then run the demo from docs/DEMO_SCRIPT.md.
 #
