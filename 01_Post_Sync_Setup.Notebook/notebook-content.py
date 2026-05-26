@@ -407,11 +407,17 @@ else:
     else:
         print("  no DataBindings parts found")
 
-    # Per https://learn.microsoft.com/en-us/fabric/graph/manage-data the graph
-    # data refresh is only triggered by clicking "Save" in the UI editor.
-    # No public REST endpoint exists yet. Surface this clearly:
-    print("\n  -> Open AegeanPowerOntology in the workspace and click Save to trigger graph ingestion.")
-    print("     (Optional: set up a scheduled refresh via the ontology item's ... menu.)")
+    # Try every documented + plausible refresh-trigger endpoint and log each.
+    # Whichever returns 2xx is the real refresh path on this tenant.
+    print("\nProbing ontology refresh endpoints (verbose):")
+    for endpoint in ["refresh", "build", "sync", "rebuild", "ingest", "load", "save", "publish"]:
+        try:
+            r = fab("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/{endpoint}", raise_on_error=False)
+            tag = "OK " if r.status_code in (200, 201, 202, 204) else "   "
+            print(f"  {tag} POST /ontologies/{{id}}/{endpoint:10s} -> HTTP {r.status_code}")
+        except Exception as e:
+            print(f"      POST /ontologies/{{id}}/{endpoint:10s} -> exception: {e}")
+    print("\nIf none returned 2xx: open AegeanPowerOntology -> Save in the editor to trigger graph ingestion (https://learn.microsoft.com/en-us/fabric/graph/manage-data).")
 
 
 # METADATA ********************
