@@ -52,16 +52,16 @@ PROMPTS = [
     "List all wind turbines grouped by plant, with manufacturer, model and rated capacity.",
     # 3. SolarInverter — static, focused
     "List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.",
-    # 4. IslandGrid — static + live
-    "For every island grid, show its installed capacity alongside its current frequency, load and generation.",
+    # 4. Grid — static inventory (live query unreliable in current preview)
+    "List all 6 grids with their island, region, installed capacity and peak demand.",
     # 5. Vessel — static + live
     "For every vessel, show its type and the plant it is assigned to supply, alongside its current position, speed and destination.",
     # 6. Substation — multi-entity join (static)
     "Show every substation with its voltage, the grid it belongs to, and the plant it feeds.",
     # 7. MaintenanceOrder — multi-entity join (static)
     "List every open or in-progress maintenance order with the affected asset, its plant, the priority and the technician.",
-    # 8. EmissionsRecord — period filter (static)
-    "For each gas plant, show total CO2 emitted across all available 2026 periods and the latest compliance status.",
+    # 8. EmissionsRecord — pure static inventory (period filter unreliable)
+    "List every emissions record with plant name, period, CO2 tonnes, ETS allowance and compliance status.",
     # 9. Multi-entity, single plant (the mic-drop)
     "Naxos Wind Farm: every turbine with manufacturer and capacity, the grid it sits on, the substation feeding it, the vessel assigned to supply it, and any open maintenance orders against its turbines.",
     # 10. Fleet snapshot — static + live aggregate
