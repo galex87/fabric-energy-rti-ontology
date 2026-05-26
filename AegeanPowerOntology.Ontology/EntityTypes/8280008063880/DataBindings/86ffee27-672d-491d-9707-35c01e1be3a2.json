@@ -41,18 +41,6 @@
         "targetPropertyId": "5151189005235292160"
       },
       {
-        "sourceColumnName": "destination",
-        "targetPropertyId": "5151189005843988109"
-      },
-      {
-        "sourceColumnName": "speed_knots",
-        "targetPropertyId": "5151189003634174644"
-      },
-      {
-        "sourceColumnName": "status",
-        "targetPropertyId": "5151189002796941004"
-      },
-      {
         "sourceColumnName": "supply_plant_id",
         "targetPropertyId": "5151189005170486861"
       }
