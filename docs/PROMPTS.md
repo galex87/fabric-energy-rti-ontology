@@ -1,65 +1,52 @@
-# Demo Prompts
+# Demo Prompts — AegeanPowerDataAgent
 
 Prompts to send to **`AegeanPowerDataAgent`**. The agent is grounded in `AegeanPowerOntology` over the clean `AegeanPowerLH` Delta tables.
 
----
-
-## Top 3 (the demo flight)
-
-Run these in order during the live demo:
-
-1. Show me all wind turbines.
-2. Which wind turbines are at plants in the Cyclades islands?
-3. Which plants have both open maintenance orders and vessels en route?
-
-**Why these:** #1 warms up. #2 demonstrates the region vs prefecture distinction the ontology resolves automatically. #3 is the mic-drop — a triple-FK join (`plant_id`, `vessels.supply_plant_id`, `maintenance_orders.plant_id`) that only ontology-aware schemas can answer.
+> **Demo split.** The Data Agent answers **structured / multi-entity questions** against the ontology (Lakehouse). The **live "wow" moments** (real-time vessel positions, turbine telemetry, forced-failure cascade) are shown on the **Real-Time Dashboard** which reads KQL directly. Don't ask the Data Agent for live streaming numbers — use the dashboard for those.
 
 ---
 
-## Full prompt pool (14)
+## The ten demo prompts (use these)
 
-### Single-table lookups
+These ten play to the ontology's strengths: single-entity listings, categorical filters, foreign-key joins, and grouped counts/sums. They avoid the known limitation of mixing aggregation across `properties` and `timeseriesProperties` in a single query.
 
-- Show me all wind turbines.
-- List all solar installations.
-- How many power plants are there?
-- Show me all active wind turbines.
-
-### Filtering
-
-- Which power plants are in the Cyclades region?
-- What is the total installed capacity across all island grids?
-- Which wind turbines are at plants in the Cyclades islands?
-
-### Cross-table joins
-
-- Show me the wind turbines at each power plant.
-- List all maintenance orders for the Milos Solar Park.
-- Show vessels heading to wind farm plants.
-- What substations are connected to plant P003?
-
-### Multi-table analytics
-
-- For each island grid, show the total number of power plants and their combined wind and solar capacity.
-- Show the total CO₂ emissions per power plant, along with the plant name and region.
-- Which plants have both open maintenance orders and vessels en route?
+1. **List all wind turbines grouped by plant, with manufacturer and capacity.**
+2. **Show all power plants in the Cyclades prefecture, with type, fuel, capacity and grid.**
+3. **How many wind turbines do we have per manufacturer?**
+4. **Show CO₂ emissions for our natural-gas plants in March 2026, with ETS allowances and compliance status.**
+5. **Which wind turbines currently have a Critical open maintenance order? Include turbine, plant, technician and description.**
+6. **List vessels that are dispatched or en route, with destination and the plant they supply.**
+7. **Show all substations with voltage, grid and the plant they feed.**
+8. **List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.**
+9. **Compare total installed capacity of renewable plants (wind + solar) vs natural-gas plants.**
+10. **Naxos Wind Farm: show every turbine and any open maintenance orders against them.** *(mic-drop multi-entity)*
 
 ---
 
-## Emissions deep-dive (optional extension)
+## Why these ten work
 
-If your demo time allows, the emissions angle is rich:
-
-- Show me total CO₂ emissions per plant this year, ranked highest to lowest.
-- How much CO₂ did our renewable wind and solar generation displace this year compared to our conventional plants — and what's our overall carbon intensity in tonnes per MWh?
-- Which plants are exceeding their emissions targets AND have open critical maintenance orders — and rank them by combined risk.
+- **#1, #3, #7, #8** — single-entity listings with FK joins. Reliable.
+- **#2** — exercises the geography mapping (Cyclades is a prefecture, not a region; agent instructions hard-code the plant→prefecture table).
+- **#4** — categorical filter on `plant_type = "GasPlant"` joined to monthly `emissions` by the `period` string (`YYYY-MM`).
+- **#5, #10** — join `maintenance_orders` (status `Open`, priority `Critical`) to turbines and plants.
+- **#6** — vessel status enum (`Dispatched`, `EnRoute`) joined via `supply_plant_id`.
+- **#9** — grouped sum over a static categorical column.
 
 ---
 
-## Operations Agent prompts (after triggering a fault)
+## What NOT to ask the Data Agent
 
-Once a turbine is in `DEMO_FORCED_FAILURE`:
+Use the **Real-Time Dashboard** for these:
 
-- What is happening right now at Naxos Wind Farm, and is anyone responding?
-- Which turbines are offline right now and why?
-- Has a vessel been dispatched for the Naxos failure? When does it arrive?
+- Current power output of turbines / inverters
+- Live vessel ETA or position
+- Real-time grid frequency / load
+- Any aggregation that mixes streaming time-series columns with entity properties (known engine limitation)
+
+---
+
+## Running the prompts
+
+Open `Test_Demo_Prompts.Notebook` in the Fabric workspace and **Run all**. It iterates over the ten prompts above using `fabric.dataagent.client.FabricOpenAI` and prints each answer.
+
+> The SDK depends on `synapse.ml.fabric` and only runs inside the Fabric runtime — it cannot execute from a local Python install. Programmatic testing must be done from within Fabric.

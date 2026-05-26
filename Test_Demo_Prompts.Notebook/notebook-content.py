@@ -46,16 +46,16 @@ print("Connected to", DATA_AGENT_NAME)
 # CELL ********************
 
 PROMPTS = [
-    "Give me a real-time operational snapshot: total active plants, current generation in MW, vessels in transit, and any critical open maintenance orders.",
-    "What is the current renewable share of our total generation right now versus our installed renewable capacity? Show me both numbers and the gap.",
-    "Which wind turbine has the highest vibration right now, and is its plant tied to an active grid? Show its latest power output.",
-    "Are any island grids currently deviating from 50 Hz by more than 0.3 Hz? Show grid name, current frequency, current load, and current generation.",
-    "Which wind turbines have a Critical Open maintenance order, and is a service vessel currently dispatched to their plant? Show turbine, plant, technician, order description, vessel name, vessel current speed, and ETA.",
-    "For every plant in the Cyclades islands, show the assets it contains, the substation feeding it, the grid it sits on, and whether any of its assets have open maintenance orders.",
-    "Rank our gas plants by CO2 emissions year-to-date in 2026. Show plant name, total tonnes emitted, ETS allowance used, and current compliance status.",
-    "How much CO2 are our renewable plants displacing right now compared to a baseline where we'd generate the same MW from natural gas at 0.35 tCO2/MWh?",
-    "List solar inverters whose current efficiency is below 90% and whose last completed maintenance was over 90 days ago. Show inverter name, current efficiency, manufacturer, and last completed maintenance date.",
-    "Tell me about Naxos Wind Farm right now: how many turbines are active, what is their combined live generation, what is the latest grid frequency on the Naxos grid, what open maintenance orders exist, and is the Poseidon Service vessel responding to any of them?",
+    "List all wind turbines grouped by plant, with manufacturer and capacity.",
+    "Show all power plants in the Cyclades prefecture, with type, fuel, capacity and grid.",
+    "How many wind turbines do we have per manufacturer?",
+    "Show CO2 emissions for our natural-gas plants in March 2026, with ETS allowances and compliance status.",
+    "Which wind turbines currently have a Critical open maintenance order? Include turbine, plant, technician and description.",
+    "List vessels that are dispatched or en route, with destination and the plant they supply.",
+    "Show all substations with voltage, grid and the plant they feed.",
+    "List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.",
+    "Compare total installed capacity of renewable plants (wind + solar) vs natural-gas plants.",
+    "Naxos Wind Farm: show every turbine and any open maintenance orders against them.",
 ]
 
 def ask(question, idx):
