@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "01_Post_Sync_Setup",
+    "description": "One-shot post-sync configuration: KQL mappings, lakehouse binding, eventstream connection, dashboard rebind."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "279106f0-16d4-4ad9-b119-d51a70d6ceba"
+  }
+}

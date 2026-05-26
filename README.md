@@ -106,95 +106,63 @@ In the workspace: **Workspace settings → Git integration → Connect**:
 
 Fabric pulls every item into your workspace.
 
-### 4 · Bind a default Lakehouse to each notebook
+### 4 · Run the one-shot setup notebook
 
-Notebooks in the repo intentionally have **no default Lakehouse** so they sync cleanly across any workspace. For each of these four notebooks, open them and bind `AegeanPowerLH` as the default Lakehouse:
+Open **`01_Post_Sync_Setup`** → **Run all**.
 
-- **`AegeanPower_Simulator`**
-- **`Demo_Trigger_Console`**
-- **`Dispatch_Maintenance_Crew`**
-- **`Load_CSVs_to_Delta`**
+This notebook auto-configures everything that doesn't survive Git sync:
 
-How to bind: open the notebook → left **Lakehouses** sidebar → **+ Add lakehouse** → **Existing lakehouse** → pick `AegeanPowerLH` → in the sidebar, right-click the lakehouse → **Set as default lakehouse**.
+- Creates JSON ingestion mappings + enables streaming ingestion on the 5 KQL tables
+- Binds `AegeanPowerLH` as the default Lakehouse on the 4 working notebooks
+- Pulls the Eventstream connection string and patches `AegeanPower_Simulator`
+- Rebinds the Real-Time Dashboard cluster URI to your local Eventhouse
 
-### 5 · Upload seed data to the Lakehouse
+It's idempotent — safe to re-run.
+
+### 5 · Publish the Eventstream
+
+Open **`AegeanPowerStream`** → **Edit** → **Publish** in the top toolbar. Destinations already point to your local Eventhouse (Git auto-remapped them) and the ingestion mappings created in step 4 are now active.
+
+> If a destination shows "Add a mapper…", step 4 didn't run cleanly — rerun `01_Post_Sync_Setup` and republish.
+
+### 6 · Upload seed data to the Lakehouse
 
 1. Open **`AegeanPowerLH`** in the workspace.
 2. **Files** → **Upload** → **Upload folder** → select your local clone's `data/` folder.
 3. Confirm `Files/data/*.csv` shows 8 files.
 
-### 6 · Load CSVs to Delta tables
+### 7 · Load CSVs to Delta tables
 
 Open **`Load_CSVs_to_Delta`** notebook → **Run all**.
 
 You should now see 8 Delta tables under `Tables/`:
 `power_plants`, `wind_turbines`, `solar_inverters`, `maintenance_orders`, `vessels`, `substations`, `emissions_ledger`, `island_grids`.
 
-### 7 · Wire the Eventstream
+### 8 · Run the simulator
 
-Open **`AegeanPowerStream`** → **Edit**.
-
-1. Click each of the 5 destinations (`destwindturbinetelemetry`, `destsolarinvertertelemetry`, `destgridtelemetry`, `destvesselpositions`, `destemissionsstream`) and **verify** the right-side pane shows:
-   - **Workspace** = your workspace
-   - **Eventhouse** = `AegeanPowerEH`
-   - **KQL Destination table** = the matching name
-   - **Input data format** = `Json`
-
-   Fabric usually auto-remaps these on first sync, so they may already be correct. If anything looks wrong, fix it and save.
-
-2. Click **Publish** in the top toolbar.
-
-3. Switch to **Live view** (top-right of the canvas). Click the **customapp** source node. In the right-side **Details** pane (Protocol: **Event Hub** → **SAS Key Authentication**), copy the value of **Connection string-primary key**.
-
-   It looks like:
-   ```
-   Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=key_<guid>;SharedAccessKey=<base64>;EntityPath=<eventhub_name>
-   ```
-
-   ![Eventstream connection string location](docs/images/eventstream-connection-string.png)
-
-### 8 · Paste the connection string into the simulator
-
-Open the **`AegeanPower_Simulator`** notebook. Scroll to the **Parameters** section (the first code cell under the *"Parameters — Edit these before running"* heading) and locate the line:
-
-```python
-EVENTHUB_CONNECTION_STRING = "REPLACE_ME_WITH_EVENTSTREAM_CUSTOM_ENDPOINT_CONNECTION_STRING"
-```
-
-Replace the placeholder with the connection string you copied in step 7. Save the notebook.
-
-![Simulator Parameters cell — replace EVENTHUB_CONNECTION_STRING](docs/images/simulator-parameters-cell.png)
-
-### 9 · Run the simulator
-
-**`AegeanPower_Simulator`** → **Run all**. After ~30 s, verify data is flowing in a KQL query window:
+Open **`AegeanPower_Simulator`** → **Run all**. The connection string was already injected in step 4. After ~30 s, verify data is flowing in a KQL query window:
 
 ```kql
-WindTurbineTelemetry | where timestamp > ago(2m) | summarize n=count()
+WindTurbineTelemetry | where timestamp > ago(2m) | summarize n=count(), nonzero=countif(power_mw > 0)
 ```
 
-Expect `n > 0`.
+Expect `n > 0` and `nonzero > 0`.
 
-### 10 · Open the Real-Time Dashboard
+### 9 · Open the Real-Time Dashboard
 
-Open **`AegeanPower_Live_Operations`**. Within ~30 s tiles should start populating with live wind, solar, grid, vessel, and emissions data.
+Open **`AegeanPower_Live_Operations`**. Tiles populate within ~30 s. The dashboard's cluster URI was already rebound in step 4 — no manual rebind needed.
 
-If tiles stay empty / show `NaN` / `0`, the data source still points to the upstream cluster URI. Rebind it:
+> If tiles still show `0` / `NaN`: open the right-side **Data sources** panel → **⚙️** next to `AegeanPowerEH` → verify the cluster URI matches your Eventhouse → re-save.
 
-- Right-side **Data sources** panel → hover over `AegeanPowerEH` → click the **⚙️ gear** (or the **⋯** menu → **Edit**)
-- In the edit pane, repick **Eventhouse** → your local `AegeanPowerEH` (cluster URI should now match your tenant)
-- **Apply** → **Save** the dashboard
-- Tiles refresh within a few seconds
+### 10 · Re-bind Ontology data bindings *(manual — UI only)*
 
-### 11 · Re-bind Ontology data bindings
-
-The Ontology's entity data bindings still point to the original Eventhouse cluster URL. Open **`AegeanPowerOntology`** → for each entity (PowerPlant, WindTurbine, SolarInverter, IslandGrid, Vessel, MaintenanceOrder, Substation, EmissionsRecord):
+The Ontology's entity data bindings can't be auto-rebound via REST (yet). Open **`AegeanPowerOntology`** → for each entity (PowerPlant, WindTurbine, SolarInverter, IslandGrid, Vessel, MaintenanceOrder, Substation, EmissionsRecord):
 
 - Click the entity → **Data bindings** tab
 - Re-pick the source: your `AegeanPowerEH` (KQL DB) or `AegeanPowerLH` (Lakehouse) → matching table
 - **Save**
 
-### 12 · Add data sources to the Data Agent
+### 11 · Add data sources to the Data Agent *(manual — UI only)*
 
 Open **`AegeanPowerDataAgent`** → **+ Data source**:
 - Type: **Ontology** → **AegeanPowerOntology** (recommended — gives the agent semantic context)
@@ -203,7 +171,7 @@ Open **`AegeanPowerDataAgent`** → **+ Data source**:
 
 Click **Publish**.
 
-### 13 · You're ready
+### 12 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
 
