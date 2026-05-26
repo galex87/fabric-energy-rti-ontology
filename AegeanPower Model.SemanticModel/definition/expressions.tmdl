@@ -1,6 +1,0 @@
-expression DL_Lakehouse =
-		let
-			Source = Sql.Database("eqnqaoffsffepbaac7ahp22hv4-bd4nwin3apmujkhuvrqwnmooba.datawarehouse.fabric.microsoft.com", "AegeanPowerLH")
-		in
-			Source
-
