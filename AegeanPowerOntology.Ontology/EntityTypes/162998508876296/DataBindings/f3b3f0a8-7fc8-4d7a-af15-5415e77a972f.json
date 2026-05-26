@@ -29,7 +29,7 @@
     "sourceTableProperties": {
       "sourceType": "KustoTable",
       "workspaceId": "00000000-0000-0000-0000-000000000000",
-      "itemId": "128eec3e-3cf2-90d4-4e20-82adcfed6f8b",
+      "itemId": "00000000-0000-0000-0000-000000000000",
       "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
       "databaseName": "AegeanPowerEH",
       "sourceTableName": "SolarInverterTelemetry"
