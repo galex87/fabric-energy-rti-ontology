@@ -60,6 +60,29 @@ PROMPTS = [
 
 assistant = client.beta.assistants.create(model="not-used")
 
+def _dump_steps(thread_id, run_id):
+    """Dump tool-call steps so we can root-cause failures: GQL query + raw output."""
+    try:
+        steps = client.beta.threads.runs.steps.list(thread_id=thread_id, run_id=run_id, order="asc")
+    except Exception as e:
+        print(f"  [steps unavailable: {e}]")
+        return
+    for s in steps.data:
+        sd = getattr(s, "step_details", None)
+        if not sd or getattr(sd, "type", None) != "tool_calls":
+            continue
+        for tc in getattr(sd, "tool_calls", []) or []:
+            fn = getattr(tc, "function", None) or getattr(tc, "code_interpreter", None) or tc
+            name = getattr(fn, "name", getattr(tc, "type", "tool"))
+            args = getattr(fn, "arguments", getattr(fn, "input", ""))
+            out = getattr(fn, "output", "")
+            if args:
+                print(f"  -- {name} args --")
+                print("    " + str(args)[:2000].replace("\n","\n    "))
+            if out:
+                print(f"  -- {name} output (first 1200 chars) --")
+                print("    " + str(out)[:1200].replace("\n","\n    "))
+
 def ask(question, idx):
     print(f"\n{'=' * 80}\nQ{idx:02d}: {question}\n{'-' * 80}")
     t0 = time.time()
@@ -67,17 +90,18 @@ def ask(question, idx):
     client.beta.threads.messages.create(thread_id=thread.id, role="user", content=question)
     run = client.beta.threads.runs.create_and_poll(thread_id=thread.id, assistant_id=assistant.id)
     dt = time.time() - t0
+    print(f"  status={run.status}  ({dt:.1f}s)")
+    _dump_steps(thread.id, run.id)
     if run.status != "completed":
-        print(f"  STATUS = {run.status} ({dt:.1f}s)")
         return
     msgs = client.beta.threads.messages.list(thread_id=thread.id)
     answers = [m for m in msgs.data if m.run_id == run.id and m.role == "assistant"]
     answers = sorted(answers, key=lambda m: (m.created_at, m.id))
-    print(f"  ({dt:.1f}s)")
+    print("  -- final answer --")
     for m in answers:
         for c in m.content:
             if hasattr(c, "text"):
-                print(c.text.value)
+                print("    " + c.text.value.replace("\n","\n    "))
 
 for i, q in enumerate(PROMPTS, 1):
     try:
