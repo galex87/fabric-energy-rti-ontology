@@ -80,13 +80,6 @@
       "redefines": null,
       "baseTypeNamespaceType": null,
       "valueType": "String"
-    },
-    {
-      "id": "5151189002796941004",
-      "name": "status",
-      "redefines": null,
-      "baseTypeNamespaceType": null,
-      "valueType": "String"
     }
   ],
   "timeseriesProperties": [
@@ -131,6 +124,13 @@
       "redefines": null,
       "baseTypeNamespaceType": null,
       "valueType": "Double"
+    },
+    {
+      "id": "5151189002796941004",
+      "name": "status",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "String"
     }
   ],
   "untypedProperties": []

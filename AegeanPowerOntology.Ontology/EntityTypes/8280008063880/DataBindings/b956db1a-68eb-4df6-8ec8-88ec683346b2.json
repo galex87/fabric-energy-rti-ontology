@@ -32,6 +32,10 @@
       {
         "sourceColumnName": "speed_knots",
         "targetPropertyId": "5151189003634174644"
+      },
+      {
+        "sourceColumnName": "cargo_status",
+        "targetPropertyId": "5151189002796941004"
       }
     ],
     "sourceTableProperties": {

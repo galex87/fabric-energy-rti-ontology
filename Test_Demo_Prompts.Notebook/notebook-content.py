@@ -48,7 +48,7 @@ print("Connected to", DATA_AGENT_NAME)
 PROMPTS = [
     "How many wind turbines do we have per manufacturer?",
     "Show all power plants in the Cyclades prefecture, with type, fuel, capacity and grid.",
-    "List vessels that are dispatched or en route, with their destination and the plant they supply.",
+    "Show the current live status, destination and speed of every vessel in our fleet, and which plant each one is assigned to supply.",
     "Which plants have both an open critical maintenance order AND a vessel currently dispatched to supply them?",
     "Naxos Wind Farm: show every turbine, the grid it sits on, the substation feeding it, any vessels supplying it, and any open maintenance orders against its turbines.",
     "Show CO2 emissions for our natural-gas plants in March 2026, with ETS allowances and compliance status.",

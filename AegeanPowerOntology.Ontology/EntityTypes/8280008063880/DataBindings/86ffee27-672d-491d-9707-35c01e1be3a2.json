@@ -43,10 +43,6 @@
       {
         "sourceColumnName": "supply_plant_id",
         "targetPropertyId": "5151189005170486861"
-      },
-      {
-        "sourceColumnName": "status",
-        "targetPropertyId": "5151189002796941004"
       }
     ],
     "sourceTableProperties": {
