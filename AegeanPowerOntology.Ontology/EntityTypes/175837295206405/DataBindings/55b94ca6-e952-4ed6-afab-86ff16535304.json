@@ -33,7 +33,7 @@
     "sourceTableProperties": {
       "sourceType": "KustoTable",
       "workspaceId": "00000000-0000-0000-0000-000000000000",
-      "itemId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "d9184fc4-b59e-a890-401f-a07debd37cc3",
       "clusterUri": "https://trd-azsf0vfkpfnnm9u27g.z7.kusto.fabric.microsoft.com",
       "databaseName": "AegeanPowerEH",
       "sourceTableName": "WindTurbineTelemetry"
