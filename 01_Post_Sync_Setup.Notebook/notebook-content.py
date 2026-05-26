@@ -375,35 +375,51 @@ for csv_file, tbl, overrides in TABLE_DEFS:
 if not ONTO_ID:
     print("  skip (no ontology)")
 else:
+    # Robust KQL Database itemId resolution — try multiple candidates so this works after
+    # an Eventhouse recreation (which silently changes itemIds and breaks all TS bindings).
     kdbs = fab("GET", f"/workspaces/{WS_ID}/kqlDatabases").json().get("value", [])
-    KQL_DB_ID = next((k["id"] for k in kdbs if k["displayName"] == "AegeanPowerEH"), None)
-    print(f"  KQL DB itemId: {KQL_DB_ID}")
-    print(f"  Lakehouse itemId: {LAKEHOUSE_ID}")
+    print(f"  KQL databases in workspace: {[(k['displayName'], k['id']) for k in kdbs]}")
+    KQL_DB_ID = (
+        next((k["id"] for k in kdbs if k["displayName"] == "AegeanPowerEH"), None)
+        or next((k["id"] for k in kdbs if "aegean" in k["displayName"].lower()), None)
+        or (kdbs[0]["id"] if len(kdbs) == 1 else None)
+    )
+    if not KQL_DB_ID:
+        raise RuntimeError("Could not resolve KQL Database itemId — multiple KQL DBs and none matched 'AegeanPowerEH'. Rename your KQL DB or hard-code KQL_DB_ID.")
+    print(f"  KQL DB itemId resolved: {KQL_DB_ID}")
+    print(f"  Lakehouse itemId:       {LAKEHOUSE_ID}")
 
     defn = fab_lro("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/getDefinition")
     parts = defn["definition"]["parts"]
     patched = 0
+    drift_lh = drift_kql = 0
     for p in parts:
         if "DataBindings" in p["path"] and p["path"].endswith(".json"):
             raw = base64.b64decode(p["payload"]).decode("utf-8")
             b = json.loads(raw)
             src = b.get("dataBindingConfiguration", {}).get("sourceTableProperties", {})
             stype = src.get("sourceType")
+            old_id = src.get("itemId")
             if stype == "LakehouseTable":
-                src["workspaceId"] = WS_ID; src["itemId"] = LAKEHOUSE_ID
-            elif stype == "KustoTable":
+                if old_id != LAKEHOUSE_ID: drift_lh += 1
                 src["workspaceId"] = WS_ID
-                if KQL_DB_ID: src["itemId"] = KQL_DB_ID
+                src["itemId"] = LAKEHOUSE_ID
+            elif stype == "KustoTable":
+                if old_id != KQL_DB_ID: drift_kql += 1
+                src["workspaceId"] = WS_ID
+                src["itemId"] = KQL_DB_ID
                 if "clusterUri" in src: src["clusterUri"] = CLUSTER_URI
                 if "database" in src: src["database"] = DB_NAME
+            else:
+                continue
             new = json.dumps(b, separators=(",", ":"))
             p["payload"] = base64.b64encode(new.encode("utf-8")).decode("ascii")
             patched += 1
-            print(f"  ok  {stype} -> {src.get('sourceTableName')}")
+            print(f"  ok  {stype:14s} -> {src.get('sourceTableName')}   (itemId {old_id} -> {src['itemId']}{'  DRIFT' if old_id != src['itemId'] else ''})")
     if patched:
         fab_lro("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/updateDefinition",
                 body={"definition": {"parts": parts}})
-        print(f"\nok ontology updated ({patched} bindings)")
+        print(f"\nok ontology updated ({patched} bindings; {drift_lh} Lakehouse drift, {drift_kql} Kusto drift)")
         print("   (this also triggers graph ingestion — same as clicking Save in the editor)")
 
         # The graph ingestion runs on a separate auto-created Graph item
