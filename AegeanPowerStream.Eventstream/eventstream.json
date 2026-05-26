@@ -651,70 +651,7 @@
             }
           }
         ]
-      },
-      "inputSchemas": [
-        {
-          "name": "aegeanstream",
-          "schema": {
-            "columns": [
-              {
-                "name": "timestamp",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "stream_type",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_id",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_name",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "frequency_hz",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "voltage_kv",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "balance_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "filtergridtelemetry",
@@ -741,70 +678,7 @@
             }
           }
         ]
-      },
-      "inputSchemas": [
-        {
-          "name": "aegeanstream",
-          "schema": {
-            "columns": [
-              {
-                "name": "timestamp",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "stream_type",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_id",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_name",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "frequency_hz",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "voltage_kv",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "balance_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "filtersolarinvertertelemetry",
@@ -831,70 +705,7 @@
             }
           }
         ]
-      },
-      "inputSchemas": [
-        {
-          "name": "aegeanstream",
-          "schema": {
-            "columns": [
-              {
-                "name": "timestamp",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "stream_type",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_id",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_name",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "frequency_hz",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "voltage_kv",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "balance_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "filtervesselpositions",
@@ -921,70 +732,7 @@
             }
           }
         ]
-      },
-      "inputSchemas": [
-        {
-          "name": "aegeanstream",
-          "schema": {
-            "columns": [
-              {
-                "name": "timestamp",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "stream_type",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_id",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_name",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "frequency_hz",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "voltage_kv",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "balance_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "name": "filterwindturbinetelemetry",
@@ -1011,70 +759,7 @@
             }
           }
         ]
-      },
-      "inputSchemas": [
-        {
-          "name": "aegeanstream",
-          "schema": {
-            "columns": [
-              {
-                "name": "timestamp",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "stream_type",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_id",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_name",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "frequency_hz",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "voltage_kv",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "balance_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              }
-            ]
-          }
-        }
-      ]
+      }
     }
   ],
   "compatibilityLevel": "1.1"
