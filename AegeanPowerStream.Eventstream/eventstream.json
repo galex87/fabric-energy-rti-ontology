@@ -48,44 +48,62 @@
                 "items": null
               },
               {
-                "name": "grid_id",
+                "name": "turbine_id",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "grid_name",
+                "name": "plant_id",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "frequency_hz",
+                "name": "power_mw",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
+                "name": "wind_speed_ms",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "voltage_kv",
+                "name": "vibration_mm_s",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "balance_mw",
+                "name": "rotor_rpm",
                 "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "nacelle_temp_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "latitude",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "longitude",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fault_type",
+                "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               }
@@ -153,7 +171,7 @@
               },
               {
                 "name": "load_mw",
-                "type": "BigInt",
+                "type": "Float",
                 "fields": null,
                 "items": null
               },
@@ -198,69 +216,6 @@
         {
           "name": "derivedwindturbinetelemetry"
         }
-      ],
-      "inputSchemas": [
-        {
-          "name": "derivedwindturbinetelemetry",
-          "schema": {
-            "columns": [
-              {
-                "name": "timestamp",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "stream_type",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_id",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "grid_name",
-                "type": "Nvarchar(max)",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "frequency_hz",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "voltage_kv",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "balance_mw",
-                "type": "Float",
-                "fields": null,
-                "items": null
-              }
-            ]
-          }
-        }
       ]
     },
     {
@@ -303,44 +258,56 @@
                 "items": null
               },
               {
-                "name": "grid_id",
+                "name": "plant_id",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "grid_name",
+                "name": "plant_name",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "frequency_hz",
+                "name": "power_output_mw",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
+                "name": "co2_kg_per_hour",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "voltage_kv",
+                "name": "cumulative_co2_tonnes_today",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "balance_mw",
+                "name": "ets_daily_allowance_tonnes",
                 "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "compliance_pct",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fuel_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fault_type",
+                "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               }
@@ -389,44 +356,62 @@
                 "items": null
               },
               {
-                "name": "grid_id",
+                "name": "vessel_id",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "grid_name",
+                "name": "vessel_name",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "frequency_hz",
+                "name": "vessel_type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "latitude",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
+                "name": "longitude",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "voltage_kv",
+                "name": "speed_knots",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "balance_mw",
+                "name": "heading_deg",
                 "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "destination",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "eta_hours",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "cargo_status",
+                "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               }
@@ -475,44 +460,56 @@
                 "items": null
               },
               {
-                "name": "grid_id",
+                "name": "inverter_id",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "grid_name",
+                "name": "plant_id",
                 "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "frequency_hz",
+                "name": "power_kw",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "load_mw",
-                "type": "BigInt",
-                "fields": null,
-                "items": null
-              },
-              {
-                "name": "generation_mw",
+                "name": "irradiance_wm2",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "voltage_kv",
+                "name": "panel_temp_c",
                 "type": "Float",
                 "fields": null,
                 "items": null
               },
               {
-                "name": "balance_mw",
+                "name": "efficiency_pct",
                 "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "latitude",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "longitude",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fault_type",
+                "type": "Nvarchar(max)",
                 "fields": null,
                 "items": null
               }
