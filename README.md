@@ -177,7 +177,14 @@ Expect `n > 0`.
 
 ### 10 · Open the Real-Time Dashboard
 
-Open **`AegeanPower_Live_Operations`**. Within ~30 s tiles should start populating with live wind, solar, grid, vessel, and emissions data. If tiles are empty, re-bind the data source: top toolbar → **Manage** → **Data sources** → edit → re-pick your `AegeanPowerEH` → **Save**.
+Open **`AegeanPower_Live_Operations`**. Within ~30 s tiles should start populating with live wind, solar, grid, vessel, and emissions data.
+
+If tiles stay empty / show `NaN` / `0`, the data source still points to the upstream cluster URI. Rebind it:
+
+- Right-side **Data sources** panel → hover over `AegeanPowerEH` → click the **⚙️ gear** (or the **⋯** menu → **Edit**)
+- In the edit pane, repick **Eventhouse** → your local `AegeanPowerEH` (cluster URI should now match your tenant)
+- **Apply** → **Save** the dashboard
+- Tiles refresh within a few seconds
 
 ### 11 · Re-bind Ontology data bindings
 
