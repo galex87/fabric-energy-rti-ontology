@@ -406,35 +406,50 @@ else:
         print(f"\nok ontology updated ({patched} bindings)")
         print("   (this also triggers graph ingestion — same as clicking Save in the editor)")
 
-        # Wait for the graph ingestion job to finish (visible in workspace Monitor)
+        # The graph ingestion runs on a separate auto-created "Graph model"
+        # item named "<ontology>_graph_<guid>". Find it and poll its job.
         import time as _t
-        print("\nWaiting for ontology graph ingestion to complete...")
-        deadline = _t.time() + 600   # 10 min cap
+        print("\nWaiting for graph ingestion to complete...")
+        graph_item = None
+        deadline = _t.time() + 600
         last_status = None
-        update_start = _t.time()
         while _t.time() < deadline:
             try:
-                jobs = fab("GET", f"/workspaces/{WS_ID}/items/{ONTO_ID}/jobs/instances?$top=5").json().get("value", [])
+                if graph_item is None:
+                    all_items = fab("GET", f"/workspaces/{WS_ID}/items").json().get("value", [])
+                    graph_item = next(
+                        (i for i in all_items if i.get("displayName","").startswith("AegeanPowerOntology_graph_")),
+                        None
+                    )
+                    if graph_item is None:
+                        print("  (no Graph item yet, waiting...)"); _t.sleep(5); continue
+                    print(f"  found graph item: {graph_item['displayName']} ({graph_item['id']})")
+
+                jobs = fab("GET",
+                    f"/workspaces/{WS_ID}/items/{graph_item['id']}/jobs/instances?$top=5",
+                    raise_on_error=False)
+                if not jobs.ok:
+                    print(f"  poll error: HTTP {jobs.status_code} {jobs.text[:120]}")
+                    _t.sleep(10); continue
+                arr = jobs.json().get("value", [])
+                arr.sort(key=lambda j: j.get("startTimeUtc",""), reverse=True)
+                if not arr:
+                    print("  no job yet, waiting..."); _t.sleep(5); continue
+                j = arr[0]
+                status = j.get("status","?")
+                jtype  = j.get("jobType","?")
+                if status != last_status:
+                    print(f"  [{jtype}] status={status}")
+                    last_status = status
+                if status in ("Completed", "Succeeded"):
+                    print(f"\nok graph ingestion finished ({jtype})")
+                    break
+                if status in ("Failed", "Cancelled"):
+                    print(f"\n!! graph ingestion {status}: {j.get('failureReason',{}).get('message','')}")
+                    break
+                _t.sleep(5)
             except Exception as e:
-                print(f"  (poll error: {e})"); _t.sleep(10); continue
-            # find most recent job (started after we issued updateDefinition)
-            jobs.sort(key=lambda j: j.get("startTimeUtc",""), reverse=True)
-            if not jobs:
-                print("  no job yet, waiting...")
-                _t.sleep(5); continue
-            j = jobs[0]
-            status = j.get("status","?")
-            jtype  = j.get("jobType","?")
-            if status != last_status:
-                print(f"  [{jtype}] status={status}")
-                last_status = status
-            if status in ("Completed", "Succeeded"):
-                print(f"\nok graph ingestion finished ({jtype})")
-                break
-            if status in ("Failed", "Cancelled"):
-                print(f"\n!! graph ingestion {status}: {j.get('failureReason',{}).get('message','')}")
-                break
-            _t.sleep(5)
+                print(f"  poll exception: {e}"); _t.sleep(10)
         else:
             print("\n!! timed out waiting for graph ingestion (still running in background)")
     else:
