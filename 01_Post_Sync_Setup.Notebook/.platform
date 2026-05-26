@@ -3,10 +3,10 @@
   "metadata": {
     "type": "Notebook",
     "displayName": "01_Post_Sync_Setup",
-    "description": "One-shot post-sync configuration: KQL mappings, lakehouse binding, eventstream connection, dashboard rebind."
+    "description": "One-shot post-sync configuration: KQL mappings, lakehouse binding, eventstream, dashboard, ontology, CSV load."
   },
   "config": {
     "version": "2.0",
-    "logicalId": "279106f0-16d4-4ad9-b119-d51a70d6ceba"
+    "logicalId": "5b78ed2d-1d70-46fd-a16b-c7a3805b1d14"
   }
 }

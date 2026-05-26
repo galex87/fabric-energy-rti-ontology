@@ -15,30 +15,25 @@
 
 # # 01 · Post-Sync Setup (one-shot)
 #
-# After your workspace is connected to Git and items are synced, **run this notebook once**. It auto-configures:
+# After Git sync, **run this notebook once** and (almost) everything is configured.
+# Idempotent — safe to re-run.
 #
-# 1. **KQL ingestion mappings** + streaming ingestion policy on the 5 Eventhouse tables (so Eventstream destinations land data in all columns, not just `stream_type`).
-# 2. **Default Lakehouse binding** on the 4 notebooks (`AegeanPower_Simulator`, `Demo_Trigger_Console`, `Dispatch_Maintenance_Crew`, `Load_CSVs_to_Delta`).
-# 3. **Eventstream connection string** auto-inserted into `AegeanPower_Simulator` (replaces the `REPLACE_ME_…` placeholder).
-# 4. **Real-Time Dashboard** cluster URI rebind to your local Eventhouse.
-#
-# After this notebook succeeds, the remaining steps are:
-# - Upload CSVs to `AegeanPowerLH/Files/data` (Step 5 in README).
-# - Run `Load_CSVs_to_Delta` (Step 6).
-# - Re-bind the Ontology data bindings (UI — Step 11).
-# - Add a data source to `AegeanPowerDataAgent` (UI — Step 12).
-#
-# > No external SDK; uses `notebookutils.credentials.getToken` for Fabric and Kusto APIs.
+# After this notebook succeeds, you only need to:
+# 1. Run **`AegeanPower_Simulator`** (Run all)
+# 2. Add **`AegeanPowerOntology`** as a data source to **`AegeanPowerDataAgent`** (UI, 1 click)
 #
 
 # MARKDOWN ********************
 
-# ## 1 · Discover the workspace and items
+# ## 1 · Discover workspace and items
 
 # CELL ********************
 
 import json, base64, time, requests, re
 import notebookutils
+
+GITHUB_REPO = "galex87/fabric-energy-rti-ontology"
+GITHUB_BRANCH = "main"
 
 WS_ID = notebookutils.runtime.context.get("currentWorkspaceId") or notebookutils.runtime.context.get("workspaceId")
 print(f"Workspace ID: {WS_ID}")
@@ -55,22 +50,20 @@ def fab(method, path, body=None, raise_on_error=True):
         raise RuntimeError(f"{method} {path} -> {r.status_code} {r.text[:500]}")
     return r
 
-def fab_lro(method, path, body=None, max_wait=180):
+def fab_lro(method, path, body=None, max_wait=240):
     r = fab(method, path, body, raise_on_error=False)
     if r.status_code in (200, 201):
         return r.json() if r.text else None
     if r.status_code != 202:
         raise RuntimeError(f"{method} {path} -> {r.status_code} {r.text[:500]}")
     loc = r.headers.get("Location")
-    if not loc:
-        return None
+    if not loc: return None
     tok = fab_token()
     waited = 0
     while waited < max_wait:
         time.sleep(3); waited += 3
         p = requests.get(loc, headers={"Authorization": f"Bearer {tok}"}, timeout=30)
-        if p.status_code != 200:
-            continue
+        if p.status_code != 200: continue
         data = p.json()
         if data.get("status") == "Succeeded":
             res = requests.get(loc + "/result", headers={"Authorization": f"Bearer {tok}"}, timeout=30)
@@ -81,7 +74,6 @@ def fab_lro(method, path, body=None, max_wait=180):
             raise RuntimeError(f"LRO failed: {json.dumps(data, indent=2)[:500]}")
     raise RuntimeError(f"LRO timeout after {max_wait}s")
 
-# Discover items by displayName
 items = fab("GET", f"/workspaces/{WS_ID}/items").json().get("value", [])
 by_name = {(i["type"], i["displayName"]): i["id"] for i in items}
 
@@ -92,18 +84,18 @@ def find(t, name, required=True):
     elif required:
         raise RuntimeError(f"missing item: type={t} name={name}")
     else:
-        print(f"  (skip) no {t}/{name} in workspace")
+        print(f"  (skip) no {t}/{name}")
     return iid
 
-print("\nDiscovered items:")
-LAKEHOUSE_ID = find("Lakehouse",  "AegeanPowerLH")
-EH_ID        = find("Eventhouse", "AegeanPowerEH")
-ES_ID        = find("Eventstream","AegeanPowerStream")
-SIM_NB_ID    = find("Notebook",   "AegeanPower_Simulator")
-DT_NB_ID     = find("Notebook",   "Demo_Trigger_Console")
-DC_NB_ID     = find("Notebook",   "Dispatch_Maintenance_Crew")
-LD_NB_ID     = find("Notebook",   "Load_CSVs_to_Delta")
+LAKEHOUSE_ID = find("Lakehouse",   "AegeanPowerLH")
+EH_ID        = find("Eventhouse",  "AegeanPowerEH")
+ES_ID        = find("Eventstream", "AegeanPowerStream")
+SIM_NB_ID    = find("Notebook",    "AegeanPower_Simulator")
+DT_NB_ID     = find("Notebook",    "Demo_Trigger_Console")
+DC_NB_ID     = find("Notebook",    "Dispatch_Maintenance_Crew")
+LD_NB_ID     = find("Notebook",    "Load_CSVs_to_Delta")
 DASH_ID      = find("KQLDashboard","AegeanPower_Live_Operations", required=False)
+ONTO_ID      = find("Ontology",    "AegeanPowerOntology",         required=False)
 
 
 # METADATA ********************
@@ -115,16 +107,14 @@ DASH_ID      = find("KQLDashboard","AegeanPower_Live_Operations", required=False
 
 # MARKDOWN ********************
 
-# ## 2 · Configure KQL: ingestion mappings + streaming policy
+# ## 2 · KQL: schema + ingestion mappings + streaming policy
 
 # CELL ********************
 
-# Eventhouse query/ingestion endpoint
 eh = fab("GET", f"/workspaces/{WS_ID}/eventhouses/{EH_ID}").json()
 CLUSTER_URI = eh["properties"]["queryServiceUri"]
 DB_NAME = "AegeanPowerEH"
 print(f"Cluster: {CLUSTER_URI}")
-print(f"DB:      {DB_NAME}")
 
 def kql(csl, op="mgmt"):
     tok = notebookutils.credentials.getToken("https://kusto.kusto.windows.net")
@@ -134,7 +124,6 @@ def kql(csl, op="mgmt"):
     r.raise_for_status()
     return r.json()
 
-# Per-table schema + JSON mapping (must match the simulator output)
 TABLES = {
     "WindTurbineTelemetry": [
         ("timestamp","datetime"),("stream_type","string"),("turbine_id","string"),("plant_id","string"),
@@ -168,8 +157,7 @@ for tbl, cols in TABLES.items():
     mapping = [{"column": c, "path": f"$.{c}"} for c, _ in cols]
     kql(f".create-or-alter table {tbl} ingestion json mapping 'AutoMapping' '" + json.dumps(mapping) + "'")
     kql(f".alter table {tbl} policy streamingingestion enable")
-    print(f"  OK  {tbl}: schema + AutoMapping + streaming policy")
-
+    print(f"  ok  {tbl}")
 print("\nKQL setup complete.")
 
 
@@ -182,7 +170,7 @@ print("\nKQL setup complete.")
 
 # MARKDOWN ********************
 
-# ## 3 · Bind `AegeanPowerLH` as default Lakehouse on the 4 notebooks
+# ## 3 · Bind AegeanPowerLH as default lakehouse on the 4 notebooks
 
 # CELL ********************
 
@@ -195,41 +183,28 @@ LAKEHOUSE_DEPENDENCY = {
     }
 }
 
-def bind_notebook_lakehouse(nb_id, display_name):
-    print(f"  {display_name} ({nb_id}) ...")
-    # 1. Get current definition
+def bind_lakehouse(nb_id, name):
     defn = fab_lro("POST", f"/workspaces/{WS_ID}/notebooks/{nb_id}/getDefinition?format=ipynb")
     parts = defn["definition"]["parts"]
-    # 2. Patch the notebook-content.ipynb metadata
-    found = False
     for p in parts:
         if p["path"].endswith(".ipynb"):
             raw = base64.b64decode(p["payload"]).decode("utf-8")
             nb = json.loads(raw)
             nb.setdefault("metadata", {})
-            nb["metadata"].setdefault("dependencies", {})
             nb["metadata"]["dependencies"] = LAKEHOUSE_DEPENDENCY
             new = json.dumps(nb, separators=(",", ":"))
             p["payload"] = base64.b64encode(new.encode("utf-8")).decode("ascii")
             p["payloadType"] = "InlineBase64"
-            found = True
             break
-    if not found:
-        raise RuntimeError(f"no .ipynb part in {display_name}")
-    # 3. Push back
-    body = {"definition": {"format": "ipynb", "parts": parts}}
-    fab_lro("POST", f"/workspaces/{WS_ID}/notebooks/{nb_id}/updateDefinition", body=body)
-    print(f"     OK  default lakehouse bound")
+    fab_lro("POST", f"/workspaces/{WS_ID}/notebooks/{nb_id}/updateDefinition",
+            body={"definition": {"format": "ipynb", "parts": parts}})
+    print(f"  ok  {name}")
 
-for nb_id, name in [
-    (SIM_NB_ID, "AegeanPower_Simulator"),
-    (DT_NB_ID,  "Demo_Trigger_Console"),
-    (DC_NB_ID,  "Dispatch_Maintenance_Crew"),
-    (LD_NB_ID,  "Load_CSVs_to_Delta"),
-]:
-    bind_notebook_lakehouse(nb_id, name)
-
-print("\nAll 4 notebooks now have AegeanPowerLH as default lakehouse.")
+for nb_id, name in [(SIM_NB_ID,"AegeanPower_Simulator"),
+                    (DT_NB_ID,"Demo_Trigger_Console"),
+                    (DC_NB_ID,"Dispatch_Maintenance_Crew"),
+                    (LD_NB_ID,"Load_CSVs_to_Delta")]:
+    bind_lakehouse(nb_id, name)
 
 
 # METADATA ********************
@@ -241,53 +216,42 @@ print("\nAll 4 notebooks now have AegeanPowerLH as default lakehouse.")
 
 # MARKDOWN ********************
 
-# ## 4 · Fetch Eventstream connection string + patch the simulator notebook
+# ## 4 · Patch simulator notebook with Eventstream connection string
 
 # CELL ********************
 
-# 1. Get the Eventstream topology to find the CustomEndpoint source id
 topo = fab("GET", f"/workspaces/{WS_ID}/eventstreams/{ES_ID}/topology").json()
 src = next(s for s in topo["sources"] if s["type"] == "CustomEndpoint")
 SRC_ID = src["id"]
-print(f"CustomApp source: {SRC_ID}")
-
-# 2. Get the primary connection string
 conn = fab("GET", f"/workspaces/{WS_ID}/eventstreams/{ES_ID}/sources/{SRC_ID}/connection").json()
 PRIMARY = conn["accessKeys"]["primaryConnectionString"]
-masked = PRIMARY[:60] + "...[REDACTED]..." + PRIMARY[-30:]
-print(f"Connection string: {masked}")
+print(f"Connection string: {PRIMARY[:60]}...[REDACTED]")
 
-# 3. Patch the simulator notebook
 defn = fab_lro("POST", f"/workspaces/{WS_ID}/notebooks/{SIM_NB_ID}/getDefinition?format=ipynb")
 parts = defn["definition"]["parts"]
 for p in parts:
     if p["path"].endswith(".ipynb"):
         raw = base64.b64decode(p["payload"]).decode("utf-8")
         nb = json.loads(raw)
-        # Replace placeholder (or any prior connection string) in any cell source line
         pattern = re.compile(r'EVENTHUB_CONNECTION_STRING\s*=\s*"[^"]*"')
         replacement = f'EVENTHUB_CONNECTION_STRING = "{PRIMARY}"'
         replaced = 0
         for c in nb.get("cells", []):
-            if c.get("cell_type") != "code":
-                continue
+            if c.get("cell_type") != "code": continue
             new_src = []
             for line in c.get("source", []):
                 if pattern.search(line):
-                    line = pattern.sub(replacement, line)
-                    replaced += 1
+                    line = pattern.sub(replacement, line); replaced += 1
                 new_src.append(line)
             c["source"] = new_src
-        if replaced == 0:
-            raise RuntimeError("EVENTHUB_CONNECTION_STRING line not found in simulator notebook")
+        if replaced == 0: raise RuntimeError("EVENTHUB_CONNECTION_STRING line not found")
         print(f"  patched {replaced} line(s)")
         new = json.dumps(nb, separators=(",", ":"))
         p["payload"] = base64.b64encode(new.encode("utf-8")).decode("ascii")
         break
-
 fab_lro("POST", f"/workspaces/{WS_ID}/notebooks/{SIM_NB_ID}/updateDefinition",
         body={"definition": {"format": "ipynb", "parts": parts}})
-print("Simulator notebook updated with connection string.")
+print("ok simulator updated")
 
 
 # METADATA ********************
@@ -299,12 +263,12 @@ print("Simulator notebook updated with connection string.")
 
 # MARKDOWN ********************
 
-# ## 5 · Rebind Real-Time Dashboard cluster URI to your local Eventhouse
+# ## 5 · Rebind Real-Time Dashboard cluster URI
 
 # CELL ********************
 
 if not DASH_ID:
-    print("  no dashboard in workspace, skipping")
+    print("  skip (no dashboard)")
 else:
     defn = fab_lro("POST", f"/workspaces/{WS_ID}/kqlDashboards/{DASH_ID}/getDefinition")
     parts = defn["definition"]["parts"]
@@ -314,16 +278,14 @@ else:
             dash = json.loads(raw)
             for ds in dash.get("dataSources", []):
                 if ds.get("name") == "AegeanPowerEH":
-                    ds["clusterUri"] = CLUSTER_URI
-                    ds["database"] = DB_NAME
-                    print(f"  rebound data source -> {CLUSTER_URI}")
+                    ds["clusterUri"] = CLUSTER_URI; ds["database"] = DB_NAME
+                    print(f"  ok  data source rebound")
             new = json.dumps(dash, separators=(",", ":"))
             p["payload"] = base64.b64encode(new.encode("utf-8")).decode("ascii")
             break
-
     fab_lro("POST", f"/workspaces/{WS_ID}/kqlDashboards/{DASH_ID}/updateDefinition",
             body={"definition": {"parts": parts}})
-    print("Dashboard updated.")
+    print("ok dashboard updated")
 
 
 # METADATA ********************
@@ -335,22 +297,155 @@ else:
 
 # MARKDOWN ********************
 
-# ## 6 · Summary
+# ## 6 · Download seed CSVs from GitHub into Lakehouse Files/data/
+
+# CELL ********************
+
+ONELAKE = "https://onelake.dfs.fabric.microsoft.com"
+
+def upload_to_lakehouse(blob_bytes, relative_path):
+    tok = notebookutils.credentials.getToken("https://storage.azure.com")
+    base = f"{ONELAKE}/{WS_ID}/{LAKEHOUSE_ID}/Files/{relative_path}"
+    h = {"Authorization": f"Bearer {tok}", "x-ms-version": "2021-08-06"}
+    r = requests.put(f"{base}?resource=file", headers=h, timeout=30)
+    if r.status_code not in (200, 201): raise RuntimeError(f"create: {r.status_code} {r.text[:200]}")
+    h2 = {**h, "Content-Type": "application/octet-stream", "Content-Length": str(len(blob_bytes))}
+    r = requests.patch(f"{base}?action=append&position=0", data=blob_bytes, headers=h2, timeout=60)
+    if r.status_code not in (200, 202): raise RuntimeError(f"append: {r.status_code} {r.text[:200]}")
+    r = requests.patch(f"{base}?action=flush&position={len(blob_bytes)}", headers=h, timeout=30)
+    if r.status_code not in (200, 201): raise RuntimeError(f"flush: {r.status_code} {r.text[:200]}")
+
+CSV_FILES = ["power_plants.csv","wind_turbines.csv","solar_inverters.csv","substations.csv",
+             "island_grids.csv","vessels.csv","maintenance_orders.csv","emissions_ledger.csv"]
+for csv_file in CSV_FILES:
+    url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}/data/{csv_file}"
+    r = requests.get(url, timeout=30); r.raise_for_status()
+    upload_to_lakehouse(r.content, f"data/{csv_file}")
+    print(f"  ok  Files/data/{csv_file}  ({len(r.content)} bytes)")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## 7 · Load CSVs to Delta tables
+
+# CELL ********************
+
+ABFSS = f"abfss://{WS_ID}@onelake.dfs.fabric.microsoft.com/{LAKEHOUSE_ID}"
+CSV_DIR = f"{ABFSS}/Files/data"
+from pyspark.sql.functions import col
+
+TABLE_DEFS = [
+    ('power_plants.csv','power_plants', {'capacity_mw':'double','latitude':'double','longitude':'double','commissioning_year':'int'}),
+    ('wind_turbines.csv','wind_turbines', {'capacity_mw':'double','hub_height_m':'double','rotor_diameter_m':'double','cut_in_speed_ms':'double','rated_speed_ms':'double','cut_out_speed_ms':'double','latitude':'double','longitude':'double'}),
+    ('solar_inverters.csv','solar_inverters', {'capacity_kw':'double','panel_tilt_deg':'double','panel_azimuth_deg':'double','latitude':'double','longitude':'double'}),
+    ('substations.csv','substations', {'voltage_kv':'double','latitude':'double','longitude':'double'}),
+    ('island_grids.csv','island_grids', {'population':'int','peak_demand_mw':'double','installed_capacity_mw':'double','nominal_frequency_hz':'double','latitude':'double','longitude':'double'}),
+    ('vessels.csv','vessels', {'capacity_m3':'double','current_cargo_m3':'double','speed_knots':'double'}),
+    ('maintenance_orders.csv','maintenance_orders', {'cost_eur':'double'}),
+    ('emissions_ledger.csv','emissions_ledger', {'co2_tonnes':'double','ets_allowance_tonnes':'double','fuel_consumed_mwh':'double','emission_factor_tco2_per_mwh':'double','compliance_pct':'double'}),
+]
+for csv_file, tbl, overrides in TABLE_DEFS:
+    df = spark.read.option('header', True).option('inferSchema', True).csv(f"{CSV_DIR}/{csv_file}")
+    for c, dtype in overrides.items():
+        df = df.withColumn(c, col(c).cast(dtype))
+    df.write.mode('overwrite').format('delta').save(f"{ABFSS}/Tables/{tbl}")
+    print(f"  ok  {tbl} {df.count()} rows")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## 8 · Rebind Ontology data bindings
+
+# CELL ********************
+
+if not ONTO_ID:
+    print("  skip (no ontology)")
+else:
+    kdbs = fab("GET", f"/workspaces/{WS_ID}/kqlDatabases").json().get("value", [])
+    KQL_DB_ID = next((k["id"] for k in kdbs if k["displayName"] == "AegeanPowerEH"), None)
+    print(f"  KQL DB itemId: {KQL_DB_ID}")
+    print(f"  Lakehouse itemId: {LAKEHOUSE_ID}")
+
+    defn = fab_lro("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/getDefinition")
+    parts = defn["definition"]["parts"]
+    patched = 0
+    for p in parts:
+        if "DataBindings" in p["path"] and p["path"].endswith(".json"):
+            raw = base64.b64decode(p["payload"]).decode("utf-8")
+            b = json.loads(raw)
+            src = b.get("dataBindingConfiguration", {}).get("sourceTableProperties", {})
+            stype = src.get("sourceType")
+            if stype == "LakehouseTable":
+                src["workspaceId"] = WS_ID; src["itemId"] = LAKEHOUSE_ID
+            elif stype == "KustoTable":
+                src["workspaceId"] = WS_ID
+                if KQL_DB_ID: src["itemId"] = KQL_DB_ID
+                if "clusterUri" in src: src["clusterUri"] = CLUSTER_URI
+                if "database" in src: src["database"] = DB_NAME
+            new = json.dumps(b, separators=(",", ":"))
+            p["payload"] = base64.b64encode(new.encode("utf-8")).decode("ascii")
+            patched += 1
+            print(f"  ok  {stype} -> {src.get('sourceTableName')}")
+    if patched:
+        fab_lro("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/updateDefinition",
+                body={"definition": {"parts": parts}})
+        print(f"\nok ontology updated ({patched} bindings)")
+    else:
+        print("  no DataBindings parts found")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## 9 · Publish the Eventstream (best effort)
+
+# CELL ********************
+
+try:
+    r = fab("POST", f"/workspaces/{WS_ID}/eventstreams/{ES_ID}/publish", raise_on_error=False)
+    if r.status_code in (200, 201, 202, 204):
+        print(f"ok eventstream published (HTTP {r.status_code})")
+    else:
+        raise RuntimeError(f"HTTP {r.status_code}: {r.text[:300]}")
+except Exception as e:
+    print(f"auto-publish not available: {e}")
+    print("  -> Manual step: open AegeanPowerStream -> Edit -> Publish in the toolbar.")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## DONE
 #
-# ✅ Done automatically:
+# What's left to do manually:
+# 1. Open **AegeanPower_Simulator** -> Run all (starts live data flow).
+# 2. Open **AegeanPowerDataAgent** -> + Data source -> Ontology -> pick AegeanPowerOntology -> Publish.
 #
-# - KQL ingestion mappings (`AutoMapping`) + streaming ingestion policy on 5 tables
-# - `AegeanPowerLH` bound as default on 4 notebooks
-# - Simulator notebook patched with the live Eventstream connection string
-# - Real-Time Dashboard cluster URI rebound
-#
-# 📝 Still to do (UI-only):
-#
-# 1. **Open `AegeanPowerStream` → Edit → Publish.** The destinations now have valid mappings; publish lights up streaming ingestion across all 5 tables.
-# 2. **Upload `data/` CSVs** to `AegeanPowerLH/Files/data` → run `Load_CSVs_to_Delta`.
-# 3. **Run `AegeanPower_Simulator`** → start the live data flow.
-# 4. **`AegeanPowerOntology`** → open each entity → re-pick its KQL/Lakehouse data binding source (UI rebind, ~1 min).
-# 5. **`AegeanPowerDataAgent`** → Add data source → pick `AegeanPowerOntology` (or `AegeanPowerLH` directly).
-#
-# Then you're ready to demo.
+# Then run the demo from docs/DEMO_SCRIPT.md.
 #
