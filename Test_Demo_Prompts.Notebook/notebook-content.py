@@ -46,26 +46,47 @@ print("Connected to", DATA_AGENT_NAME)
 # CELL ********************
 
 PROMPTS = [
-    # 1. PowerPlant — static
+    # ---- Static single-entity (8) ----
     "Show every power plant with its type, fuel, capacity, region and prefecture.",
-    # 2. WindTurbine — static, grouped
     "List all wind turbines grouped by plant, with manufacturer, model and rated capacity.",
-    # 3. SolarInverter — static, focused
     "List the solar inverters at Crete Solar Park with manufacturer, panel type and capacity.",
-    # 4. Grid — static inventory (live query unreliable in current preview)
     "List all 6 grids with their island, region, installed capacity and peak demand.",
-    # 5. Vessel — static + live
-    "For every vessel, show its type and the plant it is assigned to supply, alongside its current position, speed and destination.",
-    # 6. Substation — multi-entity join (static)
     "Show every substation with its voltage, the grid it belongs to, and the plant it feeds.",
-    # 7. MaintenanceOrder — multi-entity join (static)
-    "List every open or in-progress maintenance order with the affected asset, its plant, the priority and the technician.",
-    # 8. EmissionsRecord — pure static inventory (period filter unreliable)
+    "List every vessel with its name, type, flag, cargo capacity and the plant it is assigned to supply.",
+    "List every maintenance order with its priority, status, asset id, plant id, technician and created date.",
     "List every emissions record with plant name, period, CO2 tonnes, ETS allowance and compliance status.",
-    # 9. Multi-entity, single plant (the mic-drop)
-    "Naxos Wind Farm: every turbine with manufacturer and capacity, the grid it sits on, the substation feeding it, the vessel assigned to supply it, and any open maintenance orders against its turbines.",
-    # 10. Fleet snapshot — static + live aggregate
-    "For each wind farm, show total nameplate capacity and the sum of current power output across its turbines.",
+
+    # ---- Static joins (5) ----
+    "For each wind farm, list its turbines with manufacturer and capacity, and the total nameplate capacity of the plant.",
+    "For each power plant, show the substation feeding it and the grid it sits on.",
+    "For each gas plant, list its emissions records (all periods) with CO2 tonnes and compliance status.",
+    "List every wind turbine alongside its plant name, region and prefecture.",
+    "Show every solar inverter with its plant name and the grid that plant is connected to.",
+
+    # ---- Static + live (single entity, no aggregation) (7) ----
+    "For every vessel, show its type and the plant it is assigned to supply, alongside its current position, speed and destination.",
+    "Show every wind turbine with its plant, manufacturer, nameplate capacity, and current power output.",
+    "Show every solar inverter with its plant, manufacturer, nameplate capacity, and current power output.",
+    "For every vessel, list its name, the plant it is assigned to supply, its current speed and current heading.",
+    "For every wind turbine, show its current wind speed and current power output alongside its nameplate capacity.",
+    "For every solar inverter, show its current irradiance and current power output alongside its nameplate capacity.",
+    "Show every grid with its installed capacity and its current frequency, load and generation.",
+
+    # ---- Geography / categorical filters (4) ----
+    "List the plants located in the Cyclades prefecture, with type, fuel and capacity.",
+    "List every plant in the South Aegean region, with type, fuel and grid id.",
+    "List every gas power plant with capacity, region and prefecture.",
+    "List every wind farm with capacity, region, prefecture and grid id.",
+
+    # ---- Maintenance angles (3) ----
+    "List every maintenance order with status Open or In Progress, showing asset id, plant id, priority and technician.",
+    "List every Critical maintenance order, regardless of status.",
+    "List every maintenance order completed in 2026, with technician, asset id, plant id and cost in euros.",
+
+    # ---- Mic-drop cross-cuts (3) ----
+    "Naxos Wind Farm: list every turbine with manufacturer and capacity, the grid it sits on, and the substation feeding it.",
+    "For Lavrio Gas CCGT: show its capacity, region, the substation feeding it, and the vessel assigned to supply it.",
+    "For each wind farm, list every turbine with its manufacturer, capacity, and current power output.",
 ]
 
 assistant = client.beta.assistants.create(model="not-used")
