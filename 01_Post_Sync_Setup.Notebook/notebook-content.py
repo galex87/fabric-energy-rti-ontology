@@ -404,20 +404,9 @@ else:
         fab_lro("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/updateDefinition",
                 body={"definition": {"parts": parts}})
         print(f"\nok ontology updated ({patched} bindings)")
+        print("   (this also triggers graph ingestion — same as clicking Save in the editor)")
     else:
         print("  no DataBindings parts found")
-
-    # Try every documented + plausible refresh-trigger endpoint and log each.
-    # Whichever returns 2xx is the real refresh path on this tenant.
-    print("\nProbing ontology refresh endpoints (verbose):")
-    for endpoint in ["refresh", "build", "sync", "rebuild", "ingest", "load", "save", "publish"]:
-        try:
-            r = fab("POST", f"/workspaces/{WS_ID}/ontologies/{ONTO_ID}/{endpoint}", raise_on_error=False)
-            tag = "OK " if r.status_code in (200, 201, 202, 204) else "   "
-            print(f"  {tag} POST /ontologies/{{id}}/{endpoint:10s} -> HTTP {r.status_code}")
-        except Exception as e:
-            print(f"      POST /ontologies/{{id}}/{endpoint:10s} -> exception: {e}")
-    print("\nIf none returned 2xx: open AegeanPowerOntology -> Save in the editor to trigger graph ingestion (https://learn.microsoft.com/en-us/fabric/graph/manage-data).")
 
 
 # METADATA ********************

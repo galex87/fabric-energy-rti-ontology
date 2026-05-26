@@ -141,17 +141,11 @@ Expect `n > 0` and `nonzero > 0`.
 
 Open **`AegeanPower_Live_Operations`**. Tiles populate within ~30 s. The cluster URI was rebound in step 4 — no manual rebind needed.
 
-### 7 · Save the Ontology (refresh the graph) *(manual — UI only)*
-
-Open **`AegeanPowerOntology`** → click **Save** in the editor toolbar. Per the [Fabric Graph docs](https://learn.microsoft.com/en-us/fabric/graph/manage-data), Save = both persist + trigger graph data ingestion. There's no public REST endpoint for this yet.
-
-> Optional: set up a scheduled refresh via the ontology item's **⋯** menu → **Schedule** (e.g. hourly).
-
-### 8 · Add a data source to the Data Agent *(manual — UI only)*
+### 7 · Add a data source to the Data Agent *(manual — UI only)*
 
 Open **`AegeanPowerDataAgent`** → **+ Data source** → **Ontology** → pick `AegeanPowerOntology` → **Publish**.
 
-### 9 · You're ready
+### 8 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
 
