@@ -82,20 +82,6 @@
       "valueType": "String"
     },
     {
-      "id": "5151189005843988109",
-      "name": "destination",
-      "redefines": null,
-      "baseTypeNamespaceType": null,
-      "valueType": "String"
-    },
-    {
-      "id": "5151189003634174644",
-      "name": "speed_knots",
-      "redefines": null,
-      "baseTypeNamespaceType": null,
-      "valueType": "Double"
-    },
-    {
       "id": "5151189002796941004",
       "name": "status",
       "redefines": null,
@@ -128,6 +114,20 @@
     {
       "id": "5134808565635195845",
       "name": "eta_hours",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "Double"
+    },
+    {
+      "id": "5151189005843988109",
+      "name": "destination",
+      "redefines": null,
+      "baseTypeNamespaceType": null,
+      "valueType": "String"
+    },
+    {
+      "id": "5151189003634174644",
+      "name": "speed_knots",
       "redefines": null,
       "baseTypeNamespaceType": null,
       "valueType": "Double"

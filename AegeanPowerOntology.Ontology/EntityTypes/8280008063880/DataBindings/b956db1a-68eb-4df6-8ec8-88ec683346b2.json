@@ -24,6 +24,14 @@
       {
         "sourceColumnName": "eta_hours",
         "targetPropertyId": "5134808565635195845"
+      },
+      {
+        "sourceColumnName": "destination",
+        "targetPropertyId": "5151189005843988109"
+      },
+      {
+        "sourceColumnName": "speed_knots",
+        "targetPropertyId": "5151189003634174644"
       }
     ],
     "sourceTableProperties": {
