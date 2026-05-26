@@ -437,22 +437,24 @@ else:
                 arr = jobs.json().get("value", [])
                 arr.sort(key=lambda j: j.get("startTimeUtc",""), reverse=True)
                 if not arr:
-                    print("  no job yet, waiting..."); _t.sleep(5); continue
+                    print(".", end="", flush=True); _t.sleep(1); continue
                 j = arr[0]
                 status = j.get("status","?")
                 jtype  = j.get("jobType","?")
-                if status != last_status:
+                # Only announce InProgress -> Completed (skip noisy NotStarted)
+                if status in ("InProgress", "Completed", "Succeeded", "Failed", "Cancelled") and status != last_status:
+                    if last_status is not None: print()   # newline after dots
                     print(f"  [{jtype}] status={status}")
                     last_status = status
                 if status in ("Completed", "Succeeded"):
-                    print(f"\nok graph ingestion finished ({jtype})")
+                    print(f"ok graph ingestion finished ({jtype})")
                     break
                 if status in ("Failed", "Cancelled"):
-                    print(f"\n!! graph ingestion {status}: {j.get('failureReason',{}).get('message','')}")
+                    print(f"!! graph ingestion {status}: {j.get('failureReason',{}).get('message','')}")
                     break
-                _t.sleep(5)
+                print(".", end="", flush=True); _t.sleep(1)
             except Exception as e:
-                print(f"  poll exception: {e}"); _t.sleep(10)
+                print(f"\n  poll exception: {e}"); _t.sleep(5)
         else:
             print("\n!! timed out waiting for graph ingestion (still running in background)")
     else:
