@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Test_Demo_Prompts",
+    "description": "Runs the 10 demo prompts against AegeanPowerDataAgent and prints answers."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "33b45c16-cc43-4c63-a234-e19e1fbe832a"
+  }
+}
