@@ -12,7 +12,7 @@ A 12–15 minute end-to-end story across **Real-Time Intelligence** and **Ontolo
 4. Three tabs open:
    - `AegeanPower_Live_Operations` (dashboard with map)
    - `AegeanPowerDataAgent` (chat ready)
-   - `Demo_Trigger_Console` (for the live fault)
+   - `Demo_Trigger_Console` — the notebook you'll use to simulate a critical fault on a Naxos Wind Farm turbine. It writes a fault marker that the eventstream picks up; **Activator** catches the rule, fires `Dispatch_Maintenance_Crew`, and the Poseidon Service vessel (currently in standby at Piraeus Port) flips to **Dispatched** with **Naxos Wind Farm** as its destination. On the live dashboard map you'll watch the vessel leave Piraeus and start tracking toward Naxos, while a new Critical maintenance order materializes against the affected turbine.
 
 ---
 
