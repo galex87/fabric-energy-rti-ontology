@@ -144,7 +144,7 @@ Drill into one of the entities — `Vessel` is a good example — and show the *
 
 ![Vessel entity in AegeanPowerOntology — properties bound to both the static vessels Lakehouse table and the VesselPositions Eventhouse stream](images/ontology-vessel-hybrid-bindings.png)
 
-> "This is the key trick — one entity, two physical sources. The agent doesn't care that `flag` lives in the Lakehouse and `latitude` lives in the Eventhouse; it just sees a `Vessel` with both reference and live properties. That means a single prompt like *'where are my vessels right now and what country flag are they sailing under?'* can join cold reference data with hot streaming data, transparently, without me writing a single line of SQL or KQL."
+> "And here's the key trick on top of all that — one entity, two physical sources. The agent doesn't care that `flag` lives in the Lakehouse and `latitude` lives in the Eventhouse; it just sees a `Vessel` with both reference and live properties. So a single prompt like *'where are my vessels right now and what country flag are they sailing under?'* joins cold reference data with hot streaming data transparently, no SQL or KQL written by hand."
 
 ---
 
