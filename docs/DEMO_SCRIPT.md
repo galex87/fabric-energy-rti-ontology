@@ -132,11 +132,13 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Start by exploring `AegeanPowerOntology` directly — open the item and walk through the entities and their typed relationships before showing any agent.
+Start by exploring `AegeanPowerOntology`. Navigate to the **business entities** (left rail → `EmissionsRecord`, `Substation`, `MaintenanceOrder`, `SolarInverter`, `PowerPlant`, `WindTurbine`, `Grid`, `Vessel`) and the **relationships** that wire them together (`belongs_to_plant`, `installed_at_plant`, `supplies_plant`, `servicing_asset`, `emitted_by_plant`, `fed_by_plant`, `feeds_grid`). Click `PowerPlant` to see how every other entity hangs off it.
+
+![AegeanPowerOntology — entity types and relationships, PowerPlant at the centre](images/ontology-entities-relationships.png)
 
 > "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms."
 
-To see the picture, open the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
+To see the full picture, open the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
 
