@@ -56,10 +56,9 @@ PROMPTS = [
     "List every maintenance order with its priority, status, asset id, plant id, technician and created date.",
     "List every emissions record with plant name, period, CO2 tonnes, ETS allowance and compliance status.",
 
-    # ---- Static joins (5) ----
+    # ---- Static joins (4) ----
     "For each wind farm, list its turbines with manufacturer and capacity, and the total nameplate capacity of the plant.",
     "For each power plant, show the substation feeding it and the grid it sits on.",
-    "For each gas plant, list its emissions records (all periods) with CO2 tonnes and compliance status.",
     "List every wind turbine alongside its plant name, region and prefecture.",
     "Show every solar inverter with its plant name and the grid that plant is connected to.",
 
@@ -72,11 +71,9 @@ PROMPTS = [
     "For every solar inverter, show its current irradiance and current power output alongside its nameplate capacity.",
     "Show every grid with its installed capacity and its current frequency, load and generation.",
 
-    # ---- Geography / categorical filters (4) ----
+    # ---- Geography / categorical filters (2) ----
     "List the plants located in the Cyclades prefecture, with type, fuel and capacity.",
     "List every plant in the South Aegean region, with type, fuel and grid id.",
-    "List every gas power plant with capacity, region and prefecture.",
-    "List every wind farm with capacity, region, prefecture and grid id.",
 
     # ---- Maintenance angles (3) ----
     "List every maintenance order with status Open or In Progress, showing asset id, plant id, priority and technician.",
