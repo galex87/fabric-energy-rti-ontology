@@ -125,7 +125,7 @@ Then make it proactive:
 
 Close the loop back to Act 2:
 
-> "Because these anomalies are real Real-Time Hub events, you wire them into **Activator** exactly the same way we wired `fault_type` — except the trigger now fires on a **predicted** problem instead of a confirmed one. Same dispatch notebook, same Poseidon Service, same workflow you already saw — but Poseidon sails out to inspect the turbine **while it's still spinning**, before the bearing seizes, before we lose a day of generation. That's the shift: **reactive break-fix → predictive maintenance, same stack, zero new code, just one extra event source**."
+> "Because these anomalies are real Real-Time Hub events, you wire them into **Activator** exactly the same way we wired `fault_type` — except the trigger now fires on a **predicted** problem instead of a confirmed one. So we could potentially send the service vessel out to proactively inspect that turbine **before** it actually fails — we already have signals telling us it's behaving outside its normal pattern, so why wait for the breakdown? That's the shift: **reactive break-fix → predictive maintenance, same stack, zero new code, just one extra event source**."
 
 ![WindAnomalyDetector — vibration_mm_s for WT-THR-03 with anomaly markers and Anomaly events table](images/wind-anomaly-detector-wt-thr-03.png)
 
