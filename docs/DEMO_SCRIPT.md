@@ -96,7 +96,7 @@ You can also confirm the chain end-to-end from the **Monitor hub** (left rail �
 
 ### Step 3 · See the real-world action
 
-Switch back to the dashboard map. Within ~5 s the vessel **`VE-SVC-01` (Poseidon Service)** — the one we showed parked at Piraeus in Act 1 — changes heading, leaves the dot at Piraeus and starts moving toward Naxos. The vessel's destination label flips from *"Piraeus Port (standby)"* to *"Naxos Wind Farm"*.
+Once the Monitor tab shows `Dispatch_Maintenance_Crew_<runId>` as **Succeeded**, switch back to the dashboard map. Within a few seconds of that completion, the vessel **`VE-SVC-01` (Poseidon Service)** — the one we showed parked at Piraeus in Act 1 — changes heading, leaves the dot at Piraeus and starts moving toward Naxos. The vessel's destination label flips from *"Piraeus Port (standby)"* to *"Naxos Wind Farm"*.
 
 > "Activator monitored the fleet, detected the failure, and notified the right team — all autonomously. **Real-time data → real-world action. End-to-end in under 10 seconds.**"
 
