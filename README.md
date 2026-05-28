@@ -149,10 +149,4 @@ Open **`AegeanPowerDataAgent`** → **+ Data source** → **Ontology** → pick 
 
 ### 8 · You're ready
 
-Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md).
