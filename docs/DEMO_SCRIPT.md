@@ -136,7 +136,7 @@ Start by exploring `AegeanPowerOntology`. Navigate to the **business entities** 
 
 ![AegeanPowerOntology — entity types and relationships, PowerPlant at the centre](images/ontology-entities-relationships.png)
 
-Drill into one of the entities — `Vessel` is a good example — and show the **Properties** pane. Notice that the columns are bound to **two different sources**: static reference attributes (`flag`, `imo_number`, `origin_country`, `origin_port`) come from the Lakehouse `vessels` table, while live telemetry attributes (`latitude`, `longitude`, `speed_knots`, `heading_deg`, `status`) are bound to the Eventhouse `VesselPositions` stream (marked `(Timeseries)`). `WindTurbine` does the same: the static `wind_turbines` Lakehouse table for installed-asset metadata plus the `WindTurbineTelemetry` Eventhouse stream for live power, vibration, and RPM.
+Drill into one of the entities — `Vessel` is a good example — and show the **Properties** pane. Notice the columns are bound to **two different sources**: static reference attributes come from the Lakehouse, while live telemetry attributes (marked `Timeseries`) are bound to the Eventhouse stream. `WindTurbine` follows the same pattern — static metadata from the Lakehouse, live signals from Eventhouse.
 
 ![Vessel entity in AegeanPowerOntology — properties bound to both the static vessels Lakehouse table and the VesselPositions Eventhouse stream](images/ontology-vessel-hybrid-bindings.png)
 
