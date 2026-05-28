@@ -148,9 +148,9 @@ Drill into one of the entities — `Vessel` is a good example — and show the *
 
 ---
 
-### Step 2 · See the picture (`AegeanPowerOntology_graph`)
+### Step 2 · Explore the graph (`AegeanPowerOntology_graph`)
 
-Now switch to the **`AegeanPowerOntology_graph`** companion item in the workspace. Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
+Now switch to the **`AegeanPowerOntology_graph`** in the workspace. Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
 
