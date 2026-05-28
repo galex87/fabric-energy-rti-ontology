@@ -35,14 +35,14 @@ Meanwhile the other two vessels in the **Fleet Status** tile — **Aegean Breeze
 
 This is the asset that will get dispatched in Act 3 when a turbine fault fires.
 
+![Poseidon Service standby at Piraeus — live map](images/poseidon-standby-map.png)
+![Fleet Status tile showing Poseidon at 0 kn](images/fleet-status-standby.png)
+
 Switch to the **Wind** page. Point out the **"KQL Native ML – Statistical Anomaly Detection on WT-NAX-07"** chart. This tile runs Kusto's built-in `series_decompose_anomalies` against the live vibration stream — **no separate ML service, no model deployment, no PromptFlow**. The teal line is raw vibration; the orange line is the dynamically-computed baseline; the red dots are points the algorithm flagged as anomalies in real time. Talk track:
 
 > "Anomaly detection here is a one-liner of KQL — the Eventhouse runs the model natively on the stream. No data movement, no model hosting, no extra service to operate."
 
 ![KQL Native ML anomaly detection on WT-NAX-07](images/anomaly-detection-wt-nax-07.png)
-
-![Poseidon Service standby at Piraeus — live map](images/poseidon-standby-map.png)
-![Fleet Status tile showing Poseidon at 0 kn](images/fleet-status-standby.png)
 
 ---
 
