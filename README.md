@@ -59,7 +59,7 @@ Plus the **Ontology + Data Agent** side:
 |---|---|
 | `*.Notebook/`, `*.Lakehouse/`, `*.Eventhouse/`, … | Fabric items in Git format. Sync to your workspace via **Update all**. |
 | `data/` | 8 seed CSVs for the Lakehouse (power plants, wind turbines, solar inverters, vessels, etc.). |
-| `docs/` | Demo script, prompts, troubleshooting. |
+| `docs/` | Demo script and prompts. |
 
 ---
 
@@ -148,20 +148,6 @@ Open **`AegeanPowerDataAgent`** → **+ Data source** → **Ontology** → pick 
 ### 8 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md). Trigger a failure from `Demo_Trigger_Console`.
-
----
-
-## Demo highlights
-
-- **Real-time pipeline**: 51 entities emit ~17 events/s through Eventstream → Eventhouse → Dashboard.
-- **Autonomous remediation**: Activator detects a turbine fault → triggers a notebook → a vessel re-routes on the live map.
-- **Ontology-aware AI**: Data Agent answers business questions (Cyclades wind output? Open maintenance + vessel intersection?) grounded in a clean semantic model.
-
----
-
-## Troubleshooting
-
-See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for the most common gotchas (Activator state, eventstream schema, empty `fault_type`, etc.).
 
 ---
 
