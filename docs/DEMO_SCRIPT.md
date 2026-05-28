@@ -132,15 +132,25 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Now we shift from streaming to the **semantic / governance** side of Fabric. Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
+Now we shift from streaming to the **semantic / governance** side of Fabric. Open `AegeanPowerOntology` first and show the **Model** view — eight entities (`PowerPlant`, `WindTurbine`, `SolarInverter`, `Vessel`, `MaintenanceOrder`, `EmissionsRecord`, `Substation`, `Grid`) wired together by seven typed relationships (`belongs_to_plant`, `installed_at_plant`, `supplies_plant`, `servicing_asset`, `emitted_by_plant`, `fed_by_plant`, `feeds_grid`) all anchored on `PowerPlant`.
+
+![AegeanPower ontology graph — 8 entities, 7 relationships, all anchored on PowerPlant](images/aegean-power-ontology-graph.png)
+
+> "This is the **AegeanPower ontology** — a semantic layer that sits on top of our physical Lakehouse tables. It captures the business meaning the schema doesn't: that a wind turbine *belongs to* a plant, that a vessel *supplies* a plant, that a maintenance order *services an asset* on a plant, that an emissions record was *emitted by* a plant. None of that is in raw column names; it lives here, once, governed centrally."
+
+Why it matters:
+
+- **The agent stops guessing.** Without the ontology, the LLM has to infer joins from column names (`plant_id`, `id`, `asset_id`...) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed, and named in business terms.
+- **One source of truth across consumers.** The same ontology is consumable by Data Agents, Power BI semantic models, downstream apps. Rename a column or change a join in the Lakehouse → fix it once in the ontology, everyone downstream stays correct.
+- **Governance-friendly.** Business definitions, synonyms, and entity descriptions live next to the model — not buried in ad-hoc SQL.
+
+Now switch to `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
 
 1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
-2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, ontology resolves it.
+2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
 3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
 
-Talk track:
-
-> "The agent isn't reading SQL we wrote. It's reading our **ontology** — a semantic layer that maps business concepts (plants, turbines, vessels, maintenance orders) to physical tables. Without it, the agent would guess columns. With it, it joins on `plant_id` because the ontology says it can."
+> "The agent isn't reading SQL we wrote. It's reading our ontology and traversing those relationships you just saw on the graph. The question *'which plants have open maintenance orders AND vessels en route?'* becomes a walk: `PowerPlant ← servicing_asset (MaintenanceOrder) AND PowerPlant ← supplies_plant (Vessel)`. The agent never has to invent a join."
 
 ---
 
