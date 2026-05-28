@@ -75,8 +75,7 @@ Plus the **Ontology + Data Agent** side:
 
 1. `AegeanPower_Simulator` notebook is running and emitting (KQL `WindTurbineTelemetry | top 1 by timestamp desc` returns recent data).
 2. `WT-Failures-Activator` rule shows **Running**.
-3. No leftover failure: `Files/control/` is empty (or run the cleanup cell at the top of the simulator).
-4. Three tabs open:
+3. Three tabs open:
    - `AegeanPower_Live_Operations` (dashboard with map)
    - `AegeanPowerDataAgent` (chat ready)
    - `Demo_Trigger_Console` — the notebook you'll use to simulate a critical fault on a Naxos Wind Farm turbine. It writes a fault marker that the eventstream picks up; **Activator** catches the rule, fires `Dispatch_Maintenance_Crew`, and the Poseidon Service vessel (currently in standby at Piraeus Port) flips to **Dispatched** with **Naxos Wind Farm** as its destination. On the live dashboard map you'll watch the vessel leave Piraeus and start tracking toward Naxos, while a new Critical maintenance order materializes against the affected turbine.
