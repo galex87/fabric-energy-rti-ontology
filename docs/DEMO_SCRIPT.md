@@ -134,7 +134,7 @@ Close the loop back to Act 2:
 
 ### Step 1 · Explore the ontology (`AegeanPowerOntology`)
 
-Open `AegeanPowerOntology`. Navigate to the **business entities** and the **relationships** that wire them together. Click `PowerPlant` to see how every other entity hangs off it.
+Open `AegeanPowerOntology`. Navigate to the **business entities** and the **relationships** that wire them together.
 
 ![AegeanPowerOntology — entity types and relationships, PowerPlant at the centre](images/ontology-entities-relationships.png)
 
