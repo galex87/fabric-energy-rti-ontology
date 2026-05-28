@@ -164,20 +164,18 @@ Run the query and Fabric resolves the schema-level slice you picked against the 
 
 ---
 
-### Step 3 · Why it matters
-
-- **The agent stops guessing joins.** Without the ontology, the LLM has to infer joins from column-name overlap (`plant_id`, `id`, …) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed (`fromEntityType` / `toEntityType`), and named in business terms.
-- **One model, multiple Data Agents.** Any Data Agent that points at this ontology gets the same view of the business. Rename a column or move a join in the Lakehouse → fix it once in the ontology, every agent stays correct.
-
----
-
-### Step 4 · Ask the Data Agent (`AegeanPowerDataAgent`)
+### Step 3 · Ask the Data Agent (`AegeanPowerDataAgent`)
 
 Switch to `AegeanPowerDataAgent` and run prompts in order from [PROMPTS.md](PROMPTS.md):
 
 1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
 2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
 3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
+
+Why this works (and why it matters):
+
+- **The agent stops guessing joins.** Without the ontology, the LLM has to infer joins from column-name overlap (`plant_id`, `id`, …) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed (`fromEntityType` / `toEntityType`), and named in business terms.
+- **One model, multiple Data Agents.** Any Data Agent that points at this ontology gets the same view of the business. Rename a column or move a join in the Lakehouse → fix it once in the ontology, every agent stays correct.
 
 ---
 
