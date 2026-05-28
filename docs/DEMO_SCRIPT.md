@@ -116,8 +116,7 @@ Open `WindAnomalyDetector`.
 
 Start by setting the contrast against what they've already seen:
 
-> "Earlier on the dashboard you saw a built-in anomaly chart — the *'KQL Native ML – Statistical Anomaly Detection'* tile. That tile is convenient but limited: it's a one-shot Kusto function (`series_decompose_anomalies`) re-evaluated each time the tile refreshes, with a fixed sensitivity (`1.0`) baked into the query, and it stops at the visualization — the tile itself emits nothing.
-> What we're looking at now is a different beast: the **Anomaly Detector** item in Real-Time Intelligence. It runs the Eventhouse Python plugin, **evaluates multiple ML algorithms against our actual data**, picks the best-fitting model, and then keeps that model **continuously scoring live telemetry in place** — no data movement, no batch job. Sensitivity is exposed as a first-class setting on the item (change it in the UI, no KQL edits); detected anomalies are persisted; and crucially they're published as events to **Real-Time Hub**." ([docs](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection))
+> "The **Anomaly Detector** item in Real-Time Intelligence runs the Eventhouse Python plugin, **evaluates multiple ML algorithms against our actual data**, picks the best-fitting model, and then keeps that model **continuously scoring live telemetry in place** — no data movement, no batch job. Sensitivity is exposed as a first-class setting on the item (change it in the UI, no KQL edits); detected anomalies are persisted; and crucially they're published as events to **Real-Time Hub**." ([docs](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection))
 
 Then make it proactive:
 
