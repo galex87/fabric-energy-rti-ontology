@@ -57,18 +57,6 @@ Plus the **Ontology + Data Agent** side:
 
 ---
 
-## Repo layout
-
-| Folder | What it is |
-|---|---|
-| `*.Notebook/`, `*.Lakehouse/`, `*.Eventhouse/`, … | Fabric items in Git format. Sync to your workspace via **Update all**. |
-| `data/` | 8 seed CSVs for the Lakehouse (power plants, wind turbines, solar inverters, vessels, etc.). |
-| `SETUP.md` | Environment setup (one-time, before the demo). |
-| `docs/PROMPTS.md` | Working prompts for `AegeanPowerDataAgent`. |
-| `docs/images/` | Screenshots referenced from this README. |
-
----
-
 # Demo Script — AegeanPower Live Operations + Ontology
 
 ## Fabric artifacts in this workspace
