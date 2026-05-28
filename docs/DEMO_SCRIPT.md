@@ -84,6 +84,8 @@ Switch back to the **Overview** page and point at the **`Active Faults – All A
 
 Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appears, then the **Action** column shows a notebook run.
 
+![Activator WT-Failures-Rule live feed showing WT-NAX-04 activation and dispatch notebook run](images/activator-wt-nax-04-fired.png)
+
 Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbine_id = "WT-NAX-04"` as a parameter.
 
 You can also confirm the chain end-to-end from the **Monitor hub** (left rail → **Monitor** → **Activities**): the latest entry is `Dispatch_Maintenance_Crew_<runId>` with **Status = Succeeded**, **Item type = Notebook**, submitted by the Activator service principal. This is the audit trail proving the Activator-triggered run actually executed.
@@ -92,9 +94,7 @@ You can also confirm the chain end-to-end from the **Monitor hub** (left rail �
 
 > "Activator saw the fault the instant it landed in the table. It looked up the rule, identified Poseidon Service as the responsible crew, and fired the dispatch notebook automatically. No human paged anyone."
 
-> **Heads up on timing:** Activator catches the failure within a couple of seconds, but **the trigger-to-notebook-start lag is roughly 3–4 minutes** — that's the Activator → Fabric scheduler hop, not the notebook itself (the notebook only takes seconds to execute once it starts). For the demo, just narrate the wait: *"Activator has already fired and queued the dispatch run — once Fabric picks it up and starts the notebook, the simulator sees the dispatch file and the vessel starts moving."*
-
-![Activator WT-Failures-Rule live feed showing WT-NAX-04 activation and dispatch notebook run](images/activator-wt-nax-04-fired.png)
+> **Heads up on timing:** Activator catches the failure within a couple of seconds, but **the trigger-to-notebook-start lag is roughly 3–4 minutes** — that's the Activator → Fabric scheduler hop, not the notebook itself (the notebook only takes seconds to execute once it starts).
 
 ### Step 3 · See the real-world action
 
