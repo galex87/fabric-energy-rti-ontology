@@ -100,6 +100,17 @@ Confirm visually on the **Aegean Sea – Live Vessel Positions** map: the Poseid
 
 ![Poseidon Service marker departed from Piraeus, now southeast in the Saronic Gulf](images/poseidon-departed-piraeus.png)
 
+The **Fleet Status** tile reflects the same change in tabular form — contrast it with the Act 1 standby snapshot:
+
+- **Speed** has jumped from `0` knots to `~22` knots — engines on, vessel in transit.
+- **Heading** is now `~330°` (NW→SE turn already executed).
+- **Lat/Lon** has moved off `37.94, 23.62` (Piraeus) to roughly `37.20, 24.38` — already well into the Saronic Gulf.
+- **Destination** has flipped from *"Piraeus Port (standby)"* to **`WT-NAX-04 (Naxos Wind Farm)`** — the exact failed turbine, end-to-end traceability from fault to dispatched asset.
+
+Aegean Breeze and Hellas Spirit (LNG carriers) are unchanged — same speeds, same destinations. Only the vessel that *should* respond has been re-tasked.
+
+![Fleet Status tile showing Poseidon Service speed=22, heading=330, destination=WT-NAX-04](images/fleet-status-poseidon-dispatched.png)
+
 > "Activator monitored the fleet, detected the failure, and notified the right team — all autonomously. **Real-time data → real-world action, with zero human intervention in the loop.**"
 
 ---
