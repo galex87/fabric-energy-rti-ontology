@@ -71,7 +71,32 @@ Plus the **Ontology + Data Agent** side:
 
 # Demo Script — AegeanPower Live Operations + Ontology
 
-## Setup (off-screen, before guests arrive)
+## Fabric artifacts in this workspace
+
+After running [SETUP.md](SETUP.md) the workspace contains:
+
+| Artifact | Type | What it is |
+|---|---|---|
+| `AegeanPowerLH` | Lakehouse | 8 Delta tables (power plants, wind turbines, solar inverters, vessels, substations, grids, maintenance orders, emissions) seeded from `data/*.csv`. |
+| `AegeanPowerEH` | Eventhouse (KQL DB) | Live telemetry tables: `WindTurbineTelemetry`, `SolarInverterTelemetry`, `GridTelemetry`, `VesselPositions`, `EmissionsStream`. |
+| `AegeanPowerStream` | Eventstream | Pulls events from the Event Hub the simulator publishes to, fan-outs into the 5 KQL tables above. |
+| `AegeanPower_Live_Operations` | Real-Time Dashboard | Multi-page operational dashboard (Overview / Wind / Solar & Emissions / Grid Stability / Fleet) with live tiles + KQL Native ML anomaly tile. |
+| `AegeanPowerMap` | Real-Time Map | Live vessel/asset positions on the Aegean Sea. |
+| `WT-Failures-Activator` | Activator (Reflex) | Watches `WindTurbineTelemetry.fault_type` and triggers `Dispatch_Maintenance_Crew` on critical faults. |
+| `AnomalyDetector_WindTurbine` | Anomaly Detector | AutoML-tuned, continuously-running detector over `WindTurbineTelemetry.vibration_mm_s`, publishes anomaly events to Real-Time Hub. |
+| `AegeanPowerOntology` | Ontology | Semantic layer over Lakehouse + Eventhouse: 8 typed entities, 7 relationships, hybrid bindings (static + Timeseries). |
+| `AegeanPowerOntology_graph` | Graph (auto-generated) | Navigable graph view of the ontology — entities, relationships, and instance query mode. Created automatically alongside the ontology. |
+| `AegeanPowerDataAgent` | Data Agent | NL-to-answers agent bound to `AegeanPowerOntology`. |
+| `01_Post_Sync_Setup` | Notebook | Setup orchestrator (KQL mappings, lakehouse bindings, eventstream connection string, dashboard URI, CSV → Delta, ontology bindings). Run once after Git sync. |
+| `Load_CSVs_to_Delta` | Notebook | Standalone helper to (re)materialize the 8 Lakehouse Delta tables from the seed CSVs. |
+| `AegeanPower_Simulator` | Notebook | Continuously emits realistic telemetry to the Event Hub (wind, solar, grid, vessels, emissions). Long-running — kick off once. |
+| `Demo_Trigger_Console` | Notebook | One-cell trigger to inject a critical `WT-NAX-04` failure for the Activator demo. |
+| `Dispatch_Maintenance_Crew` | Notebook | Triggered by Activator. Writes the Poseidon Service dispatch control file the simulator polls. |
+| `Test_Demo_Prompts` | Notebook | Programmatically runs every prompt in [docs/PROMPTS.md](docs/PROMPTS.md) against the Data Agent for end-to-end smoke testing. |
+
+---
+
+## Pre-demo checklist (5 min before the call)
 
 1. `AegeanPower_Simulator` notebook is running and emitting (KQL `WindTurbineTelemetry | top 1 by timestamp desc` returns recent data).
 2. `WT-Failures-Activator` rule shows **Running**.
