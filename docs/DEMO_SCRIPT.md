@@ -132,9 +132,13 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Start by exploring `AegeanPowerOntology`. Navigate to the **business entities** and the **relationships** that wire them together. Click `PowerPlant` to see how every other entity hangs off it.
+### Step 1 · Explore the ontology (`AegeanPowerOntology`)
+
+Open `AegeanPowerOntology`. Navigate to the **business entities** and the **relationships** that wire them together. Click `PowerPlant` to see how every other entity hangs off it.
 
 ![AegeanPowerOntology — entity types and relationships, PowerPlant at the centre](images/ontology-entities-relationships.png)
+
+> "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms."
 
 Drill into one of the entities — `Vessel` is a good example — and show the **Properties** pane. Notice the columns are bound to **two different sources**: static reference attributes come from the Lakehouse, while live telemetry attributes (marked `Timeseries`) are bound to the Eventhouse stream. `WindTurbine` follows the same pattern — static metadata from the Lakehouse, live signals from Eventhouse.
 
@@ -142,18 +146,26 @@ Drill into one of the entities — `Vessel` is a good example — and show the *
 
 > "This is the key trick — one entity, two physical sources. The agent doesn't care that `flag` lives in the Lakehouse and `latitude` lives in the Eventhouse; it just sees a `Vessel` with both reference and live properties. That means a single prompt like *'where are my vessels right now and what country flag are they sailing under?'* can join cold reference data with hot streaming data, transparently, without me writing a single line of SQL or KQL."
 
-> "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms."
+---
 
-To see the full picture, open the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
+### Step 2 · See the picture (`AegeanPowerOntology_graph`)
+
+Now switch to the **`AegeanPowerOntology_graph`** companion item in the workspace. Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
 
-Why it matters:
+---
+
+### Step 3 · Why it matters
 
 - **The agent stops guessing joins.** Without the ontology, the LLM has to infer joins from column-name overlap (`plant_id`, `id`, …) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed (`fromEntityType` / `toEntityType`), and named in business terms.
 - **One model, multiple Data Agents.** Any Data Agent that points at this ontology gets the same view of the business. Rename a column or move a join in the Lakehouse → fix it once in the ontology, every agent stays correct.
 
-Now switch to `AegeanPowerDataAgent` and run prompts in order from [PROMPTS.md](PROMPTS.md):
+---
+
+### Step 4 · Ask the Data Agent (`AegeanPowerDataAgent`)
+
+Switch to `AegeanPowerDataAgent` and run prompts in order from [PROMPTS.md](PROMPTS.md):
 
 1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
 2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
