@@ -25,6 +25,17 @@ Open the dashboard. Talk track:
 
 Point out: turbine power tiles, vessel map, emissions tile, grid frequency.
 
+On the **Aegean Sea – Live Vessel Positions** map and the **Fleet Status** tile, highlight **Poseidon Service** — the Crew Transfer Vessel parked in **Piraeus Port** waiting for a callout. Specifically point out:
+
+- **Speed: 0 knots** — engines idle, not moving.
+- **Lat/Lon: 37.94, 23.62** — unchanged refresh after refresh; the dot stays anchored over Piraeus on the map.
+- **Destination: "Piraeus Port (standby)"** — the live label confirms it's waiting on station, not en route.
+
+This is the asset that will get dispatched in Act 3 when a turbine fault fires.
+
+![Poseidon Service standby at Piraeus — live map](images/poseidon-standby-map.png)
+![Fleet Status tile showing Poseidon at 0 kn](images/fleet-status-standby.png)
+
 ---
 
 ## Act 2 — Ontology-driven Data Agent (4 min)
