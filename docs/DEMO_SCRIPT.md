@@ -72,6 +72,12 @@ Switch immediately back to the dashboard. Within ~2 seconds:
 
 Point at the **`WT-NAX-04 Live Status (Power & Vibration)`** tile on the Wind page. Both series have been bouncing in their healthy bands — `Power_MW` riding 2–3.5 MW, `Vibration_mm_s` jittering around 0.5–1.5 — and then, at the moment of the forced failure, **both lines drop vertically and pin to 0**. There is no ramp-down, no warning shoulder: power generation stops and the rotor stops spinning at the same instant, exactly what you'd expect from an emergency cut-out.
 
+![WT-NAX-04 Power_MW and Vibration_mm_s collapse to zero at the moment of failure](images/wt-nax-04-failure-collapse.png)
+
+Switch back to the **Overview** page and point at the **`Active Faults – All Asset Types`** tile. `WT-NAX-04` is now listed with **Severity = OFFLINE**, `Min_Power_MW = 0`, `Max_Vib = 0` — sitting alongside the pre-existing critical/warning faults the dashboard was already tracking. The fault landed in the aggregation within seconds of the trigger; no manual refresh, no separate alert system.
+
+![Active Faults tile on Overview page with WT-NAX-04 highlighted as OFFLINE](images/active-faults-wt-nax-04-offline.png)
+
 > "Look at the right edge of the chart — both Power_MW and Vibration_mm_s flatline simultaneously. That's the signature of a hard fault: the turbine isn't degrading, it's *down*. And the dashboard reflected it within seconds of the event hitting Eventhouse."
 
 ### Step 2 · Watch Activator react
