@@ -88,6 +88,8 @@ Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbin
 
 > "Activator saw the fault the instant it landed in the table. It looked up the rule, identified Poseidon Service as the responsible crew, and fired the dispatch notebook automatically. No human paged anyone."
 
+![Activator WT-Failures-Rule live feed showing WT-NAX-04 activation and dispatch notebook run](images/activator-wt-nax-04-fired.png)
+
 ### Step 3 · See the real-world action
 
 Switch back to the dashboard map. Within ~5 s the vessel **`VE-SVC-01` (Poseidon Service)** — the one we showed parked at Piraeus in Act 1 — changes heading, leaves the dot at Piraeus and starts moving toward Naxos. The vessel's destination label flips from *"Piraeus Port (standby)"* to *"Naxos Wind Farm"*.
