@@ -172,6 +172,8 @@ Switch to `AegeanPowerDataAgent` and run prompts in order from [PROMPTS.md](PROM
 2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
 3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
 
+![AegeanPowerDataAgent — sample responses joining static reference data with live telemetry](images/data-agent-sample-responses.png)
+
 Why this works (and why it matters):
 
 - **The agent stops guessing joins.** Without the ontology, the LLM has to infer joins from column-name overlap (`plant_id`, `id`, …) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed (`fromEntityType` / `toEntityType`), and named in business terms.
