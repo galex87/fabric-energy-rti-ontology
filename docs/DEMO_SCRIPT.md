@@ -86,6 +86,10 @@ Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appe
 
 Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbine_id = "WT-NAX-04"` as a parameter.
 
+You can also confirm the chain end-to-end from the **Monitor hub** (left rail → **Monitor** → **Activities**): the latest entry is `Dispatch_Maintenance_Crew_<runId>` with **Status = Succeeded**, **Item type = Notebook**, submitted by the Activator service principal. This is the audit trail proving the Activator-triggered run actually executed.
+
+![Fabric Monitor hub Activities tab showing the Dispatch_Maintenance_Crew notebook run triggered by Activator](images/monitor-dispatch-notebook-run.png)
+
 > "Activator saw the fault the instant it landed in the table. It looked up the rule, identified Poseidon Service as the responsible crew, and fired the dispatch notebook automatically. No human paged anyone."
 
 > **Heads up on timing:** Activator catches the failure within a couple of seconds, but the `Dispatch_Maintenance_Crew` notebook itself needs roughly **3–4 minutes** to actually complete — that's Spark session cold-start plus the cell execution. In production you'd use a warm session pool or a lightweight Python (non-Spark) notebook to cut that to seconds; for the demo, just narrate the wait: *"Activator has already fired, the notebook is spinning up — once it lands, the simulator picks up the dispatch file and the vessel starts moving."*
