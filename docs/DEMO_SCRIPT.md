@@ -132,18 +132,20 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Now we shift from streaming to the **semantic** side of Fabric. Open `AegeanPowerOntology` and show the **Model** view — eight entities (`PowerPlant`, `WindTurbine`, `SolarInverter`, `Vessel`, `MaintenanceOrder`, `EmissionsRecord`, `Substation`, `Grid`) wired together by seven typed relationships. The graph view of the full ontology — entities and how they relate — is also available as **`AegeanPowerOntology_graph`** in the workspace; that companion item is generated automatically the moment the ontology is created, so users have a navigable graph picture for free without authoring anything extra.
+Start by exploring `AegeanPowerOntology` directly — open the item, switch to the **Model** view, walk the entities and edges before showing any agent.
+
+> "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms instead of being hidden inside foreign-key columns."
+
+Point out the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the graph picture below is available out of the box, no extra authoring needed.
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
-
-> "This is the **AegeanPower ontology** — a semantic layer that sits on top of our physical Lakehouse tables. It captures the relationships the raw schema doesn't make obvious: that a wind turbine *belongs to* a plant, that a vessel *supplies* a plant, that a maintenance order *services* a plant, that a substation is *fed by* a plant and in turn *feeds* a grid. None of that is in raw column names; it lives here, declared once, in business terms."
 
 Why it matters:
 
 - **The agent stops guessing joins.** Without the ontology, the LLM has to infer joins from column-name overlap (`plant_id`, `id`, …) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed (`fromEntityType` / `toEntityType`), and named in business terms.
 - **One model, multiple Data Agents.** Any Data Agent that points at this ontology gets the same view of the business. Rename a column or move a join in the Lakehouse → fix it once in the ontology, every agent stays correct.
 
-Now switch to `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
+Now switch to `AegeanPowerDataAgent` and run prompts in order from [PROMPTS.md](PROMPTS.md):
 
 1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
 2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
