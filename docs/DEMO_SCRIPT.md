@@ -23,9 +23,11 @@ Open the dashboard. Talk track:
 > "This is Aegean Power S.A. — a fictional Greek utility running 20 wind turbines across Thrace, Tinos, and Naxos, 15 solar inverters in Thessaly and Crete, two gas plants in Athens, and a fleet of three service vessels.
 > Every 2 seconds, every asset reports power, wind speed, vibration, emissions, position. Everything you see is live."
 
-Point out: turbine power tiles, vessel map, emissions tile, grid frequency.
+Point out: turbine power tiles, vessel map, emissions tile, grid frequency. Walk the **Overview**, **Wind**, **Solar & Emissions**, **Grid Stability** and **Fleet** pages so guests see the breadth of the live picture. **Two tiles you must not skip — they're the anchors for the rest of the demo:**
 
-On the **Aegean Sea – Live Vessel Positions** map and the **Fleet Status** tile, highlight **Poseidon Service** — the Crew Transfer Vessel parked in **Piraeus Port** waiting for a callout. Specifically point out:
+### 1 · The map — Poseidon Service on standby
+
+On the **Aegean Sea – Live Vessel Positions** map and the **Fleet Status** tile (Fleet page), highlight **Poseidon Service** — the Crew Transfer Vessel parked in **Piraeus Port** waiting for a callout. Specifically point out:
 
 - **Speed: 0 knots** — engines idle, not moving.
 - **Lat/Lon: 37.94, 23.62** — unchanged refresh after refresh; the dot stays anchored over Piraeus on the map.
@@ -37,6 +39,8 @@ This is the asset that will get dispatched in Act 3 when a turbine fault fires.
 
 ![Poseidon Service standby at Piraeus — live map](images/poseidon-standby-map.png)
 ![Fleet Status tile showing Poseidon at 0 kn](images/fleet-status-standby.png)
+
+### 2 · The Wind page — KQL Native ML anomaly detection
 
 Switch to the **Wind** page. Point out the **"KQL Native ML – Statistical Anomaly Detection on WT-NAX-07"** chart. This tile runs Kusto's built-in `series_decompose_anomalies` against the live vibration stream — **no separate ML service, no model deployment, no PromptFlow**. The teal line is raw vibration; the orange line is the dynamically-computed baseline; the red dots are points the algorithm flagged as anomalies in real time. Talk track:
 
