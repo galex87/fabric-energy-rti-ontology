@@ -88,6 +88,8 @@ Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbin
 
 > "Activator saw the fault the instant it landed in the table. It looked up the rule, identified Poseidon Service as the responsible crew, and fired the dispatch notebook automatically. No human paged anyone."
 
+> **Heads up on timing:** Activator catches the failure within a couple of seconds, but the `Dispatch_Maintenance_Crew` notebook itself needs roughly **3–4 minutes** to actually complete — that's Spark session cold-start plus the cell execution. In production you'd use a warm session pool or a lightweight Python (non-Spark) notebook to cut that to seconds; for the demo, just narrate the wait: *"Activator has already fired, the notebook is spinning up — once it lands, the simulator picks up the dispatch file and the vessel starts moving."*
+
 ![Activator WT-Failures-Rule live feed showing WT-NAX-04 activation and dispatch notebook run](images/activator-wt-nax-04-fired.png)
 
 ### Step 3 · See the real-world action
