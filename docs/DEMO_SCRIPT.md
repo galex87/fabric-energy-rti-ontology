@@ -126,6 +126,8 @@ Point at the vibration trend with the detector's anomaly markers, then sell the 
 
 The point of Act 3 is to show that the autonomous loop you saw in Act 2 isn't limited to known failures — once you bolt the Detector on, the same loop catches the failures you haven't thought of yet.
 
+![WindAnomalyDetector — vibration_mm_s for WT-THR-03 with anomaly markers and Anomaly events table](images/wind-anomaly-detector-wt-thr-03.png)
+
 ---
 
 ## Act 4 — Ontology-driven Data Agent
