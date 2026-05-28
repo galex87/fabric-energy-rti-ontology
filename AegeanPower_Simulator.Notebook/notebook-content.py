@@ -727,6 +727,8 @@ print("-" * 70)
 
 tick = 0
 total_events_sent = 0
+consecutive_send_failures = 0
+MAX_CONSECUTIVE_SEND_FAILURES = 20
 try:
     while MAX_CYCLES == 0 or tick < MAX_CYCLES:
         now = datetime.now(timezone.utc)
@@ -741,11 +743,31 @@ try:
         if tick % EMISSIONS_EVERY_N == 0: batch.extend(gen_emissions(now))
 
         if batch:
-            eh_batch = producer.create_batch()
-            for ev in batch:
-                eh_batch.add(EventData(json.dumps(ev, default=str)))
-            producer.send_batch(eh_batch)
-            total_events_sent += len(batch)
+            try:
+                eh_batch = producer.create_batch()
+                for ev in batch:
+                    eh_batch.add(EventData(json.dumps(ev, default=str)))
+                producer.send_batch(eh_batch)
+                total_events_sent += len(batch)
+                consecutive_send_failures = 0
+            except Exception as ex:
+                consecutive_send_failures += 1
+                print(f"[WARN] EventHub send failed (attempt {consecutive_send_failures}): {ex}")
+                # Rebuild producer after 3 failures (handle dropped connections)
+                if consecutive_send_failures % 3 == 0:
+                    try:
+                        producer.close()
+                    except Exception:
+                        pass
+                    try:
+                        producer = EventHubProducerClient.from_connection_string(EVENTHUB_CONNECTION_STRING)
+                        print("[INFO] Reconnected EventHub producer.")
+                    except Exception as rex:
+                        print(f"[WARN] Reconnect failed: {rex}")
+                if consecutive_send_failures >= MAX_CONSECUTIVE_SEND_FAILURES:
+                    print(f"[ERROR] {consecutive_send_failures} consecutive failures, stopping.")
+                    break
+                time.sleep(min(consecutive_send_failures * 2, 30))
 
         if PRINT_EVERY_N_CYCLES > 0 and tick % PRINT_EVERY_N_CYCLES == 0 and batch:
             ts = now.strftime("%H:%M:%S")
@@ -765,7 +787,10 @@ try:
 except KeyboardInterrupt:
     print("\nStopped by user.")
 finally:
-    producer.close()
+    try:
+        producer.close()
+    except Exception as ex:
+        print(f"[WARN] Error closing producer: {ex}")
     print(f"Total: {tick} ticks, {total_events_sent} events sent.")
 
 # METADATA ********************
