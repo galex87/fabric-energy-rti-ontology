@@ -154,6 +154,10 @@ Now switch to the **`AegeanPowerOntology_graph`** in the workspace. Fabric gener
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
 
+Flip to **Query** mode (left rail). Pick a few entities and relationships from the top bar — for example `Vessel`, `PowerPlant`, `Substation`, `Grid`, `WindTurbine` with `supplies_plant`, `fed_by_plant`, `feeds_grid`, `belongs_to_plant` — and Fabric renders the targeted **subgraph** for that slice of the ontology. Useful for showing only the part of the model relevant to the question at hand, instead of the full eight-entity picture.
+
+![AegeanPowerOntology_graph — Query mode showing a Vessel + PowerPlant + Substation + Grid + WindTurbine subgraph](images/ontology-graph-query-mode.png)
+
 ---
 
 ### Step 3 · Why it matters
