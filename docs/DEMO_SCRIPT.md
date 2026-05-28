@@ -59,14 +59,7 @@ Now we show **Fabric Activator** in action. Talk track to set it up:
 
 ### Step 1 · Inject the fault
 
-Switch to `Demo_Trigger_Console`. Run the **Trigger WT-NAX-04 failure** cell:
-
-```python
-import os
-os.makedirs('/lakehouse/default/Files/control', exist_ok=True)
-with open('/lakehouse/default/Files/control/failed_turbines.txt', 'w') as f:
-    f.write('WT-NAX-04\n')
-```
+Run the **`Demo_Trigger_Console`** notebook to simulate a failure on turbine **WT-NAX-04**. The notebook writes a control marker that the simulator picks up on its next tick, injecting a `DEMO_FORCED_FAILURE` event into the live telemetry stream — no manual KQL, no manual eventstream tweak.
 
 Switch immediately back to the dashboard. Within ~2 seconds:
 
