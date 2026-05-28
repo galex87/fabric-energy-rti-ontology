@@ -52,10 +52,11 @@ Switch to the **Wind** page. Point out the **"KQL Native ML – Statistical Anom
 
 ## Act 2 — Activator: catch a turbine failure and respond autonomously
 
-Now we show **Fabric Activator** in action. Talk track to set it up:
+Set up the story before doing anything:
 
-> "Activator is Fabric's no-code rules engine for real-time data. You point it at a stream (KQL table, eventstream, or Power BI dataset), define conditions, and it fires actions — emails, Teams alerts, pipelines, or notebooks — the moment the condition is met. No polling, no cron jobs, no glue code.
-> We've built one rule, **`WT-Failures-Activator`**, that watches every wind turbine for the moment `fault_type` flips to a critical value. When that happens, it triggers the `Dispatch_Maintenance_Crew` notebook. We're about to fake a failure on one of the Naxos turbines and watch the whole loop close — without anyone touching a button after the failure is injected."
+> "AegeanPower's wind fleet is spread across 14 sites in the Aegean Sea. Nobody is going to sit and stare at 90+ turbines on a screen 24/7 — and even if they did, by the time a human reacts, you've already lost minutes of generation and possibly damaged the asset.
+> That's the job of **Fabric Activator**. It's the always-on watchdog over our live telemetry: it continuously monitors every single turbine in the fleet, and the moment one reports a critical fault it **automatically notifies the team responsible for that asset** — in our case, the marine service crew on the vessel **`VE-SVC-01` Poseidon Service**, which is on standby at Piraeus Port specifically to repair offshore wind assets.
+> No dashboards to babysit, no pager rotations, no glue code. One rule, **`WT-Failures-Activator`**, watches the wind turbine stream, and when `fault_type` flips to a critical value it triggers the `Dispatch_Maintenance_Crew` notebook which dispatches Poseidon to the failed turbine's coordinates. We're about to fake a failure on one of the Naxos turbines and watch the whole loop close — hands off."
 
 ### Step 1 · Inject the fault
 
@@ -66,7 +67,7 @@ Switch immediately back to the dashboard. Within ~2 seconds:
 - `WT-NAX-04` power tile drops from ~3 MW → 0 MW.
 - `fault_type` column shows `DEMO_FORCED_FAILURE`.
 
-> "I just forced turbine WT-NAX-04 offline. The simulator emitted a failure event into Eventstream. Eventstream filtered it into the wind turbine table in our Eventhouse. The dashboard auto-refreshed. **All without me touching anything.**"
+> "Turbine WT-NAX-04 just went offline. The simulator emitted a failure event into Eventstream, Eventstream filtered it into the wind turbine table in our Eventhouse, the dashboard auto-refreshed. **All without me touching anything.**"
 
 ### Step 2 · Watch Activator react
 
@@ -74,12 +75,13 @@ Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appe
 
 Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbine_id = "WT-NAX-04"` as a parameter.
 
+> "Activator saw the fault the instant it landed in the table. It looked up the rule, identified Poseidon Service as the responsible crew, and fired the dispatch notebook automatically. No human paged anyone."
+
 ### Step 3 · See the real-world action
 
 Switch back to the dashboard map. Within ~5 s the vessel **`VE-SVC-01` (Poseidon Service)** — the one we showed parked at Piraeus in Act 1 — changes heading, leaves the dot at Piraeus and starts moving toward Naxos. The vessel's destination label flips from *"Piraeus Port (standby)"* to *"Naxos Wind Farm"*.
 
-> "Activator detected the `fault_type` transition. It triggered the Dispatch notebook automatically — no human in the loop. The notebook wrote a control file telling the simulator to re-route the service vessel.
-> **Real-time data → real-world action. End-to-end in under 10 seconds.**"
+> "Activator monitored the fleet, detected the failure, and notified the right team — all autonomously. **Real-time data → real-world action. End-to-end in under 10 seconds.**"
 
 ---
 
