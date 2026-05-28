@@ -145,7 +145,9 @@ Open **`AegeanPower_Live_Operations`**. Tiles populate within ~30 s. The cluster
 
 ### 7 · Enable the Eventhouse Python plugin *(prerequisite for the Anomaly Detector)*
 
-The **`WindAnomalyDetector`** item (shown in Act 3 of the demo) needs the Eventhouse Python runtime to score data. Open **`AegeanPowerEH`** Eventhouse → top toolbar → **Plugins** → toggle **Python language extension** ON → pick **Python 3.11.7 DL** → **Done**. This is a one-time, portal-only setting (no public API). Provisioning takes **up to 1 hour** before the detector can load data — kick it off well before the demo. Skip this step if you don't plan to show Act 3. [Docs](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/python-plugin)
+The **`WindAnomalyDetector`** item (shown in Act 3 of the demo) needs the Eventhouse Python runtime to score data. Open **`AegeanPowerEH`** Eventhouse → top toolbar → **Plugins** → toggle **Python language extension** ON → pick **Python 3.11.7 DL** → **Done**.
+
+![Eventhouse Plugins pane: toggle Python language extension ON and select Python 3.11.7 DL](docs/images/eventhouse-python-plugin-enable.png)
 
 ### 8 · Add a data source to the Data Agent
 
