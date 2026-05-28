@@ -126,6 +126,8 @@ This single notebook does **everything that doesn't survive Git sync**:
 Idempotent — safe to re-run. Takes ~3-5 minutes.
 
 > After the notebook finishes, open **`AegeanPowerStream`** → **Edit** → **Publish** (1 click in the toolbar). Fabric currently has no public REST endpoint to publish an eventstream, so this is the only manual eventstream step.
+>
+> While you're in the eventstream editor, check that every node (source, transforms, destinations) shows a green/active state. If any node is greyed out or marked inactive, click **Activate all** in the toolbar — telemetry won't flow until every destination is active.
 
 ### 5 · Run the simulator
 
