@@ -149,8 +149,6 @@ Now switch to `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PRO
 2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
 3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
 
-> "The agent isn't reading SQL we wrote. It's reading our ontology and traversing those relationships you just saw on the graph. *'Which plants have open maintenance orders AND vessels en route?'* becomes a walk: `PowerPlant ← servicing_asset (MaintenanceOrder)` AND `PowerPlant ← supplies_plant (Vessel)`. The agent never has to invent a join."
-
 ---
 
 ## Act 5 — The bigger picture
