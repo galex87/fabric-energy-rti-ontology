@@ -86,8 +86,6 @@ Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appe
 
 ![Activator WT-Failures-Rule live feed showing WT-NAX-04 activation and dispatch notebook run](images/activator-wt-nax-04-fired.png)
 
-Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbine_id = "WT-NAX-04"` as a parameter.
-
 You can also confirm the chain end-to-end from the **Monitor hub** (left rail → **Monitor** → **Activities**): the latest entry is `Dispatch_Maintenance_Crew_<runId>` with **Status = Succeeded**, **Item type = Notebook**, submitted by the Activator service principal. This is the audit trail proving the Activator-triggered run actually executed.
 
 ![Fabric Monitor hub Activities tab showing the Dispatch_Maintenance_Crew notebook run triggered by Activator](images/monitor-dispatch-notebook-run.png)
