@@ -50,21 +50,14 @@ Switch to the **Wind** page. Point out the **"KQL Native ML – Statistical Anom
 
 ---
 
-## Act 2 — Ontology-driven Data Agent
+## Act 2 — Activator: catch a turbine failure and respond autonomously
 
-Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
+Now we show **Fabric Activator** in action. Talk track to set it up:
 
-1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
-2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, ontology resolves it.
-3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
+> "Activator is Fabric's no-code rules engine for real-time data. You point it at a stream (KQL table, eventstream, or Power BI dataset), define conditions in plain English, and it fires actions — emails, Teams alerts, pipelines, or notebooks — the moment the condition is met. No polling, no cron jobs, no glue code.
+> We've built one rule, **`WT-Failures-Activator`**, that watches every wind turbine for the moment `fault_type` flips to a critical value. When that happens, it triggers the `Dispatch_Maintenance_Crew` notebook. We're about to fake a failure on one of the Naxos turbines and watch the whole loop close — without anyone touching a button after the failure is injected."
 
-Talk track:
-
-> "The agent isn't reading SQL we wrote. It's reading our **ontology** — a semantic layer that maps business concepts (plants, turbines, vessels, maintenance orders) to physical tables. Without it, the agent would guess columns. With it, it joins on `plant_id` because the ontology says it can."
-
----
-
-## Act 3 — The fault, live
+### Step 1 · Inject the fault
 
 Switch to `Demo_Trigger_Console`. Run the **Trigger WT-NAX-04 failure** cell:
 
@@ -80,28 +73,38 @@ Switch immediately back to the dashboard. Within ~2 seconds:
 - `WT-NAX-04` power tile drops from ~3 MW → 0 MW.
 - `fault_type` column shows `DEMO_FORCED_FAILURE`.
 
-Talk track:
-
 > "I just forced turbine WT-NAX-04 offline. The simulator emitted a failure event into Eventstream. Eventstream filtered it into the wind turbine table in our Eventhouse. The dashboard auto-refreshed. **All without me touching anything.**"
 
----
-
-## Act 4 — Autonomous response
+### Step 2 · Watch Activator react
 
 Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appears, then the **Action** column shows a notebook run.
 
 Open `Dispatch_Maintenance_Crew` → **Recent runs**. The latest run has `turbine_id = "WT-NAX-04"` as a parameter.
 
-Switch back to the dashboard map. Within ~5 s the vessel **`VE-SVC-01` (Poseidon Service)** changes heading and starts moving toward Naxos.
+### Step 3 · See the real-world action
 
-Talk track:
+Switch back to the dashboard map. Within ~5 s the vessel **`VE-SVC-01` (Poseidon Service)** — the one we showed parked at Piraeus in Act 1 — changes heading, leaves the dot at Piraeus and starts moving toward Naxos. The vessel's destination label flips from *"Piraeus Port (standby)"* to *"Naxos Wind Farm"*.
 
 > "Activator detected the `fault_type` transition. It triggered the Dispatch notebook automatically — no human in the loop. The notebook wrote a control file telling the simulator to re-route the service vessel.
 > **Real-time data → real-world action. End-to-end in under 10 seconds.**"
 
 ---
 
-## Act 4b — Anomaly Detector (optional)
+## Act 3 — Ontology-driven Data Agent
+
+Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
+
+1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
+2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, ontology resolves it.
+3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
+
+Talk track:
+
+> "The agent isn't reading SQL we wrote. It's reading our **ontology** — a semantic layer that maps business concepts (plants, turbines, vessels, maintenance orders) to physical tables. Without it, the agent would guess columns. With it, it joins on `plant_id` because the ontology says it can."
+
+---
+
+## Act 4 — Anomaly Detector (optional)
 
 Open `AnomalyDetector_WindTurbine`. The detector is bound to `WindTurbineTelemetry.vibration_mm_s` grouped by `turbine_id`.
 
