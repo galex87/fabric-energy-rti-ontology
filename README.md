@@ -84,7 +84,7 @@ After running [SETUP.md](SETUP.md) the workspace contains:
 
 ---
 
-## Pre-demo checklist (5 min before the call)
+## Pre-demo checklist
 
 1. `AegeanPower_Simulator` notebook is running and emitting (KQL `WindTurbineTelemetry | top 1 by timestamp desc` returns recent data).
 2. `WT-Failures-Activator` rule shows **Running**.
