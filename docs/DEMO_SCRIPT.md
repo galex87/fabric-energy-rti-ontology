@@ -16,7 +16,7 @@ A 12–15 minute end-to-end story across **Real-Time Intelligence** and **Ontolo
 
 ---
 
-## Act 1 — The world (1 min)
+## Act 1 — The world
 
 Open the dashboard. Talk track:
 
@@ -40,7 +40,7 @@ This is the asset that will get dispatched in Act 3 when a turbine fault fires.
 
 ---
 
-## Act 2 — Ontology-driven Data Agent (4 min)
+## Act 2 — Ontology-driven Data Agent
 
 Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
 
@@ -54,7 +54,7 @@ Talk track:
 
 ---
 
-## Act 3 — The fault, live (3 min)
+## Act 3 — The fault, live
 
 Switch to `Demo_Trigger_Console`. Run the **Trigger WT-NAX-04 failure** cell:
 
@@ -76,7 +76,7 @@ Talk track:
 
 ---
 
-## Act 4 — Autonomous response (3 min)
+## Act 4 — Autonomous response
 
 Switch to `WT-Failures-Activator` → **Live feed** tab. A new event marker appears, then the **Action** column shows a notebook run.
 
@@ -91,7 +91,7 @@ Talk track:
 
 ---
 
-## Act 4b — Anomaly Detector (optional, 1 min)
+## Act 4b — Anomaly Detector (optional)
 
 Open `AnomalyDetector_WindTurbine`. The detector is bound to `WindTurbineTelemetry.vibration_mm_s` grouped by `turbine_id`.
 
@@ -103,7 +103,7 @@ Point to the vibration trend with the model's anomaly markers. Mention that dete
 
 ---
 
-## Act 5 — The bigger picture (1 min)
+## Act 5 — The bigger picture
 
 Switch back to the Data Agent. Ask:
 
