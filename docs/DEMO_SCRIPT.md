@@ -114,17 +114,18 @@ Aegean Breeze and Hellas Spirit (LNG carriers) are unchanged — same speeds, sa
 
 Open `WindAnomalyDetector`.
 
-**Detector item ≠ dashboard tile.** The Act 1 tile (*"KQL Native ML – Statistical Anomaly Detection"*) runs `series_decompose_anomalies` on demand each refresh — it's a chart, nothing more. The **Anomaly Detector item** is a Real-Time Intelligence feature (preview) that runs the Eventhouse Python plugin, evaluates several ML algorithms, picks the best-fitting model for your data, and then **scores live telemetry continuously in place** — no data copy. Detected anomalies are published as events to **Real-Time Hub**, can drive Activator rules, and expose adjustable sensitivity. Dashboard tile = visualization; Detector item = AutoML-tuned, continuously-running detection service. ([docs](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection))
+Start by setting the contrast against what they've already seen:
 
-Talk track:
+> "Earlier on the dashboard you saw a built-in anomaly chart — the *'KQL Native ML – Statistical Anomaly Detection'* tile. That tile is convenient but limited: it's a one-shot Kusto function (`series_decompose_anomalies`) re-evaluated each time the tile refreshes, with a fixed sensitivity baked into the query, and it stops at the visualization. There's no model that persists, no event emitted, nothing downstream can react to it.
+> What we're looking at now is a different beast: the **Anomaly Detector** item in Real-Time Intelligence. It runs the Eventhouse Python plugin, **evaluates multiple ML algorithms against our actual data**, picks the best-fitting model, and then keeps that model **continuously scoring live telemetry in place** — no data movement, no batch job. Sensitivity is tunable; the detected anomalies are persisted; and crucially they're published as events to **Real-Time Hub**." ([docs](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection))
 
-> "Act 2 caught a turbine that had **already failed** — a hard, binary event we set a rule for. The Anomaly Detector flips that on its head: instead of waiting for a known fault code, it learns each turbine's normal seasonal/daily rhythm and continuously flags **statistical outliers** — drift you'd never catch with a static threshold. Below is `WT-THR-03` (and as an alternative, `WT-NAX-07`) — vibration creeping outside its normal band over the last few hours. No engineer wrote a rule for it; the model learned what 'normal' looks like for that specific asset and surfaced this one as drifting."
+Then make it proactive:
 
-Point at the vibration trend with the red anomaly markers and the Anomaly events table underneath, then close the loop:
+> "Act 2 was reactive — Activator caught a turbine that had **already failed**. This is the opposite: the model has learned the seasonal, daily, and per-asset rhythm of every wind turbine and continuously asks *'is this one drifting away from its own normal?'* — well before any threshold alarm or operator notices. Below is `WT-THR-03` (and as an alternative, `WT-NAX-07`) — vibration creeping outside its normal band over the last few hours. No engineer wrote a rule, no static threshold was crossed; the model learned what 'normal' looks like for that specific asset and flagged it."
 
-> "Now plug this into what we just saw in Act 2. These anomaly events flow into **Real-Time Hub** automatically — from there you wire them into **Activator** exactly the same way we wired `fault_type`, except now the trigger fires on a **predicted** problem instead of a confirmed one. Same dispatch notebook, same Poseidon Service — except Poseidon sails out to inspect the turbine **while it's still spinning**, not after the bearing seizes and we've lost a day of generation. That's the shift: reactive break-fix → predictive maintenance, **same Fabric stack, zero new code, just one extra event source**."
+Close the loop back to Act 2:
 
-The takeaway: the autonomous loop from Act 2 isn't limited to failures you've already seen. Bolt the Detector on and the same loop catches the ones you haven't.
+> "Because these anomalies are real Real-Time Hub events, you wire them into **Activator** exactly the same way we wired `fault_type` — except the trigger now fires on a **predicted** problem instead of a confirmed one. Same dispatch notebook, same Poseidon Service, same workflow you already saw — but Poseidon sails out to inspect the turbine **while it's still spinning**, before the bearing seizes, before we lose a day of generation. That's the shift: **reactive break-fix → predictive maintenance, same stack, zero new code, just one extra event source**."
 
 ![WindAnomalyDetector — vibration_mm_s for WT-THR-03 with anomaly markers and Anomaly events table](images/wind-anomaly-detector-wt-thr-03.png)
 
