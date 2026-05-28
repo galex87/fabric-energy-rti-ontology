@@ -213,9 +213,9 @@ ISLAND_GRIDS = [
 ]
 
 # -- Vessels (3) - Real Aegean shipping corridors (all waypoints verified offshore, min ~5 nm clearance from any landmass) --
-# Hellas Spirit: Kasos Strait -> E of Cyclades -> Kafireas Strait -> Petalion Gulf -> W around Salamis -> Revithoussa
-# Aegean Breeze: Antikythira Strait -> E of Cape Maleas -> Mirtoan Sea (E of Peloponnese) -> Saronic (E of Aegina) -> W around Salamis -> Revithoussa
-# Poseidon: parked at Piraeus; dispatched out Saronic east, south of the Cyclades, then to Naxos Port (on station)
+# Hellas Spirit: Kasos Strait -> E of Cyclades -> Kafireas Strait -> Petalion Gulf -> S of Cape Sounion -> Saronic E -> N around Salamis (Eleusis Bay) -> Revithoussa
+# Aegean Breeze: Antikythira Strait -> Mirtoan Sea (E of Peloponnese) -> Saronic (E of Aegina) -> Saronic E (S of Piraeus) -> N around Salamis (Eleusis Bay) -> Revithoussa
+# Poseidon: parked at Piraeus; dispatched out Saronic east, S of the Cyclades, N approach to Naxos Port (Chora)
 VESSELS = [
     {"id":"VE-LNG-01","name":"Hellas Spirit","type":"LNG Carrier","cargo":"Loaded","speed":18.0,"destination":"Revithoussa LNG Terminal",
      "route":[
@@ -226,12 +226,13 @@ VESSELS = [
         (37.30, 25.75),   # E of Mykonos, NE of Naxos (open)
         (37.70, 25.55),   # NE of Mykonos (Mykonos N ~37.50N 25.42E)
         (37.95, 25.10),   # N of Tinos, NE of Andros (open)
-        (38.05, 24.75),   # Kafireas Strait (between S Evia ~38.0N 24.55E and N Andros ~37.98N 24.85E)
-        (37.90, 24.20),   # SW of Karystos peninsula, Petalion Gulf
-        (37.85, 23.85),   # Petalion Gulf, well S of Evia
-        (37.80, 23.75),   # N of Aegina, S of Salamis, open Saronic
-        (37.93, 23.40),   # W of Salamis (Megara channel, Salamis W ~23.43E)
-        (37.98, 23.38)    # Revithoussa LNG Terminal
+        (38.05, 24.75),   # Kafireas Strait (between S Evia ~38.02N 24.55E and N Andros ~37.98N 24.85E)
+        (37.85, 24.30),   # Petalion Gulf, SW of Karystos peninsula
+        (37.55, 24.00),   # S of Cape Sounion (Sounion ~37.65N 24.02E)
+        (37.75, 23.75),   # Saronic Gulf E, well S of Attica coast (coast at 23.75E ~37.83N)
+        (37.92, 23.62),   # S of Piraeus port (port ~37.94N 23.62E)
+        (38.00, 23.50),   # N of Salamis (Salamis N ~37.97N), entering Eleusis Bay
+        (38.01, 23.42)    # Revithoussa LNG terminal
      ],
      "start_pct":0.10},
     {"id":"VE-LNG-02","name":"Aegean Breeze","type":"LNG Carrier","cargo":"Loaded","speed":17.0,"destination":"Revithoussa LNG Terminal",
@@ -243,9 +244,10 @@ VESSELS = [
         (37.15, 23.75),   # E of Spetses (Spetses ~37.26N 23.16E)
         (37.40, 23.80),   # E of Hydra (Hydra E ~23.55E)
         (37.60, 23.85),   # SE of Aegina (Aegina E ~23.57E)
-        (37.80, 23.75),   # N of Aegina, S of Salamis, open Saronic
-        (37.93, 23.40),   # W of Salamis (Megara channel)
-        (37.98, 23.38)    # Revithoussa LNG Terminal
+        (37.75, 23.75),   # Saronic Gulf E, well S of Attica coast (coast at 23.75E ~37.83N)
+        (37.92, 23.62),   # S of Piraeus port (port ~37.94N 23.62E)
+        (38.00, 23.50),   # N of Salamis, entering Eleusis Bay
+        (38.01, 23.42)    # Revithoussa LNG terminal
      ],
      "start_pct":0.25},
     {"id":"VE-SVC-01","name":"Poseidon Service","type":"Crew Transfer Vessel","cargo":"Crew + spare parts","speed":22.0,"destination":"Piraeus Port (standby)",
@@ -661,18 +663,19 @@ def gen_vessels(now):
     if target is not None:
         for s in nav.ships:
             if s["id"] == "VE-SVC-01" and not s.get("_dispatched"):
-                # Fixed open-sea route: Piraeus -> S exit of Saronic -> S of Cyclades -> Naxos Port
-                # Ends at Naxos Port (~37.10, 25.38) NOT inside the turbine farm (Naxos is land at the turbine coords).
+                # Piraeus -> S Saronic exit -> S of Cyclades -> N of Paros -> Naxos Port (Chora).
+                # Approach Naxos from the NORTH via the Paros-Naxos channel so we never
+                # cross Paros E coast or Naxos W coast (both very close together at lat ~37.0N).
                 s["route"] = [
                     (37.94, 23.62),   # Piraeus port
-                    (37.78, 23.72),   # E of Aegina (Aegina E ~23.57E)
-                    (37.55, 23.95),   # S of Aegina, W of Kea (Kea W ~24.30E)
-                    (37.30, 24.20),   # S of Kea, W of Kythnos (Kythnos W ~24.36E)
-                    (36.95, 24.65),   # S of Serifos (Serifos S ~37.10N 24.50E)
-                    (37.00, 24.95),   # Channel between Sifnos (E ~24.78E) and Paros (W ~25.10E)
-                    (36.95, 25.30),   # S of Paros, W of Naxos S coast
-                    (37.05, 25.35),   # Approaching Naxos W coast (Naxos W ~25.36E at 37.05N)
-                    (37.10, 25.37),   # Naxos Port (Naxos Chora ~37.10N 25.38E)
+                    (37.78, 23.72),   # Saronic, E of Aegina (Aegina E ~23.57E)
+                    (37.55, 23.95),   # S of Sounion (Sounion ~37.65N 24.02E)
+                    (37.30, 24.15),   # Open S Saronic exit
+                    (37.20, 24.55),   # E of Serifos (Serifos N ~37.20N 24.43E)
+                    (37.15, 24.90),   # Channel between Sifnos (E ~24.78E) and Paros (W ~25.10E)
+                    (37.20, 25.20),   # N approach: Paros N ~37.18N, position just N of Paros
+                    (37.20, 25.35),   # NW corner of Naxos approach (Naxos NW ~37.18N 25.40E)
+                    (37.10, 25.37),   # Naxos Port (Chora) - dock here
                 ]
                 s["total_nm"] = nav._route_nm(s["route"])
                 s["progress"] = 0.0
