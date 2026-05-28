@@ -61,11 +61,6 @@ Set up the story before doing anything:
 
 Run the **`Demo_Trigger_Console`** notebook to simulate a failure on turbine **WT-NAX-04**. The notebook writes a control marker that the simulator picks up on its next tick, injecting a `DEMO_FORCED_FAILURE` event into the live telemetry stream — no manual KQL, no manual eventstream tweak.
 
-Switch immediately back to the dashboard. Within ~2 seconds:
-
-- `WT-NAX-04` power tile drops from ~3 MW → 0 MW.
-- `fault_type` column shows `DEMO_FORCED_FAILURE`.
-
 > "Turbine WT-NAX-04 just went offline. The simulator emitted a failure event into Eventstream, Eventstream filtered it into the wind turbine table in our Eventhouse, the dashboard auto-refreshed. **All without me touching anything.**"
 
 Point at the **`WT-NAX-04 Live Status (Power & Vibration)`** tile on the Wind page. Both series have been bouncing in their healthy bands — `Power_MW` riding 2–3.5 MW, `Vibration_mm_s` jittering around 0.5–1.5 — and then, at the moment of the forced failure, **both lines drop vertically and pin to 0**. There is no ramp-down, no warning shoulder: power generation stops and the rotor stops spinning at the same instant, exactly what you'd expect from an emergency cut-out.
