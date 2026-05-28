@@ -29,8 +29,10 @@
 
 # CELL ********************
 
-import os
-CTRL = '/lakehouse/default/Files/control'
+import os, notebookutils
+# Resolve AegeanPowerLH explicitly — never trust /lakehouse/default/ (binding may be stale).
+_lh = notebookutils.lakehouse.get("AegeanPowerLH")
+CTRL = f"/lakehouse/{_lh['id']}/Files/control"
 FAILED = f'{CTRL}/failed_turbines.txt'
 
 if os.path.exists(FAILED) and open(FAILED).read().strip():

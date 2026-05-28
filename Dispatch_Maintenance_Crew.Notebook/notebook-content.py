@@ -20,8 +20,10 @@
 
 # CELL ********************
 
-import os
-CTRL = '/lakehouse/default/Files/control'
+import os, notebookutils
+# Resolve AegeanPowerLH explicitly — never trust /lakehouse/default/ (binding may be stale).
+_lh = notebookutils.lakehouse.get("AegeanPowerLH")
+CTRL = f"/lakehouse/{_lh['id']}/Files/control"
 DISPATCH = f'{CTRL}/dispatch_poseidon.txt'
 
 if os.path.exists(DISPATCH) and open(DISPATCH).read().strip():

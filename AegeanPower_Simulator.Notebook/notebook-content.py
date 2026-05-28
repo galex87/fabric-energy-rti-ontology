@@ -522,10 +522,12 @@ else:
 # CELL ********************
 
 # === DEMO CONTROL FILES (read by generators each tick) ===
-# Reads from /lakehouse/default/Files/control/ — requires AegeanPowerLH bound
-# as the default lakehouse on this notebook (see README step 4).
-import os
-CTRL_LOCAL = "/lakehouse/default/Files/control"
+# Resolve AegeanPowerLH explicitly so the binding cannot drift. The
+# /lakehouse/default/ mount can point at a stale or wrong lakehouse after
+# a git resync, leaving control files invisible to the simulator.
+import os, notebookutils
+_lh = notebookutils.lakehouse.get("AegeanPowerLH")
+CTRL_LOCAL = f"/lakehouse/{_lh['id']}/Files/control"
 
 def get_failed_turbines():
     try:
