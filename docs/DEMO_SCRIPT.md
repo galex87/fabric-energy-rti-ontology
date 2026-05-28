@@ -114,7 +114,7 @@ Aegean Breeze and Hellas Spirit (LNG carriers) are unchanged — same speeds, sa
 
 Before we leave the streaming side of the story and move into the ontology, one more capability worth showing. Open **`AnomalyDetector_WindTurbine`**.
 
-> **Not the same as the dashboard tile.** In Act 1 we showed *"KQL Native ML – Statistical Anomaly Detection on WT-NAX-07"* — that's a chart in the Real-Time Dashboard running `series_decompose_anomalies` *on demand* every time the tile refreshes. What we're opening now is a **Fabric Anomaly Detector item** — a standalone, continuously-running detector that watches `WindTurbineTelemetry.vibration_mm_s` grouped by `turbine_id` in the background, persists scored anomalies, and can publish them as events to Real-Time Hub. Dashboard tile = visualization. Detector item = ongoing detection service.
+> **Not the same as the dashboard tile.** The Act 1 tile (*"KQL Native ML – Statistical Anomaly Detection on WT-NAX-07"*) runs `series_decompose_anomalies` on-demand each refresh — it's a visualization. The **Anomaly Detector item** is a native Real-Time Intelligence feature (preview) that runs the Eventhouse Python plugin to test multiple ML algorithms, recommend the best-fitting model, and continuously monitor live data in place — no data copy. It publishes anomaly events to Real-Time Hub, supports adjustable sensitivity, and can trigger Activator rules. Dashboard tile = on-demand chart; Detector item = AutoML-tuned continuous detection service. ([docs](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/anomaly-detection))
 
 Talk track:
 
