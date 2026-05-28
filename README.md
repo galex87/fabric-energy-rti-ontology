@@ -150,3 +150,5 @@ Open **`AegeanPowerDataAgent`** → **+ Data source** → **Ontology** → pick 
 ### 8 · You're ready
 
 Walk through [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Try a prompt from [docs/PROMPTS.md](docs/PROMPTS.md).
+
+To showcase the autonomous remediation loop end-to-end, run **`Demo_Trigger_Console`**. It simulates a critical fault on a Naxos Wind Farm turbine: the eventstream picks the fault up, Activator catches the rule, fires `Dispatch_Maintenance_Crew`, and the Poseidon Service vessel (currently in standby at Piraeus Port) flips to **Dispatched** with **Naxos Wind Farm** as its destination. Watch the Real-Time Dashboard — within seconds you see the vessel leave the dot at Piraeus and start tracking toward Naxos on the live map, and the turbine fault surface as an open Critical maintenance order on the same plant.
