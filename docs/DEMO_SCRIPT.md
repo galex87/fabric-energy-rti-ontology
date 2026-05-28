@@ -54,7 +54,7 @@ Switch to the **Wind** page. Point out the **"KQL Native ML – Statistical Anom
 
 Now we show **Fabric Activator** in action. Talk track to set it up:
 
-> "Activator is Fabric's no-code rules engine for real-time data. You point it at a stream (KQL table, eventstream, or Power BI dataset), define conditions in plain English, and it fires actions — emails, Teams alerts, pipelines, or notebooks — the moment the condition is met. No polling, no cron jobs, no glue code.
+> "Activator is Fabric's no-code rules engine for real-time data. You point it at a stream (KQL table, eventstream, or Power BI dataset), define conditions, and it fires actions — emails, Teams alerts, pipelines, or notebooks — the moment the condition is met. No polling, no cron jobs, no glue code.
 > We've built one rule, **`WT-Failures-Activator`**, that watches every wind turbine for the moment `fault_type` flips to a critical value. When that happens, it triggers the `Dispatch_Maintenance_Crew` notebook. We're about to fake a failure on one of the Naxos turbines and watch the whole loop close — without anyone touching a button after the failure is injected."
 
 ### Step 1 · Inject the fault
