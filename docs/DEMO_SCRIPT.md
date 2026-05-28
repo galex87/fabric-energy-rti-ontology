@@ -115,9 +115,23 @@ Aegean Breeze and Hellas Spirit (LNG carriers) are unchanged — same speeds, sa
 
 ---
 
-## Act 3 — Ontology-driven Data Agent
+## Act 3 — Anomaly Detector (still in real-time, before we leave streaming)
 
-Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
+Before we leave the streaming side of the story and move into the ontology, one more capability worth showing. Open **`AnomalyDetector_WindTurbine`**.
+
+> **Not the same as the dashboard tile.** In Act 1 we showed *"KQL Native ML – Statistical Anomaly Detection on WT-NAX-07"* — that's a chart in the Real-Time Dashboard running `series_decompose_anomalies` *on demand* every time the tile refreshes. What we're opening now is a **Fabric Anomaly Detector item** — a standalone, continuously-running detector that watches `WindTurbineTelemetry.vibration_mm_s` grouped by `turbine_id` in the background, persists scored anomalies, and can publish them as events to Real-Time Hub. Dashboard tile = visualization. Detector item = ongoing detection service.
+
+Talk track:
+
+> "Activator catches **known** failure signatures — like `fault_type = DEMO_FORCED_FAILURE`. But what about the **unknown** ones? The Anomaly Detector continuously scores live telemetry and surfaces statistical outliers. Below is `WT-NAX-07` — a turbine slowly developing a bearing issue. No explicit rule flagged it; the model did."
+
+Point to the vibration trend with the detector's anomaly markers. Mention that detected anomalies can be published to Real-Time Hub and chained into an Activator rule the same way `fault_type` was — closing the loop on novel issues without writing any new code.
+
+---
+
+## Act 4 — Ontology-driven Data Agent
+
+Now we shift from streaming to the **semantic / governance** side of Fabric. Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
 
 1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
 2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, ontology resolves it.
@@ -126,18 +140,6 @@ Open `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
 Talk track:
 
 > "The agent isn't reading SQL we wrote. It's reading our **ontology** — a semantic layer that maps business concepts (plants, turbines, vessels, maintenance orders) to physical tables. Without it, the agent would guess columns. With it, it joins on `plant_id` because the ontology says it can."
-
----
-
-## Act 4 — Anomaly Detector (optional)
-
-Open `AnomalyDetector_WindTurbine`. The detector is bound to `WindTurbineTelemetry.vibration_mm_s` grouped by `turbine_id`.
-
-Talk track:
-
-> "Activator catches **known** failure signatures — like `fault_type = DEMO_FORCED_FAILURE`. But what about the **unknown** ones? The Anomaly Detector continuously scores live telemetry and surfaces statistical outliers. Below is `WT-NAX-07` — a turbine slowly developing a bearing issue. No explicit rule flagged it; the model did."
-
-Point to the vibration trend with the model's anomaly markers. Mention that detected anomalies can be published to Real-Time Hub and chained into an Activator rule the same way `fault_type` was — closing the loop on novel issues.
 
 ---
 
