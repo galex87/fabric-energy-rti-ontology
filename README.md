@@ -76,7 +76,6 @@ After running [SETUP.md](SETUP.md) the workspace contains:
 | `AegeanPowerOntology_graph` | Graph (auto-generated) | Navigable graph view of the ontology — entities, relationships, and instance query mode. Created automatically alongside the ontology. |
 | `AegeanPowerDataAgent` | Data Agent | NL-to-answers agent bound to `AegeanPowerOntology`. |
 | `01_Post_Sync_Setup` | Notebook | Setup orchestrator (KQL mappings, lakehouse bindings, eventstream connection string, dashboard URI, CSV → Delta, ontology bindings). Run once after Git sync. |
-| `Load_CSVs_to_Delta` | Notebook | Standalone helper to (re)materialize the 8 Lakehouse Delta tables from the seed CSVs. |
 | `AegeanPower_Simulator` | Notebook | Continuously emits realistic telemetry to the Event Hub (wind, solar, grid, vessels, emissions). Long-running — kick off once. |
 | `Demo_Trigger_Console` | Notebook | One-cell trigger to inject a critical `WT-NAX-04` failure for the Activator demo. |
 | `Dispatch_Maintenance_Crew` | Notebook | Triggered by Activator. Writes the Poseidon Service dispatch control file the simulator polls. |

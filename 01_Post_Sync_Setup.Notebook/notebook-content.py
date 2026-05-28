@@ -93,7 +93,6 @@ ES_ID        = find("Eventstream", "AegeanPowerStream")
 SIM_NB_ID    = find("Notebook",    "AegeanPower_Simulator")
 DT_NB_ID     = find("Notebook",    "Demo_Trigger_Console")
 DC_NB_ID     = find("Notebook",    "Dispatch_Maintenance_Crew")
-LD_NB_ID     = find("Notebook",    "Load_CSVs_to_Delta")
 DASH_ID      = find("KQLDashboard","AegeanPower_Live_Operations", required=False)
 ONTO_ID      = find("Ontology",    "AegeanPowerOntology",         required=False)
 
@@ -202,8 +201,7 @@ def bind_lakehouse(nb_id, name):
 
 for nb_id, name in [(SIM_NB_ID,"AegeanPower_Simulator"),
                     (DT_NB_ID,"Demo_Trigger_Console"),
-                    (DC_NB_ID,"Dispatch_Maintenance_Crew"),
-                    (LD_NB_ID,"Load_CSVs_to_Delta")]:
+                    (DC_NB_ID,"Dispatch_Maintenance_Crew")]:
     bind_lakehouse(nb_id, name)
 
 
