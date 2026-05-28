@@ -132,11 +132,11 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Start by exploring `AegeanPowerOntology` directly — open the item, switch to the **Model** view, walk the entities and edges before showing any agent.
+Start by exploring `AegeanPowerOntology` directly — open the item and walk through the entities and their typed relationships before showing any agent.
 
-> "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms instead of being hidden inside foreign-key columns."
+> "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms."
 
-Point out the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the graph picture below is available out of the box, no extra authoring needed.
+To see the picture, open the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
 
