@@ -16,7 +16,7 @@ A 12–15 minute end-to-end story across **Real-Time Intelligence** and **Ontolo
 
 ---
 
-## Act 1 — The world
+## Act 1 — Real-Time Dashboard
 
 Open the dashboard. Talk track:
 
