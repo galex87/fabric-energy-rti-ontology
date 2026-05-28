@@ -522,32 +522,33 @@ else:
 # CELL ********************
 
 # === DEMO CONTROL FILES (read by generators each tick) ===
-# Resolve AegeanPowerLH explicitly so the binding cannot drift. The
-# /lakehouse/default/ mount can point at a stale or wrong lakehouse after
-# a git resync, leaving control files invisible to the simulator.
-import os, notebookutils
+# Resolve AegeanPowerLH via ABFSS — works regardless of default-lakehouse binding.
+import notebookutils
 _lh = notebookutils.lakehouse.get("AegeanPowerLH")
-CTRL_LOCAL = f"/lakehouse/{_lh['id']}/Files/control"
+_ws_id = _lh.get('workspaceId') or notebookutils.runtime.context['currentWorkspaceId']
+CTRL_LOCAL = f"abfss://{_ws_id}@onelake.dfs.fabric.microsoft.com/{_lh['id']}/Files/control"
+
+def _read_ctrl(p):
+    try:
+        if notebookutils.fs.exists(p):
+            return notebookutils.fs.head(p, 1024)
+    except Exception:
+        pass
+    return ''
 
 def get_failed_turbines():
     try:
-        p = f"{CTRL_LOCAL}/failed_turbines.txt"
-        if os.path.exists(p):
-            with open(p) as f:
-                return {line.strip() for line in f if line.strip() and not line.startswith("#")}
+        txt = _read_ctrl(f"{CTRL_LOCAL}/failed_turbines.txt")
+        return {ln.strip() for ln in txt.splitlines() if ln.strip() and not ln.startswith("#")}
     except Exception:
-        pass
-    return set()
+        return set()
 
 def poseidon_dispatched():
     try:
-        p = f"{CTRL_LOCAL}/dispatch_poseidon.txt"
-        if os.path.exists(p):
-            with open(p) as f:
-                line = f.read().strip()
-            if line:
-                lat, lon = line.split(",")
-                return float(lat), float(lon)
+        line = _read_ctrl(f"{CTRL_LOCAL}/dispatch_poseidon.txt").strip()
+        if line:
+            lat, lon = line.split(",")
+            return float(lat), float(lon)
     except Exception:
         pass
     return None

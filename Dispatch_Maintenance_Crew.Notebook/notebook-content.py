@@ -20,18 +20,21 @@
 
 # CELL ********************
 
-import os, notebookutils
-# Resolve AegeanPowerLH explicitly — never trust /lakehouse/default/ (binding may be stale).
+import notebookutils
+# Resolve AegeanPowerLH via ABFSS so we don't depend on /lakehouse/default/ mount.
 _lh = notebookutils.lakehouse.get("AegeanPowerLH")
-CTRL = f"/lakehouse/{_lh['id']}/Files/control"
+_ws = _lh.get('workspaceId') or notebookutils.runtime.context['currentWorkspaceId']
+CTRL = f"abfss://{_ws}@onelake.dfs.fabric.microsoft.com/{_lh['id']}/Files/control"
 DISPATCH = f'{CTRL}/dispatch_poseidon.txt'
 
-if os.path.exists(DISPATCH) and open(DISPATCH).read().strip():
-    print(f'SKIP: dispatch already in progress -> {open(DISPATCH).read().strip()!r}')
+existing = ''
+if notebookutils.fs.exists(DISPATCH):
+    existing = notebookutils.fs.head(DISPATCH, 1024).strip()
+if existing:
+    print(f'SKIP: dispatch already in progress -> {existing!r}')
 else:
-    os.makedirs(CTRL, exist_ok=True)
-    with open(DISPATCH, 'w') as f:
-        f.write('37.065,25.478')  # WT-NAX-04 coordinates
+    notebookutils.fs.mkdirs(CTRL)
+    notebookutils.fs.put(DISPATCH, '37.065,25.478', True)  # WT-NAX-04 coordinates
     print('DISPATCHED: Poseidon Service -> 37.065, 25.478 (Naxos)')
     print('Watch the Fleet Map - the bubble will start moving SE within ~10 s.')
 
