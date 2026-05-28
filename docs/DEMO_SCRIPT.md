@@ -1,7 +1,5 @@
 # Demo Script — AegeanPower Live Operations + Ontology
 
-A 12–15 minute end-to-end story across **Real-Time Intelligence** and **Ontology-driven Data Agents**.
-
 ---
 
 ## Setup (off-screen, before guests arrive)
