@@ -132,7 +132,7 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Now we shift from streaming to the **semantic** side of Fabric. Open `AegeanPowerOntology` and show the **Model** view — eight entities (`PowerPlant`, `WindTurbine`, `SolarInverter`, `Vessel`, `MaintenanceOrder`, `EmissionsRecord`, `Substation`, `Grid`) wired together by seven typed relationships. Six of them fan in to `PowerPlant` (`belongs_to_plant`, `installed_at_plant`, `supplies_plant`, `servicing_asset`, `emitted_by_plant`, `fed_by_plant`), and the seventh (`feeds_grid`) connects `Substation → Grid` to close the loop out to consumption.
+Now we shift from streaming to the **semantic** side of Fabric. Open `AegeanPowerOntology` and show the **Model** view — eight entities (`PowerPlant`, `WindTurbine`, `SolarInverter`, `Vessel`, `MaintenanceOrder`, `EmissionsRecord`, `Substation`, `Grid`) wired together by seven typed relationships. The graph view of the full ontology — entities and how they relate — is also available as **`AegeanPowerOntology_graph`** in the workspace; that companion item is generated automatically the moment the ontology is created, so users have a navigable graph picture for free without authoring anything extra.
 
 ![AegeanPower ontology graph — 8 entities, 7 relationships](images/aegean-power-ontology-graph.png)
 
