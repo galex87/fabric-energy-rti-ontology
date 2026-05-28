@@ -142,7 +142,6 @@ Why it matters:
 
 - **The agent stops guessing joins.** Without the ontology, the LLM has to infer joins from column-name overlap (`plant_id`, `id`, …) — fragile, slow, often wrong. With the ontology, every relationship is declared, typed (`fromEntityType` / `toEntityType`), and named in business terms.
 - **One model, multiple Data Agents.** Any Data Agent that points at this ontology gets the same view of the business. Rename a column or move a join in the Lakehouse → fix it once in the ontology, every agent stays correct.
-- **Foundation for governed AI Q&A.** The ontology lives as a first-class Fabric item under your workspace's RBAC and Git — versioned with the rest of the demo, not buried in agent prompts or hand-written SQL.
 
 Now switch to `AegeanPowerDataAgent`. Run prompts in order from [PROMPTS.md](PROMPTS.md):
 
