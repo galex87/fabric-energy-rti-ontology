@@ -246,11 +246,7 @@ Run the query and Fabric resolves the schema-level slice you picked against the 
 
 ### Step 3 · Ask the Data Agent (`AegeanPowerDataAgent`)
 
-Switch to `AegeanPowerDataAgent` and run prompts in order from [docs/PROMPTS.md](docs/PROMPTS.md):
-
-1. *"Show me all wind turbines"* — agent finds the `wind_turbines` table cleanly.
-2. *"Which wind turbines are at plants in the Cyclades islands?"* — region vs prefecture trap, the ontology resolves it.
-3. *"Which plants have both open maintenance orders and vessels en route?"* — the triple-FK query that only ontology-aware schemas can answer. Lands on **Naxos Wind Farm**.
+Switch to `AegeanPowerDataAgent` and run prompts in order from [docs/PROMPTS.md](docs/PROMPTS.md).
 
 ![AegeanPowerDataAgent — sample responses joining static reference data with live telemetry](docs/images/data-agent-sample-responses.png)
 
