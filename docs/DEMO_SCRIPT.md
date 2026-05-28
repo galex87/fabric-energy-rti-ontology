@@ -96,6 +96,10 @@ You can also confirm the chain end-to-end from the **Monitor hub** (left rail �
 
 Once the Monitor tab shows `Dispatch_Maintenance_Crew_<runId>` as **Succeeded**, switch back to the dashboard map. Within a few seconds of that completion, the vessel **`VE-SVC-01` (Poseidon Service)** — the one we showed parked at Piraeus in Act 1 — changes heading, leaves the dot at Piraeus and starts moving toward Naxos. The vessel's destination label flips from *"Piraeus Port (standby)"* to *"Naxos Wind Farm"*.
 
+Confirm visually on the **Aegean Sea – Live Vessel Positions** map: the Poseidon Service marker is **no longer at Piraeus** — it's now southeast of Athens, out in the Saronic Gulf, heading toward Naxos. Click the marker to see the new live coordinates (e.g. `24.21, 37.29`) — clearly off-station and underway.
+
+![Poseidon Service marker departed from Piraeus, now southeast in the Saronic Gulf](images/poseidon-departed-piraeus.png)
+
 > "Activator monitored the fleet, detected the failure, and notified the right team — all autonomously. **Real-time data → real-world action, with zero human intervention in the loop.**"
 
 ---
