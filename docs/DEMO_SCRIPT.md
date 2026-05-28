@@ -158,6 +158,10 @@ Flip to **Query** mode (left rail). Pick a few entities and relationships from t
 
 ![AegeanPowerOntology_graph — Query mode showing a Vessel + PowerPlant + Substation + Grid + WindTurbine subgraph](images/ontology-graph-query-mode.png)
 
+Run the query and Fabric resolves the schema-level slice you picked against the actual data — every matching instance appears as a node, with the typed edges between them. In the example below the Naxos slice surfaces: `Naxos Wind Farm` at the centre with its seven turbines (`Naxos Ridge-1/2/3`, `Naxos Valley-1/2/3`, `Naxos Hilltop-1`) hanging off via `belongs_to_plant`, `Naxos Substation` connected via `fed_by_plant` and `feeds_grid` to `Naxos Grid`, and `Poseidon Service` linked via `supplies_plant`. Same ontology, now populated with live business reality.
+
+![AegeanPowerOntology_graph — Query result showing Naxos Wind Farm with all its turbines, substation, grid, and the supplying vessel](images/ontology-graph-query-result.png)
+
 ---
 
 ### Step 3 · Why it matters
