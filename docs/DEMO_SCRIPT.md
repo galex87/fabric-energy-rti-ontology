@@ -132,7 +132,7 @@ Close the loop back to Act 2:
 
 ## Act 4 — Ontology-driven Data Agent
 
-Start by exploring `AegeanPowerOntology`. Navigate to the **business entities** (left rail → `EmissionsRecord`, `Substation`, `MaintenanceOrder`, `SolarInverter`, `PowerPlant`, `WindTurbine`, `Grid`, `Vessel`) and the **relationships** that wire them together (`belongs_to_plant`, `installed_at_plant`, `supplies_plant`, `servicing_asset`, `emitted_by_plant`, `fed_by_plant`, `feeds_grid`). Click `PowerPlant` to see how every other entity hangs off it.
+Start by exploring `AegeanPowerOntology`. Navigate to the **business entities** and the **relationships** that wire them together. Click `PowerPlant` to see how every other entity hangs off it.
 
 ![AegeanPowerOntology — entity types and relationships, PowerPlant at the centre](images/ontology-entities-relationships.png)
 
