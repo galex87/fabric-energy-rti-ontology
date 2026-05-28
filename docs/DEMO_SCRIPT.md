@@ -136,6 +136,12 @@ Start by exploring `AegeanPowerOntology`. Navigate to the **business entities** 
 
 ![AegeanPowerOntology — entity types and relationships, PowerPlant at the centre](images/ontology-entities-relationships.png)
 
+Drill into one of the entities — `Vessel` is a good example — and show the **Properties** pane. Notice that the columns are bound to **two different sources**: static reference attributes (`flag`, `imo_number`, `origin_country`, `origin_port`) come from the Lakehouse `vessels` table, while live telemetry attributes (`latitude`, `longitude`, `speed_knots`, `heading_deg`, `status`) are bound to the Eventhouse `VesselPositions` stream (marked `(Timeseries)`). `WindTurbine` does the same: the static `wind_turbines` Lakehouse table for installed-asset metadata plus the `WindTurbineTelemetry` Eventhouse stream for live power, vibration, and RPM.
+
+![Vessel entity in AegeanPowerOntology — properties bound to both the static vessels Lakehouse table and the VesselPositions Eventhouse stream](images/ontology-vessel-hybrid-bindings.png)
+
+> "This is the key trick — one entity, two physical sources. The agent doesn't care that `flag` lives in the Lakehouse and `latitude` lives in the Eventhouse; it just sees a `Vessel` with both reference and live properties. That means a single prompt like *'where are my vessels right now and what country flag are they sailing under?'* can join cold reference data with hot streaming data, transparently, without me writing a single line of SQL or KQL."
+
 > "This is the **AegeanPower ontology** — a **semantic layer that sits on top of our Lakehouse tables**. The Lakehouse holds the raw facts (rows in `wind_turbines`, `vessels`, `maintenance_orders`, `emissions`…). The ontology holds the *meaning*: it declares that a wind turbine **belongs to** a plant, a vessel **supplies** a plant, a maintenance order **services** a plant, a substation is **fed by** a plant and in turn **feeds** a grid. Same data underneath, but now the relationships are first-class, typed, and named in business terms."
 
 To see the full picture, open the **`AegeanPowerOntology_graph`** companion item in the workspace — Fabric generates it automatically the moment the ontology is created, so the navigable graph view of the entities and edges is available out of the box, no extra authoring needed.
