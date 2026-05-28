@@ -31,6 +31,8 @@ On the **Aegean Sea – Live Vessel Positions** map and the **Fleet Status** til
 - **Lat/Lon: 37.94, 23.62** — unchanged refresh after refresh; the dot stays anchored over Piraeus on the map.
 - **Destination: "Piraeus Port (standby)"** — the live label confirms it's waiting on station, not en route.
 
+Meanwhile the other two vessels in the **Fleet Status** tile — **Aegean Breeze** and **Hellas Spirit** (the LNG carriers) — are clearly *moving*: non-zero speeds (17–18 knots), heading values changing, and lat/lon ticking each refresh as you can see their dots track across the Aegean on the live map. Use that contrast: two vessels in motion, one parked and waiting.
+
 This is the asset that will get dispatched in Act 3 when a turbine fault fires.
 
 ![Poseidon Service standby at Piraeus — live map](images/poseidon-standby-map.png)
