@@ -118,7 +118,7 @@ Before we leave the streaming side of the story and move into the ontology, one 
 
 Talk track:
 
-> "Activator caught a turbine **that already failed** — a hard, binary event. The Anomaly Detector flips the model on its head: it **scores live telemetry continuously**, learns the seasonal/daily rhythm of each turbine, and flags statistical outliers **before they turn into outages**. Below is `WT-NAX-07` — vibration creeping outside its normal band over the last few hours. No rule said *'vibration > X'*, no engineer wrote a threshold; the model learned what 'normal' looks like for that specific asset and told us *this one is drifting*."
+> "Activator caught a turbine **that already failed** — a hard, binary event. The Anomaly Detector flips the model on its head: it **scores live telemetry continuously**, learns the seasonal/daily rhythm of each turbine, and flags statistical outliers **before they turn into outages**. Below is `WT-THR-03` (and alternatively check `WT-NAX-07`) — vibration creeping outside its normal band over the last few hours. No rule said *'vibration > X'*, no engineer wrote a threshold; the model learned what 'normal' looks like for that specific asset and told us *this one is drifting*."
 
 Point at the vibration trend with the detector's anomaly markers, then sell the proactive loop:
 
