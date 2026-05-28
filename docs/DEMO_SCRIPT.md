@@ -118,9 +118,13 @@ Before we leave the streaming side of the story and move into the ontology, one 
 
 Talk track:
 
-> "Activator catches **known** failure signatures — like `fault_type = DEMO_FORCED_FAILURE`. But what about the **unknown** ones? The Anomaly Detector continuously scores live telemetry and surfaces statistical outliers. Below is `WT-NAX-07` — a turbine slowly developing a bearing issue. No explicit rule flagged it; the model did."
+> "Activator caught a turbine **that already failed** — a hard, binary event. The Anomaly Detector flips the model on its head: it **scores live telemetry continuously**, learns the seasonal/daily rhythm of each turbine, and flags statistical outliers **before they turn into outages**. Below is `WT-NAX-07` — vibration creeping outside its normal band over the last few hours. No rule said *'vibration > X'*, no engineer wrote a threshold; the model learned what 'normal' looks like for that specific asset and told us *this one is drifting*."
 
-Point to the vibration trend with the detector's anomaly markers. Mention that detected anomalies can be published to Real-Time Hub and chained into an Activator rule the same way `fault_type` was — closing the loop on novel issues without writing any new code.
+Point at the vibration trend with the detector's anomaly markers, then sell the proactive loop:
+
+> "Now picture closing this with what we just saw in Act 2. Detected anomalies publish to **Real-Time Hub** as events. From there, you wire them into **Activator** exactly the same way we did with `fault_type` — except the trigger now fires on a *predicted* problem instead of a confirmed one. The dispatch notebook sends Poseidon Service to inspect WT-NAX-07 *while it's still spinning*, not after the bearing seizes. That's the shift: from reactive break-fix to predictive maintenance, **same Fabric stack, zero new code, just one extra event source**."
+
+The point of Act 3 is to show that the autonomous loop you saw in Act 2 isn't limited to known failures — once you bolt the Detector on, the same loop catches the failures you haven't thought of yet.
 
 ---
 
