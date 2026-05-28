@@ -110,7 +110,7 @@ Aegean Breeze and Hellas Spirit (LNG carriers) are unchanged — same speeds, sa
 
 ---
 
-## Act 3 — Anomaly Detector (still in real-time, before we leave streaming)
+## Act 3 — Anomaly Detector
 
 Before we leave the streaming side of the story and move into the ontology, one more capability worth showing. Open **`AnomalyDetector_WindTurbine`**.
 
